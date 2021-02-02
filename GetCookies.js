@@ -486,7 +486,7 @@ https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid? url script-request-h
 
 #电视家ck
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
-
+http://api.gaoqingdianshi.com/api/vd/sign/signin
 http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
 
 #小乐获取ck
@@ -499,15 +499,15 @@ https:\/\/api\.cashtoutiao\.com url script-request-body https://gitee.com/hanfux
 https:\/\/veishop\.iboxpay\.com\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
 
 #腾讯自选股APP
-https://wzq.tenpay.com/activity/page/welwareCenter/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
-https://wzq.tenpay.com/resources/vtools url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
-https://wzq.tenpay.com/cgi-bin/activity_usercenter.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
-https://zqact.tenpay.com/cgi-bin/open_stockinfo.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
-https://zqact.tenpay.com/cgi-bin/shop.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/wzq\.tenpay.com\/activity\/page\/welwareCenter\/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/wzq\.tenpay.com\/resources\/vtools url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/wzq\.tenpay.com\/cgi-bin\/activity_usercenter.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/zqact\.tenpay.com\/cgi-bin\/open_stockinfo.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/zqact\.tenpay.com\/cgi-bin\/shop.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
 
 #腾讯自选股小程序
-https://wzq.tenpay.com/cgi-bin/redpoint.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/wzq.tenpay\.com\/cgi-bin\/redpoint.fcgi? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
 //活动cow
-https://zqact03.tenpay.com/activity/page/raisebull/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
+https:\/\/zqact03.tenpay\.com\/activity\/page\/raisebull\/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
 
 
