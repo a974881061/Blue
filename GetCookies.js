@@ -469,7 +469,7 @@ https?:\/\/cms\-activity\-api\-prd\-mx\.wandafilm\.com\/activity\/activity_count
 ^https?:\/\/sports\.lifesense\.com\/sport_service\/sport\/sport\/uploadMobileStepV2 url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/index.js
 
 # 小米运动获取Token
-^https:\/\/account\.huami\.com\/v2\/client\/login url script-response-body https://raw.githubusercontent.com/lxk0301/jd_scripts/master/backUp/xmSports.js
+^https:\/\/account\.huami\.com\/v2\/client\/login url script-response-body https://gitee.com/lxk0301/jd_scripts/raw/master/backUp/xmSports.js
 
 #电视家ck
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
