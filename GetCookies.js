@@ -420,8 +420,6 @@ https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https:/
 ^https:\/\/wox2019\.woxshare\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/hdhycSign.js
 #民盈国贸城
 ^https:\/\/appsmall\.rtmap\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/mygmcSign.js
-#趣客有礼
-^https:\/\/choujiang-server\.deering\.cn\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/qkylck.js
 #微商星球
 ^https:\/\/api\.momosyb\.com\/(v6|v1)\/(fans|user)\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/wsxqSign.js
 #追书畅读版
