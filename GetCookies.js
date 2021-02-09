@@ -471,15 +471,6 @@ https?:\/\/cms\-activity\-api\-prd\-mx\.wandafilm\.com\/activity\/activity_count
 # 小米运动获取Token
 ^https:\/\/account\.huami\.com\/v2\/client\/login url script-response-body https://raw.githubusercontent.com/lxk0301/jd_scripts/master/backUp/xmSports.js
 
-#京东赚赚获取ck
-^https\:\/\/api\.m\.jd\.com\/client\.action\?functionId\=interactIndex url script-request-header https://github.com/a974881061/Blue/blob/main/QQread.js
-
-#企鹅读书获取更新body
-https:\/\/mqqapi\.reader\.qq\.com\/log\/v4\/mqq\/track url script-request-body https://github.com/a974881061/Blue/blob/main/QQread.js
-
-#企鹅读书获取时长cookie
-https:\/\/mqqapi\.reader\.qq\.com\/mqq\/addReadTimeWithBid? url script-request-header https://github.com/a974881061/Blue/blob/main/QQread.js
-
 #电视家ck
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
 
