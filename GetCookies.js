@@ -1,4 +1,4 @@
-hostname =www.52pojie.cn, c.tieba.baidu.com, manga.bilibili.com, api.m.jd.com, ifac*.iqiyi.com, api.kkmh.com, wapside.189.cn, act.10010.com, m.client.10010.com, clientaccess.10086.cn , *.acfun.cn, apk.tw, group.baicizhan.com, *.bilibili.com, sapi.beingfine.cn, *.csdn.net, frodo.douban.com, www.duokan.com, api.dongqiudi.com, api.everphoto.cn, api.dushu.io, *.feng.com, pm.m.fenqile.com, www.flyertea.com, m.gdoil.cn, activity-1.m.duiba.com.cn, gameapi.hellobike.com, wxprdapplet.gac-nio.com, daojia.jd.com, www.maomicd.com, maicai.api.ddxq.mobi, i.meituan.com, credits.bz.mgtv.com, apiwz.midukanshu.com, api-takumi.mihoyo.com, music.163.com, *.m.163.com, app.nio.com, note.youdao.com, xiaoshuo.qm989.com, node.kg.qq.com, *.y.qq.com, api.1sapp.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, passport.suning.com, luckman.suning.com, sign.suning.com, gameapi.suning.com, tieba.baidu.com, tncj.hortorgames.com, *.v2ex.com, user-api-prd-mx.wandafilm.com, *.video.qq.com, promotion.waimai.meituan.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, mobwsa.ximalaya.com, *.you.163.com, iphone.myzaker.com, *.rrys2019.com, ios.zmzapi.com, wx-mini.pagoda.com.cn, api.infzm.com, my.ruanmei.com, mwegame.qq.com, m.ctrip.com, proapi.115.com, h5.bianlifeng.com, as.xiaojukeji.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, webapi.qmai.cn, teacherapi.zmlearn.com, mall.oclean.com, api.xiaoheihe.cn, h5.ele.me, *.xmcimg.com, api.weibo.cn, nebula.kuaishou.com, draw.jdfcloud.com, newsapi.sina.cn, e.189.cn, api.inews.qq.com, api.weibo.cn, pay.sc.weibo.com, *.youth.cn, www.mydigit.cn, ios.baertt.com, maicai.api.ddxq.mobi, proxy.vac.qq.com, app*.jegotrip.com.cn, task.jegotrip.com.cn, api.umer.com.cn, exp.angelalign.com, ngabbs.com, h5.youzan.com, weibo.com, yuba.douyu.com, dominos0724.shjimang.com, frodo.douban.com, e.189.cn, huiyuan.163.com, geekhub.com, cxdng.cpic.com.cn, weather-data.apple.com, api.weather.com, mobile01.91quzou.com, mk.immomo.com, api.cashtoutiao.com, appv8.qukantianxia.com, appv7.qukantx.com, m.xiaomiyoupin.com, qqpet.jwetech.com, sports.lifesense.com, studygolang.com, cloud.umetrip.com, www.2xtj7.cn,www.baimaa.com,www.hnmiaosu.cc, m.ctrp.com, *.ctrp.com, m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, api.m.jd.com, wx.17u.cn, ios-fenqu11.lxsjgo.com, i.snssdk.com, is.snssdk.com, wq.jd.com, ph0001.hezyq.com, wq.02gk.com, m.weibo.cn, jdread-api.jd.com, mobile.app.autohome.com.cn, hongbao.youzikuaibao.com, getconfig-globalapi.zymk.cn, marketappapi.biyao.com, app.ymatou.com, appsmall.rtmap.com, wox2019.woxshare.com, choujiang-server.deering.cn, api.momosyb.com, *.zhuishushenqi.com, youhui.95516.com, operation-api.jimistore.com, api.tuhu.cn,user-api-prd-mx.wandafilm.com,cms-activity-api-prd-mx.wandafilm.com,zhiyou.smzdm.com,user-api.smzdm.com, h5.ele.me，api.didialift.com,bosp-api.xiaojukeji.com,as.xiaojukeji.com,manhattan.webapp.xiaojukeji.com,*.diditaxi.com.cn,wapside.189.cn, wapside.189.cn:9001,sports.lifesense.com,account.huami.com,mqqapi.reader.qq.com,aweme*.snssdk.com,veishop.iboxpay.com,minapp.xqrobot.net,*.tenpay.com,club.yili.com,huodong.fanli.com,passport.fanli.com,gw.fanli.com,
+hostname =www.52pojie.cn, c.tieba.baidu.com, manga.bilibili.com, api.m.jd.com, ifac*.iqiyi.com, api.kkmh.com, wapside.189.cn, act.10010.com, m.client.10010.com, clientaccess.10086.cn , *.acfun.cn, apk.tw, group.baicizhan.com, *.bilibili.com, sapi.beingfine.cn, *.csdn.net, frodo.douban.com, www.duokan.com, api.dongqiudi.com, api.everphoto.cn, api.dushu.io, *.feng.com, pm.m.fenqile.com, www.flyertea.com, m.gdoil.cn, activity-1.m.duiba.com.cn, gameapi.hellobike.com, wxprdapplet.gac-nio.com, daojia.jd.com, www.maomicd.com, maicai.api.ddxq.mobi, i.meituan.com, credits.bz.mgtv.com, apiwz.midukanshu.com, api-takumi.mihoyo.com, music.163.com, *.m.163.com, app.nio.com, note.youdao.com, xiaoshuo.qm989.com, node.kg.qq.com, *.y.qq.com, api.1sapp.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, passport.suning.com, luckman.suning.com, sign.suning.com, gameapi.suning.com, tieba.baidu.com, tncj.hortorgames.com, *.v2ex.com, user-api-prd-mx.wandafilm.com, *.video.qq.com, promotion.waimai.meituan.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, mobwsa.ximalaya.com, *.you.163.com, iphone.myzaker.com, *.rrys2019.com, ios.zmzapi.com, wx-mini.pagoda.com.cn, api.infzm.com, my.ruanmei.com, mwegame.qq.com, m.ctrip.com, proapi.115.com, h5.bianlifeng.com, as.xiaojukeji.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, webapi.qmai.cn, teacherapi.zmlearn.com, mall.oclean.com, api.xiaoheihe.cn, h5.ele.me, *.xmcimg.com, api.weibo.cn, nebula.kuaishou.com, draw.jdfcloud.com, newsapi.sina.cn, e.189.cn, api.inews.qq.com, api.weibo.cn, pay.sc.weibo.com, *.youth.cn, www.mydigit.cn, ios.baertt.com, maicai.api.ddxq.mobi, proxy.vac.qq.com, app*.jegotrip.com.cn, task.jegotrip.com.cn, api.umer.com.cn, exp.angelalign.com, ngabbs.com, h5.youzan.com, weibo.com, yuba.douyu.com, dominos0724.shjimang.com, frodo.douban.com, e.189.cn, huiyuan.163.com, geekhub.com, cxdng.cpic.com.cn, weather-data.apple.com, api.weather.com, mobile01.91quzou.com, mk.immomo.com, api.cashtoutiao.com, appv8.qukantianxia.com, appv7.qukantx.com, m.xiaomiyoupin.com, qqpet.jwetech.com, sports.lifesense.com, studygolang.com, cloud.umetrip.com, www.2xtj7.cn,www.baimaa.com,www.hnmiaosu.cc, m.ctrp.com, *.ctrp.com, m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, api.m.jd.com, wx.17u.cn, ios-fenqu11.lxsjgo.com, i.snssdk.com, is.snssdk.com, wq.jd.com, ph0001.hezyq.com, wq.02gk.com, m.weibo.cn, jdread-api.jd.com, mobile.app.autohome.com.cn, hongbao.youzikuaibao.com, getconfig-globalapi.zymk.cn, marketappapi.biyao.com, app.ymatou.com, appsmall.rtmap.com, wox2019.woxshare.com, choujiang-server.deering.cn, api.momosyb.com, *.zhuishushenqi.com, youhui.95516.com, operation-api.jimistore.com, api.tuhu.cn,user-api-prd-mx.wandafilm.com,cms-activity-api-prd-mx.wandafilm.com,zhiyou.smzdm.com,user-api.smzdm.com, h5.ele.me，api.didialift.com,bosp-api.xiaojukeji.com,as.xiaojukeji.com,manhattan.webapp.xiaojukeji.com,*.diditaxi.com.cn,wapside.189.cn, wapside.189.cn:9001,sports.lifesense.com,account.huami.com,mqqapi.reader.qq.com,aweme*.snssdk.com,veishop.iboxpay.com,minapp.xqrobot.net,*.tenpay.com,club.yili.com,huodong.fanli.com,passport.fanli.com,gw.fanli.com,api.bigfun.cn,ymz.iphonezhuan.com,api.sxsjyzm.com,dkd-api.dysdk.com,api3-normal-c-*.huoshan.com,api.yuncheapp.cn,*.snssdk.com,bububao.duoshoutuan.com,app.kxp.com,task.youth.cn,
 
 
 #Nobyda
@@ -496,8 +496,6 @@ https:\/\/minapp\.xqrobot\.net\/* url script-request-header https://raw.githubus
 #惠头条cookie
 https:\/\/api\.cashtoutiao\.com url script-request-body https://gitee.com/hanfuxing/personal-collection/raw/master/htt/htt_cookie.js
 
-#笑谱获取header
-https:\/\/veishop\.iboxpay\.com\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
 #笑谱获取更新TOKEN
 https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
 
@@ -519,7 +517,48 @@ https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-b
 #返利网获取header
 https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/flw.js   
 #返利网获取body
-https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/flw.js   
+https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/flw.js     
 
+#获取bigfunCookie
+^https:\/\/api\.bigfun\.cn\/webview\/iphone? url script-request-body https://raw.githubusercontent.com/age174/-/main/bigfun.js
+
+#羊毛赚
+^http:\/\/ymz\.iphonezhuan\.com\/addaction url script-request-body https://raw.githubusercontent.com/age174/-/main/ymz.js
+
+#芝麻视频
+^https:\/\/api\.sxsjyzm.com\/api2\/loot\/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
+
+#获取多看点Cookie
+^http:\/\/dkd-api\.dysdk\.com\/user\/index url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
+
+#获取多看点提现Cookie
+^http:\/\/dkd-api\.dysdk\.com\/money\/withdraw_do? url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
+
+#获取多看点视频body
+^http:\/\/dkd-api\.dysdk.com\/android_video\/getaward url script-request-body https://raw.githubusercontent.com/age174/-/main/dkdbody.js
+
+#抖音火山版
+https:\/\/api3-normal-c-\w+.huoshan.com\/hotsoon\/flame\/task_done\/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
+https:\/\/api3-normal-c-\w+.huoshan.com\/hotsoon\/item\/reaction\/_play\/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
+
+#快看点
+^https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/kkd.js
+
+#火山极速版
+https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/daily_read_\d+m? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/draw_excitation_ad? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/sign_in_detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+
+#步步宝
+https:\/\/bububao.duoshoutuan.com\/user\/profile url script-request-header https://raw.githubusercontent.com/adwktt/adwktt/master/BBB.js
+
+#葱花视频
+https:\/\/app\.kxp\.com\/video\/v1\/video\/complete url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/app\.kxp\.com\/video\/v1\/video\/share url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/app\.kxp\.com\/task\/v1\/task_center\/data url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/app\.kxp\.com\/task\/v1\/task_center\/red url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/app\.kxp\.com\/task\/v1\/task_center\/share_video_reward url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/app.kxp.com\/withdrawal\/v2\/wechat\/exchange url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
+https:\/\/task.youth.cn\/count2\/callback? url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
 
 
