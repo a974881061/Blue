@@ -535,8 +535,8 @@ https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/daily_re
 https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/draw_excitation_ad? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
 https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/sign_in_detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
 
-#步步宝
-https:\/\/bububao.duoshoutuan.com\/user\/profile url script-request-header https://raw.githubusercontent.com/adwktt/adwktt/master/BBB.js
+#步步宝获取TOKEN
+https:\/\/bububao\.duoshoutuan\.com\/user\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/bububao.js
 
 #葱花视频
 https:\/\/app\.kxp\.com\/video\/v1\/video\/complete url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
