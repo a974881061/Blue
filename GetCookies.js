@@ -1,4 +1,4 @@
-hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,api.kkmh.com,ifac*.iqiyi.com,ios.baertt.com, kd.youth.cn, daojia.jd.com, www.xiaodouzhuan.cn, nebula.kuaishou.com, draw.jdfcloud.com, e.189.cn, api.weibo.cn, api.inews.qq.com, newsapi.sina.cn, *.youth.cn, ios.baertt.com, www.mydigit.cn, m.weibo.cn, apiwz.midukanshu.com, api.1sapp.com, frodo.douban.com, luckman.suning.com, passport.suning.com, sign.suning.com, gameapi.suning.com, m.ctrip.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, daojia.jd.com, app.nio.com, wxprdapplet.gac-nio.com, node.kg.qq.com, api.dushu.io, pm.m.fenqile.com, maicai.api.ddxq.mobi, group.baicizhan.com, api.everphoto.cn, i.meituan.com, promotion.waimai.meituan.com, wx.10086.cn, www.maomicd.com, m.client.10010.com, act.10010.com, api-takumi.mihoyo.com, m.gdoil.cn, credits.bz.mgtv.com, *.csdn.net, wapside.189.cn, *.acfun.cn, apk.tw, *.bilibili.com, api.dongqiudi.com, *.feng.com, www.flyertea.com, music.163.com, *.m.163.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, tieba.baidu.com, *.v2ex.com, *.video.qq.com, mobwsa.ximalaya.com, *.you.163.com, *.rrys2020.com, ios.zmzapi.comactivity.m.kuaishou.com,weather-data.apple.com, api.weather.com,proapi.115.com,teacherapi.zmlearn.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, h5.bianlifeng.com, as.xiaojukeji.com, common.diditaxi.com.cn, music.163.com, user-api-prd-mx.wandafilm.com, mall.oclean.com, m.weibo.cn, dominos*.shjimang.com, cloud.umetrip.com, account.huami.com,webapi.qmai.cn,h5.ele.me,api.xiaoheihe.cn,qqpet.jwetech.com,proxy.vac.qq.com,j1.pupuapi.com,yuba.douyu.com,weibo.com,*.xmcimg.com,exp.angelalign.com, ngabbs.com, node.kg.qq.com, srv.app.ikea.cn,h5.youzan.com, glados.rocks, api.weibo.cn, api.weibo.com, mapi.weibo.com,club.yili.com,geekhub.com, www.geekhub.com,huiyuan.163.com,cxdng.cpic.com.cn,marketappapi.biyao.com,m.xiaomiyoupin.com,app.ymatou.com,maicai.api.ddxq.mobi,sports.lifesense.com,studygolang.com,m.ctrip.com,i.snssdk.com,is.snssdk.com,ios-fenqu11.lxsjgo.com,m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, wx.17u.cn,commontgw6.reader.qq.com, eventv3.reader.qq.com,wox2019.woxshare.com,jdread-api.jd.com,appsmall.rtmap.com,mobile.app.autohome.com.cn,activity.app.autohome.com.cn,api.sdbao.com,app.oscaches.com,operation-api.jimistore.com,api.momosyb.com,hongbao.youzikuaibao.com,*.zhuishushenqi.com,getconfig-globalapi.zymk.cn,youhui.95516.com,
+hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,api.kkmh.com,ifac*.iqiyi.com,ios.baertt.com, kd.youth.cn, daojia.jd.com, www.xiaodouzhuan.cn, nebula.kuaishou.com, draw.jdfcloud.com, e.189.cn, api.weibo.cn, api.inews.qq.com, newsapi.sina.cn, *.youth.cn, ios.baertt.com, www.mydigit.cn, m.weibo.cn, apiwz.midukanshu.com, api.1sapp.com, frodo.douban.com, luckman.suning.com, passport.suning.com, sign.suning.com, gameapi.suning.com, m.ctrip.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, daojia.jd.com, app.nio.com, wxprdapplet.gac-nio.com, node.kg.qq.com, api.dushu.io, pm.m.fenqile.com, maicai.api.ddxq.mobi, group.baicizhan.com, api.everphoto.cn, i.meituan.com, promotion.waimai.meituan.com, wx.10086.cn, www.maomicd.com, m.client.10010.com, act.10010.com, api-takumi.mihoyo.com, m.gdoil.cn, credits.bz.mgtv.com, *.csdn.net, wapside.189.cn, *.acfun.cn, apk.tw, *.bilibili.com, api.dongqiudi.com, *.feng.com, www.flyertea.com, music.163.com, *.m.163.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, tieba.baidu.com, *.v2ex.com, *.video.qq.com, mobwsa.ximalaya.com, *.you.163.com, *.rrys2020.com, ios.zmzapi.comactivity.m.kuaishou.com,weather-data.apple.com, api.weather.com,proapi.115.com,teacherapi.zmlearn.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, h5.bianlifeng.com, as.xiaojukeji.com, common.diditaxi.com.cn, music.163.com, user-api-prd-mx.wandafilm.com, mall.oclean.com, m.weibo.cn, dominos*.shjimang.com, cloud.umetrip.com, account.huami.com,webapi.qmai.cn,h5.ele.me,api.xiaoheihe.cn,qqpet.jwetech.com,proxy.vac.qq.com,j1.pupuapi.com,yuba.douyu.com,weibo.com,*.xmcimg.com,exp.angelalign.com, ngabbs.com, node.kg.qq.com, srv.app.ikea.cn,h5.youzan.com, glados.rocks, api.weibo.cn, api.weibo.com, mapi.weibo.com,club.yili.com,geekhub.com, www.geekhub.com,huiyuan.163.com,cxdng.cpic.com.cn,marketappapi.biyao.com,m.xiaomiyoupin.com,app.ymatou.com,maicai.api.ddxq.mobi,sports.lifesense.com,studygolang.com,m.ctrip.com,i.snssdk.com,is.snssdk.com,ios-fenqu11.lxsjgo.com,m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, wx.17u.cn,commontgw6.reader.qq.com, eventv3.reader.qq.com,wox2019.woxshare.com,jdread-api.jd.com,appsmall.rtmap.com,mobile.app.autohome.com.cn,activity.app.autohome.com.cn,api.sdbao.com,app.oscaches.com,operation-api.jimistore.com,api.momosyb.com,hongbao.youzikuaibao.com,*.zhuishushenqi.com,getconfig-globalapi.zymk.cn,youhui.95516.com,api.yuncheapp.cn, *.snssdk.com, veishop.iboxpay.com, *.huoshan.com, *.amemv.com, ranlv.lvfacn.com,api.sxsjyzm.com,ymz.iphonezhuan.com,dkd-api.dysdk.com,api.hemayoudao.cn,jqb.iphonezhuan.com,api.snail2020.com,api-9f9d25.sz365.cn,m.*.top,cat.rxmao.net,minapp.xqrobot.net,qmyd.yichengw.cn,yuedongzu.yichengw.cn,huodong.fanli.com, passport.fanli.com, gw.fanli.com,
 
 
  
@@ -322,3 +322,90 @@ https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https:/
 #passerby-b
 # 云闪付
 https:\/\/youhui\.95516.com\/newsign\/api\/coin_details url script-request-header https://gitee.com/passerby-b/javascript/raw/master/unipay.js
+
+#ZhiYi-N
+#今日头条极速版
+#右上角签到即可获取签到cookie
+#进一次农场即可获取农场cookie
+#读文章弹出金币获取读文章cookie
+\/score_task\/v1\/task\/(sign_in|get_read_bonus) url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
+\/ttgame\/game_farm\/home_info url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
+#快看点（目前已下架）
+#获取一次时段奖励获得cookie
+^https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/kkd.js
+#抖音极速版
+#签到获取signheader and signcookie（已签到获取不到应该）
+#走路修改步数，提前之前需要重新获取ck，不然提交失败，进一次任务界面就可
+#看一个视频弹出金币获取readheader and readkey
+/luckycat/aweme/v1/task/sign_in/detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+/luckycat/aweme/v1/task/done/read? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+/luckycat/aweme/v1/task/walk/step_submit? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
+#火山小视频极速版
+#签到详情获取signheader and signkey，一定要签到详情界面获取到的
+#看广告获取adheader and adkey
+#看一个视频获取readheader and readkey
+/luckycat/hotsoon/v1/task/done/daily_read_\d+m? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+/luckycat/hotsoon/v1/task/done/draw_excitation_ad? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+/luckycat/hotsoon/v1/task/sign_in_detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
+#笑谱
+#看一个视频弹出金币获取videoheader and videobody(存在一定几率获取不到videobody）多试几次 and 金蛋获取 gold body(第六个视频，最后一圈）
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video\.json url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/xp.js
+#抖音火山版
+#看视频获取ck共6个
+/hotsoon/flame/task_done/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
+/hotsoon/item/reaction/_play/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
+#燃旅视频
+#看视频获取奖励获取ck
+https:\/\/ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js
+
+#肥皂
+# 羊毛赚
+^http:\/\/ymz.iphonezhuan.com/addaction url script-request-body https://raw.githubusercontent.com/age174/-/main/ymz.js
+# 芝嫲视频
+^https:\/\/api.sxsjyzm.com/api2/loot/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
+# 多看点视频body
+^http:\/\/dkd-api.dysdk.com/android_video/getaward url script-request-body https://raw.githubusercontent.com/age174/-/main/dkdbody.js
+# 多看点任务
+^http:\/\/dkd-api\.dysdk\.com\/user\/index url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
+# 多看点提现
+^http:\/\/dkd-api\.dysdk\.com\/money\/withdraw_do? url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
+# 陌嗨短视频
+^https:\/\/api.hemayoudao.cn/admin-dotask/app/spirit/v1/finish-task url script-request-header https://raw.githubusercontent.com/age174/-/main/mhdsp.js
+# 金钱豹
+^http:\/\/jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
+# 蜗牛吧
+^https:\/\/api.snail2020.com/api/hb/hb/ url script-request-body https://raw.githubusercontent.com/age174/-/main/wnb.js
+# 闪挣
+^https:\/\/api-9f9d25.sz365.cn/api/virtual_currency_v2/reward url script-request-header https://raw.githubusercontent.com/age174/-/main/sz.js
+# 番茄看看
+^http:\/\/m.*.top/reada/getTask url script-request-header https://raw.githubusercontent.com/age174/-/main/fqkk.js
+# 任性猫
+https:\/\/cat.rxmao.net/miner/cat.php url script-request-body https://raw.githubusercontent.com/age174/-/main/rxm.js
+
+#ziye
+#QQ阅读APP获取cookie
+https:\/\/commontgw6\.reader\.qq\.com\/v7_5_2\/nativepage\/getAcctInfo url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/QQread.js
+#QQ阅读APP获取视频cookie
+https:\/\/eventv36\.reader\.qq\.com\/activity\/pkg11955\/watchVideo url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/QQread.js
+#xp
+https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/iboxpay.js
+#xiaole
+https:\/\/minapp\.xqrobot\.net\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/xiaole.js
+#duokandian
+#http:\/\/dkd-api\.dysdk\.com\/* url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/duokandian.js   
+#羊毛赚获取BODY
+#http:\/\/ymz\.iphonezhuan\.com\/* url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ymzhuan.js
+#羊毛赚模拟登录
+#http:\/\/ymz\.iphonezhuan\.com\/* url script-response-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/ymzhuan.js
+#芝嫲视频获取body
+https:\/\/api\.sxsjyzm\.com\/* url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/zhima.js   
+#步步宝获取TOKEN
+https:\/\/bububao\.duoshoutuan\.com\/user\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/bububao.js
+#全民悦动获取TOKEN
+https:\/\/qmyd\.yichengw\.cn\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/qmyd.js
+#悦动族
+https:\/\/yuedongzu\.yichengw\.cn\/* url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/yuedongzu.js
+#返利网获取header
+https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-header https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/flw.js   
+#返利网获取body
+https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-body https://raw.githubusercontent.com/6Svip120apk69/gitee_q8qsTAUA_cThxc1RBVUE/main/Task/flw.js   
