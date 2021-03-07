@@ -267,10 +267,6 @@ https:\/\/nebula\.kuaishou\.com\/rest\/n\/nebula\/activity\/earn\/overview url s
 #来客有礼
 https:\/\/draw\.jdfcloud\.com\/\/api\/bean\/square\/silverBean\/task\/get\? url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/lkyl.js
 
-#新浪新闻
-https:\/\/newsapi\.sina\.cn\/\?resource=hbpage&newsId=HB-1-sina_gold_center url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-https:\/\/newsapi\.sina\.cn\/\?resource=userpoint\/signIn url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-
 #电信套餐查询
 ^https?:\/\/e\.189\.cn\/store\/user\/package_detail\.do url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/telecomInfinity.js
 
@@ -386,22 +382,6 @@ https://socketio\.ctrip\.com/api url reject
 #同程签到
 ^https:\/\/wx\.17u\.cn\/wcsign\/sign\/GetSignInfo url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/tongc/tongc_cookie.js
 
-#wangdelu2020
-#趣走
-https:\/\/mobile01\.91quzou\.com\/rebate\/qz\/task\/homeTaskView\.do url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/quwalk2.2.js
-#陌陌
-https:\/\/mk\.immomo\.com\/activity\/fastsign\/index\/signIn? url script-request-body https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/momosign.js
-#惠头条
-https:\/\/api\.cashtoutiao\.com url script-request-body https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/htt_cookie.js
-#趣看天下
-https:\/\/(appv8\.qukantianxia\.com|appv7\.qukantx\.com) url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/qktx_cookie.js
-#微信打卡
-https:\/\/(www\.baimaa\.com|www\.2xtj7\.cn|www\.hnmiaosu\.cc)\/app\/index\.php? url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/wxdaka.js
-#联通流量话费提醒
-https:\/\/m.client\.10010\.com\/mobileService\/home\/queryUserInfoSeven\.htm? url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/liantongnotice.js
-#新浪超话签到
-https:\/\/m\.weibo\.cn\/api\/config url script-request-header https://raw.githubusercontent.com/wangdelu2020/hongliyu/master/newsinachaohua.js
-
 #iisams
 #梨涡
 https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js
@@ -482,9 +462,6 @@ https:\/\/minapp\.xqrobot\.net\/* url script-request-header https://raw.githubus
 #惠头条cookie
 https:\/\/api\.cashtoutiao\.com url script-request-body https://gitee.com/hanfuxing/personal-collection/raw/master/htt/htt_cookie.js
 
-#笑谱获取更新TOKEN
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf-user-auth-web\/ignore_tk\/veishop\/v1\/* url script-response-body https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/iboxpay.js
-
 #腾讯自选股APP
 https:\/\/wzq\.tenpay.com\/activity\/page\/welwareCenter\/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
 https:\/\/wzq\.tenpay.com\/resources\/vtools url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
@@ -498,12 +475,7 @@ https:\/\/wzq.tenpay\.com\/cgi-bin\/redpoint.fcgi? url script-request-header htt
 https:\/\/zqact03.tenpay\.com\/activity\/page\/raisebull\/ url script-request-header https://raw.githubusercontent.com/CenBoMin/GithubSync/main/TXSTOCK/txs_cookie.js
 
 #伊利乳品
-https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-body https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.cookie.js
-
-#返利网获取header
-https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/flw.js 
-#返利网获取body
-https:\/\/(huodong\.fanli\.com\/*||passport\.fanli\.com\/*||gw\.fanli\.com\/*) url script-request-body https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/flw.js   
+https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-body https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.cookie.js   
 
 #获取bigfunCookie
 ^https:\/\/api\.bigfun\.cn\/webview\/iphone? url script-request-body https://raw.githubusercontent.com/age174/-/main/bigfun.js
@@ -535,8 +507,6 @@ https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/daily_re
 https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/done\/draw_excitation_ad? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
 https:\/\/(\w+-\w+||\w+).snssdk.com\/luckycat\/hotsoon\/v1\/task\/sign_in_detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
 
-#步步宝获取TOKEN
-https:\/\/bububao\.duoshoutuan\.com\/user\/* url script-request-header https://raw.githubusercontent.com/ziye66666/JavaScript/main/Task/bububao.js
 
 #葱花视频
 https:\/\/app\.kxp\.com\/video\/v1\/video\/complete url script-request-body https://raw.githubusercontent.com/CenBoMin/GithubSync/main/CONGHUA/conghuabody.js
