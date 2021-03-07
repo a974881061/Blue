@@ -1,4 +1,4 @@
-hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,api.kkmh.com,ifac*.iqiyi.com,ios.baertt.com, kd.youth.cn, daojia.jd.com, www.xiaodouzhuan.cn, nebula.kuaishou.com, draw.jdfcloud.com, e.189.cn, api.weibo.cn, api.inews.qq.com, newsapi.sina.cn, *.youth.cn, ios.baertt.com, www.mydigit.cn, m.weibo.cn, apiwz.midukanshu.com, api.1sapp.com, frodo.douban.com, luckman.suning.com, passport.suning.com, sign.suning.com, gameapi.suning.com, m.ctrip.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, daojia.jd.com, app.nio.com, wxprdapplet.gac-nio.com, node.kg.qq.com, api.dushu.io, pm.m.fenqile.com, maicai.api.ddxq.mobi, group.baicizhan.com, api.everphoto.cn, i.meituan.com, promotion.waimai.meituan.com, wx.10086.cn, www.maomicd.com, m.client.10010.com, act.10010.com, api-takumi.mihoyo.com, m.gdoil.cn, credits.bz.mgtv.com, *.csdn.net, wapside.189.cn, *.acfun.cn, apk.tw, *.bilibili.com, api.dongqiudi.com, *.feng.com, www.flyertea.com, music.163.com, *.m.163.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, tieba.baidu.com, *.v2ex.com, *.video.qq.com, mobwsa.ximalaya.com, *.you.163.com, *.rrys2020.com, ios.zmzapi.comactivity.m.kuaishou.com,weather-data.apple.com, api.weather.com,proapi.115.com,teacherapi.zmlearn.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, h5.bianlifeng.com, as.xiaojukeji.com, common.diditaxi.com.cn, music.163.com, user-api-prd-mx.wandafilm.com, mall.oclean.com, m.weibo.cn, dominos*.shjimang.com, cloud.umetrip.com, account.huami.com,webapi.qmai.cn,h5.ele.me,api.xiaoheihe.cn,qqpet.jwetech.com,proxy.vac.qq.com,j1.pupuapi.com,yuba.douyu.com,weibo.com,*.xmcimg.com,exp.angelalign.com, ngabbs.com, node.kg.qq.com, srv.app.ikea.cn,h5.youzan.com, glados.rocks, api.weibo.cn, api.weibo.com, mapi.weibo.com,club.yili.com,geekhub.com, www.geekhub.com,huiyuan.163.com,cxdng.cpic.com.cn,marketappapi.biyao.com,m.xiaomiyoupin.com,app.ymatou.com,sports.lifesense.com,studygolang.com,m.ctrip.com,i.snssdk.com,is.snssdk.com,ios-fenqu11.lxsjgo.com,m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, wx.17u.cn,commontgw6.reader.qq.com, eventv3.reader.qq.com,wox2019.woxshare.com,jdread-api.jd.com,appsmall.rtmap.com,mobile.app.autohome.com.cn,activity.app.autohome.com.cn,api.sdbao.com,app.oscaches.com,operation-api.jimistore.com,api.momosyb.com,hongbao.youzikuaibao.com,*.zhuishushenqi.com,getconfig-globalapi.zymk.cn,youhui.95516.com,api.yuncheapp.cn, *.snssdk.com, veishop.iboxpay.com, *.huoshan.com, *.amemv.com, ranlv.lvfacn.com,api.sxsjyzm.com,ymz.iphonezhuan.com,dkd-api.dysdk.com,api.hemayoudao.cn,jqb.iphonezhuan.com,api.snail2020.com,api-9f9d25.sz365.cn,m.*.top,cat.rxmao.net,minapp.xqrobot.net,qmyd.yichengw.cn,yuedongzu.yichengw.cn,huodong.fanli.com, passport.fanli.com, gw.fanli.com,zhiyou.smzdm.com,www.didapinche.com,api.didialift.com,bosp-api.xiaojukeji.com,as.xiaojukeji.com,manhattan.webapp.xiaojukeji.com,*.diditaxi.com.cn,%APPEND% mp.jzb.com, pgc-cms.jzb.com,user-api-prd-mx.wandafilm.com,cms-activity-api-prd-mx.wandafilm.com,fmapp.chinafamilymart.com.cn,luka-graphql.ling.cn,mall.meituan.com,
+hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,api.kkmh.com,ifac*.iqiyi.com,ios.baertt.com, kd.youth.cn, daojia.jd.com, www.xiaodouzhuan.cn, nebula.kuaishou.com, draw.jdfcloud.com, e.189.cn, api.weibo.cn, api.inews.qq.com, newsapi.sina.cn, *.youth.cn, ios.baertt.com, www.mydigit.cn, m.weibo.cn, apiwz.midukanshu.com, api.1sapp.com, frodo.douban.com, luckman.suning.com, passport.suning.com, sign.suning.com, gameapi.suning.com, m.ctrip.com, 110.43.90.61, zt.wps.cn, m-bean.kaola.com, daojia.jd.com, app.nio.com, wxprdapplet.gac-nio.com, node.kg.qq.com, api.dushu.io, pm.m.fenqile.com, maicai.api.ddxq.mobi, group.baicizhan.com, api.everphoto.cn, i.meituan.com, promotion.waimai.meituan.com, wx.10086.cn, www.maomicd.com, m.client.10010.com, act.10010.com, api-takumi.mihoyo.com, m.gdoil.cn, credits.bz.mgtv.com, *.csdn.net, wapside.189.cn, *.acfun.cn, apk.tw, *.bilibili.com, api.dongqiudi.com, *.feng.com, www.flyertea.com, music.163.com, *.m.163.com, user.qunar.com, *.rr.tv, sf-integral-sign-in.weixinjia.net, mcs-mimp-web.sf-express.com, *.smzdm.com, tieba.baidu.com, *.v2ex.com, *.video.qq.com, mobwsa.ximalaya.com, *.you.163.com, *.rrys2020.com, ios.zmzapi.comactivity.m.kuaishou.com,weather-data.apple.com, api.weather.com,proapi.115.com,teacherapi.zmlearn.com, superapp.kiwa-tech.com, activity-1.m.duiba.com.cn, h5.bianlifeng.com, as.xiaojukeji.com, common.diditaxi.com.cn, music.163.com, user-api-prd-mx.wandafilm.com, mall.oclean.com, m.weibo.cn, dominos*.shjimang.com, cloud.umetrip.com, account.huami.com,webapi.qmai.cn,h5.ele.me,api.xiaoheihe.cn,qqpet.jwetech.com,proxy.vac.qq.com,j1.pupuapi.com,yuba.douyu.com,weibo.com,*.xmcimg.com,exp.angelalign.com, ngabbs.com, node.kg.qq.com, srv.app.ikea.cn,h5.youzan.com, glados.rocks, api.weibo.cn, api.weibo.com, mapi.weibo.com,club.yili.com,geekhub.com, www.geekhub.com,huiyuan.163.com,cxdng.cpic.com.cn,marketappapi.biyao.com,m.xiaomiyoupin.com,app.ymatou.com,sports.lifesense.com,studygolang.com,m.ctrip.com,i.snssdk.com,is.snssdk.com,ios-fenqu11.lxsjgo.com,m.elong.com, activity.m.duiba.com.cn, icbc1.wlphp.com:8444, wx.17u.cn,commontgw6.reader.qq.com, eventv3.reader.qq.com,wox2019.woxshare.com,jdread-api.jd.com,appsmall.rtmap.com,mobile.app.autohome.com.cn,activity.app.autohome.com.cn,api.sdbao.com,app.oscaches.com,operation-api.jimistore.com,api.momosyb.com,hongbao.youzikuaibao.com,*.zhuishushenqi.com,getconfig-globalapi.zymk.cn,youhui.95516.com,api.yuncheapp.cn, *.snssdk.com, veishop.iboxpay.com, *.huoshan.com, *.amemv.com, ranlv.lvfacn.com,api.sxsjyzm.com,ymz.iphonezhuan.com,dkd-api.dysdk.com,api.hemayoudao.cn,jqb.iphonezhuan.com,api.snail2020.com,api-9f9d25.sz365.cn,m.*.top,cat.rxmao.net,minapp.xqrobot.net,qmyd.yichengw.cn,yuedongzu.yichengw.cn,huodong.fanli.com, passport.fanli.com, gw.fanli.com,zhiyou.smzdm.com,www.didapinche.com,api.didialift.com,bosp-api.xiaojukeji.com,as.xiaojukeji.com,manhattan.webapp.xiaojukeji.com,*.diditaxi.com.cn,%APPEND% mp.jzb.com, pgc-cms.jzb.com,user-api-prd-mx.wandafilm.com,cms-activity-api-prd-mx.wandafilm.com,fmapp.chinafamilymart.com.cn,luka-graphql.ling.cn,mall.meituan.com,sdk.121827.com,ddstar.palmmob.com,vip.75787.com,ifsapp.pceggs.com, *.pceggs.com,www.ipadview.com,*.reader.yueyouxs.com,
 
 
  
@@ -358,27 +358,47 @@ https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\
 #看视频获取奖励获取ck
 https:\/\/ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js
 
-#肥皂
-# 芝嫲视频
-^https:\/\/api.sxsjyzm.com/api2/loot/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
-# 多看点视频body
-^http:\/\/dkd-api.dysdk.com/android_video/getaward url script-request-body https://raw.githubusercontent.com/age174/-/main/dkdbody.js
-# 多看点任务
+#age174
+#金钱豹
+#1、进入软件，点击看视频，共五个视频任务，每个任务观看一次视频共获取五个视频body;2、进入转盘红包，转一次，获取转盘抽奖body;3、点击现金福利，点击签到，获取签到body;4、点击看广告，看完一组广告，获取广告body和headers;5、现在可以先跑一次脚本，跑完脚本之后，进入现金福利-每日任务-领取每日任务的奖励-获得每日任务的body;脚本每天运行一次就可以了。
+^http://jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
+#芝嫲视频
+^https://api.sxsjyzm.com/api2/loot/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
+#陌嗨短视频
+^https://api.hemayoudao.cn/admin-dotask/app/spirit/v1/finish-task url script-request-header https://raw.githubusercontent.com/age174/-/main/mhdsp.js
+#多看点视频body
+^http://dkd-api.dysdk.com/android_video/getaward url script-request-body https://raw.githubusercontent.com/age174/-/main/dkdbody.js
+#多看点任务
 ^http:\/\/dkd-api\.dysdk\.com\/user\/index url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
-# 多看点提现
+#多看点提现
 ^http:\/\/dkd-api\.dysdk\.com\/money\/withdraw_do? url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
-# 陌嗨短视频
-^https:\/\/api.hemayoudao.cn/admin-dotask/app/spirit/v1/finish-task url script-request-header https://raw.githubusercontent.com/age174/-/main/mhdsp.js
-# 金钱豹
-^http:\/\/jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
-# 蜗牛吧
-^https:\/\/api.snail2020.com/api/hb/hb/ url script-request-body https://raw.githubusercontent.com/age174/-/main/wnb.js
-# 闪挣
-^https:\/\/api-9f9d25.sz365.cn/api/virtual_currency_v2/reward url script-request-header https://raw.githubusercontent.com/age174/-/main/sz.js
-# 番茄看看
-^http:\/\/m.*.top/reada/getTask url script-request-header https://raw.githubusercontent.com/age174/-/main/fqkk.js
-# 任性猫
-https:\/\/cat.rxmao.net/miner/cat.php url script-request-body https://raw.githubusercontent.com/age174/-/main/rxm.js
+#蜗牛吧
+^https://api.snail2020.com/api/hb/hb/ url script-request-body https://raw.githubusercontent.com/age174/-/main/wnb.js
+#baoshi
+https://interface.baoshixingqiu.com/member/user/batch-diggle url script-request-header https://raw.githubusercontent.com/age174/-/main/baosxq.js
+#闪挣
+^https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward url script-request-header https://raw.githubusercontent.com/age174/-/main/sz.js
+#番茄看看
+^http://m.*./reada/getTask url script-request-header https://raw.githubusercontent.com/age174/-/main/fqkk.js
+#任性猫
+https://cat.rxmao.net/miner/cat.php url script-request-body https://raw.githubusercontent.com/age174/-/main/rxm.js
+#阅友小说body
+http.*://.*.reader.yueyouxs.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/yyxs.js
+#阅友小说header
+http.*://.*.reader.yueyouxs.com/ url script-request-header https://raw.githubusercontent.com/age174/-/main/yyxs.js
+#蛋咖小说
+http://www.ipadview.com/rpads/score/award? url script-request-body https://raw.githubusercontent.com/age174/-/main/dka.js
+#蛋咖
+http://.*.pceggs.com/IFS/ url script-request-body https://raw.githubusercontent.com/age174/-/main/dka.js
+#云扫码
+^http://.*./yunonline/v1/ url script-request-body https://raw.githubusercontent.com/age174/-/main/ysm.js
+#悦动族获取TOKEN
+#悬赏喵喵
+https://vip.75787.com/app/index.php url script-request-header https://raw.githubusercontent.com/age174/-/main/xsmm.js
+#嘀嗒星球
+https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus? url script-request-header https://raw.githubusercontent.com/age174/-/main/ddxq.js
+#yggy
+https://sdk.121827.com/index/guoyuan url script-request-body https://raw.githubusercontent.com/age174/-/main/yggy.js
 
 #ziye
 # QQ阅读APP获取cookie
