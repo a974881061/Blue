@@ -251,8 +251,7 @@ https:\/\/glados\.rocks\/api\/user\/checkin url script-request-header https://ra
 
 #dompling
 # 必要
-^https:\/\/apiplus\.biyao\.com\/signIn\/getSigneRoutineV4\.do* url script-request-header https://raw.githubusercontent.com/dompling/Script/master/biyao/biyao.cookie.js
-^https:\/\/apiplus\.biyao\.com\/user\/authorLogin.do* url script-respones-body https://raw.githubusercontent.com/dompling/Script/master/biyao/biyao.cookie.js
+^https:\/\/marketappapi\.biyao\.com\/signIn\/getGeneralPage\.do url script-request-header https://raw.githubusercontent.com/dompling/Script/master/biyao/biyao.cookie.js
 # 小米有品
 ^https:\/\/m\.xiaomiyoupin\.com\/api\/auth\/login\/isloggedin url script-request-header https://raw.githubusercontent.com/dompling/Script/master/xiaomiyp/xiaomiyp.cookie.js
 # 洋码头
