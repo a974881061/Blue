@@ -450,9 +450,6 @@ https://api.tuhu.cn/User/GetUserCurrentAndNextGradeInfo url script-request-heade
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
 http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
 
-#小乐获取ck
-https:\/\/minapp\.xqrobot\.net\/* url script-request-header https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/xiaole.js
-
 #惠头条cookie
 https:\/\/api\.cashtoutiao\.com url script-request-body https://gitee.com/hanfuxing/personal-collection/raw/master/htt/htt_cookie.js
 
