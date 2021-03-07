@@ -422,13 +422,13 @@ https://api.tuhu.cn/User/GetUserCurrentAndNextGradeInfo url script-request-heade
 #0 10 * * * https://raw.githubusercontent.com/elecV2/QuantumultX-Tools/master/dianx/dianx.js, tag=电信金豆兑换话费, img-url=https://raw.githubusercontent.com/elecV2/QuantumultX-Tools/master/dianx/dianx.png, enabled=true
 
 #blackmatrix7
-# 万达电影
-https?:\/\/user-api-prd-mx\.wandafilm\.com\/user\/query_user_level\.api url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/wanda/wanda_checkin.js
-https?:\/\/cms\-activity\-api\-prd\-mx\.wandafilm\.com\/activity\/activity_count\.api\?activityCode=(\d*) url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/wanda/wanda_checkin.js
+# 万达电影每日自动签到
+^https?:\/\/user-api-prd-mx\.wandafilm\.com\/user\/query_user_level\.api url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/wanda/wanda_checkin.js
+^https?:\/\/cms\-activity\-api\-prd\-mx\.wandafilm\.com\/activity\/activity_count\.api\?activityCode=(\d*) url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/wanda/wanda_checkin.js
 
 # 什么值得买每日自动签到
-^https?:\/\/zhiyou\.smzdm\.com\/user$ url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_checkin.js
-^https?:\/\/user-api\.smzdm\.com\/user_login\/normal$ url script-request-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_checkin.js
+^https?:\/\/zhiyou\.smzdm\.com\/user$ url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_signin.js
+^https?:\/\/user-api\.smzdm\.com\/user_login\/normal$ url script-request-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_signin.js
 
 # 饿了么每日自动领取任务及吃货豆
 ^https?:\/\/h5\.ele\.me\/restapi\/svip_biz\/v1\/supervip\/query_mission_list\?longitude=([^&]*).*latitude=([^&]*) url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/eleme/eleme_daily.js
@@ -453,7 +453,6 @@ https?:\/\/cms\-activity\-api\-prd\-mx\.wandafilm\.com\/activity\/activity_count
 
 #电视家ck
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
-
 http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
 
 #小乐获取ck
