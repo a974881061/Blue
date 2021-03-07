@@ -404,8 +404,6 @@ https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https:/
 ^https:\/\/api\.momosyb\.com\/(v6|v1)\/(fans|user)\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/wsxqSign.js
 #追书畅读版
 ^https:\/\/.+zhuishushenqi\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/zscdbSign.js
-#天天挖矿
-^https:\/\/operation-api\.jimistore\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/ttwbxcxSign.js
 
 #passerby-b
 #云闪付
@@ -447,9 +445,6 @@ https://api.tuhu.cn/User/GetUserCurrentAndNextGradeInfo url script-request-heade
 
 #乐心获取ck
 ^https?:\/\/sports\.lifesense\.com\/sport_service\/sport\/sport\/uploadMobileStepV2 url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/index.js
-
-# 小米运动获取Token
-^https:\/\/account\.huami\.com\/v2\/client\/login url script-response-body https://gitee.com/lxk0301/jd_scripts/raw/master/backUp/xmSports.js
 
 #电视家ck
 http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://raw.githubusercontent.com/photonmang/quantumultX/master/dianshijia.js
