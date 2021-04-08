@@ -405,8 +405,6 @@ https://sdk.121827.com/index/guoyuan url script-request-body https://raw.githubu
 ^https?:\/\/user-api\.smzdm\.com\/user_login\/normal$ url script-request-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_signin.js
 # 百度贴吧
 ^https?:\/\/c\.tieba\.baidu\.com\/c\/s\/login url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/tieba/tieba_checkin.js
-# 中国联通
-^https?:\/\/m\.client\.10010\.com\/dailylottery\/static\/(integral|doubleball)\/firstpage url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/10010/unicom_checkin.js
 # 嘀嗒出行
 ^https?:\/\/www\.didapinche\.com\/hapis\/api\/t\/Jifen\/getSignInInfo\?userCid=.* url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/didachuxing/didachuxing_plus.js
 # 滴滴出行
