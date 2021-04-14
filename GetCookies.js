@@ -32,8 +32,7 @@ https:\/\/draw\.jdfcloud\.com\/\/api\/bean\/square\/silverBean\/task\/get\? url 
 # 腾讯新闻
 https:\/\/api\.inews\.qq\.com\/event\/v1\/user\/event\/report\? url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/txnews.js
 # 微博签到
-https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/weibo.js
-https:\/\/m\.weibo\.cn\/c\/checkin\/ug\/v2\/signin\/module\?module url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/weibo.js
+https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 # 中青看点
 https:\/\/kd\.youth\.cn\/WebApi\/NewTaskIos\/getTaskList url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
 https:\/\/ios\.baertt\.com\/v5\/article\/info\/get\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
