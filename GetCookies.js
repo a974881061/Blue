@@ -34,10 +34,6 @@ https:\/\/api\.inews\.qq\.com\/event\/v1\/user\/event\/report\? url script-reque
 # 微博签到
 https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 https:\/\/api\.weibo\.cn\/2\/logservice\/service url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
-#https:\/\/newsapi\.sina\.cn\/\?resource=hbpage&newsId=HB-1-sina_gold_center url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-#https:\/\/newsapi\.sina\.cn\/\?resource=userpoint\/signIn url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-#https?:\/\/lite\.sina\.cn\/\?resource=hbpage&newsId=HB-1-sina_gold_center - script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
-#https?:\/\/lite\.sina\.cn\/\?resource=userpoint\/signIn - script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sinanews.js
 # 中青看点
 https:\/\/kd\.youth\.cn\/WebApi\/NewTaskIos\/getTaskList url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
 https:\/\/ios\.baertt\.com\/v5\/article\/info\/get\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
