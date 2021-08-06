@@ -153,8 +153,8 @@ https:\/\/((weather-data\.apple)|(api.weather))\.com url script-request-header h
 
 #zZPiglet
 # 海底捞
-^https:\/\/superapp\.kiwa-tech\.com\/app\/coupon\/customerLevelShow url script-request-body https://raw.githubusercontent.com/zZPiglet/Task/master/Haidilao/Haidilao.js
-^https:\/\/activity-1\.m\.duiba\.com\.cn\/signactivity\/getSignInfo url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Haidilao/Haidilao.js
+^https:\/\/superapp\.kiwa-tech\.com\/app\/coupon\/customerLevelShow url script-request-body https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/haidilao.js
+^https:\/\/activity-1\.m\.duiba\.com\.cn\/signactivity\/getSignInfo url script-request-header https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/haidilao.js
 # 网易云音乐
 ^https:\/\/music.163.com\/weapi\/user\/level url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/neteasemusic.cookie.js
 # 欧可林
