@@ -146,8 +146,6 @@ https:\/\/www.maomicd.com\/plugin.php\?id=k_misign:sign&operation=qiandao url sc
 ^https:\/\/gameapi.suning.com\/sngame-web\/(api\/signin\/private\/customerSignOperation.do|gateway\/api\/queryPrize.do) url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
 # 豆瓣时间
 ^https:\/\/fro\.douban\.com\/api\/v2\/niffler\/check_in\/status url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/dbsj/dbsj.cookie.js
-# 米读
-^https:\/\/apiwz\.midukanshu\.com url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/midu/midu.cookie.js
 
 #Peng-YM
 #彩云天气
