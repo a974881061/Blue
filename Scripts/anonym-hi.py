@@ -8,7 +8,10 @@ items_num = []
 restaurant_name = []
 surplus = []
 distance = []
+position = [0]
 t=0
+a=0
+b=0
 url = "https://app.anonym-hi.com/base/mobile/api/tasklist"
 headers = {
     'Host': 'app.anonym-hi.com',
@@ -49,10 +52,15 @@ for i in range(0,task_num):
         surplus.append(items[j]['surplus'])
         distance.append(items[j]['distance'])
 
+for i in range(len(items_num)):
+    a += items_num[i]
+    position.append(a)
+
 #print(task_name)
 #print(task_reward)
 #print(task_endtime)
 #print(items_num)
+#print(position)
 #print(restaurant_name)
 #print(surplus)
 noty = len(surplus)
@@ -60,8 +68,11 @@ noty = len(surplus)
 #print(distance)
 for i in range(noty):
     if surplus[i] !=0 and distance[i] < 15000:
-        notys = restaurant_name[i] + "\n" + "余量：" + str(surplus[i])
-        requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/洞见者/{}'.format(notys))
+        for j in range(len(position)) :
+            if i>=position[j] and i<position[j+1]:
+                b = j
+                notys = task_name[b] + "\n" + "任务结束时间为:" + task_endtime[b] + "\n" + "佣金为:" + str(task_reward[b]) + "\n"  + restaurant_name[i] + "\n" + "余量：" + str(surplus[i])
+                requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/洞见者/{}'.format(notys))
     else:
         t+=1
 if t == noty:
