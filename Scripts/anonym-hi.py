@@ -5,7 +5,7 @@ task_name = []
 task_end_time = []
 task_reward = []
 surplus = []
-
+b =0
 url = 'https://app.anonym-hi.com/base/mobile/api/tasklist'
 headers1 = {
     'Content-Type': 'application/json',
@@ -112,8 +112,7 @@ for i in range(len(task_name)):
             requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/洞见者/{}'.format(notys))
             requests.get(url='https://api.day.app/sEDEMqNYiSZb7iRQgdMwvj/洞见者/{}'.format(notys))
             requests.get(url='https://api.day.app/68DytnPi9EmrRGFvYCY3Pi/洞见者/{}'.format(notys))
-            b =1
-    else:
-        b=0
+            b +=1
+
 if b==0:
     print("当前没有任务")
