@@ -38,9 +38,13 @@ res = requests.post(url=url,headers=headers)
 
 if res.json()["code"] != 20001:
     print(res.json()["message"])
-    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/洞见者/{}'.format(res.json()["message"]))
+    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/建行生活/{}'.format("9192"+res.json()["message"]))
+elif res.json()["code"] == 20001:
+    print("9192"+res.json()["message"])
 
 res1 = requests.post(url=url,headers=headers1)
 if res.json()["code"] != 20001:
     print(res1.json()["message"])
-    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/洞见者/{}'.format(res.json()["message"]))
+    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/建行生活/{}'.format("9107"+res.json()["message"]))
+elif res1.json()["code"] == 20001:
+    print("9107"+res1.json()["message"])
