@@ -1,5 +1,6 @@
 import requests
 import datetime
+import time
 
 headers = {
     'Host': '103.249.111.62:8662',
@@ -16,8 +17,10 @@ year = datetime.datetime.now().year
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
 
-time = str(year) + "%2F" + str(month) + "%2F" + str(day)
+AliAccount = ["掉坑男_2013","bluegod233"]
 
+data = str(year) + "%2F" + str(month) + "%2F" + str(day)
+#print(data)
 def IP():
     global resultdata
     #获取做单IP
@@ -25,9 +28,9 @@ def IP():
 
 
     res = requests.get(url=url,headers=headers)
-    print(res.json())
+    #print(res.json())
     resultdata = res.json()['resultdata']
-    print(resultdata)
+    #print(resultdata)
 
 def user():
     # 账户信息
@@ -40,30 +43,64 @@ def user():
     print("账号余额为：" + str(CreditMoney))
 
 def task():
+    global BrusherAliAccount,date,task_num
     #任务信息
-    url = "http://" + resultdata + "/GetTaskListNew?token=1374743&CurrentTabIndex=0&IsNoPic=0&ChangeDate="+time+"&SearchAccount=&nowPage=1&Status=0"
-    res = requests.get(url=url,headers=headers)
-    print(res.json())
-    BrusherAliAccount = res.json()['resultdata']['list'][0]['BrusherAliAccount']
-    NeedPayMoney = res.json()['resultdata']['list'][0]['NeedPayMoney']
-    ShopName = res.json()['resultdata']['list'][0]['ShopName']
-    CreateDate = res.json()['resultdata']['list'][0]['CreateDate']
-    Status = res.json()['resultdata']['list'][0]['Status']
-    notys = "做单账号为：" + str(BrusherAliAccount) + "\n" + "任务金额为:" + str(NeedPayMoney) + "\n" + "店铺名称为:" + str(ShopName) + "\n"  + "任务开始时间：" + str(CreateDate)
-    if Status != "OK":
-        requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/精品平台/{}'.format(notys))
+    try:
+        url = "http://" + resultdata + "/GetTaskListNew?token=1374743&CurrentTabIndex=0&IsNoPic=0&ChangeDate="+data+"&SearchAccount=&nowPage=1&Status=0"
+        res = requests.get(url=url,headers=headers)
+        date = res.json()
+        task_num = len(date['resultdata']['list'])
+        print(res.json())
+        if task_num !=0:
+            for i in range(0,1):
+                BrusherAliAccount = res.json()['resultdata']['list'][i]['BrusherAliAccount']
+                NeedPayMoney = res.json()['resultdata']['list'][i]['NeedPayMoney']
+                ShopName = res.json()['resultdata']['list'][i]['ShopName']
+                CreateDate = res.json()['resultdata']['list'][i]['CreateDate']
+                Status = res.json()['resultdata']['list'][i]['Status']
+                RelationId = res.json()['resultdata']['list'][i]['RelationId']
+                ticks = time.time()
+                timeArray = time.strptime(CreateDate, "%Y-%m-%d %H:%M:%S")
+                if Status != "OK":
+                    url1 = "http://" + resultdata + "/GetOrder?RelationId="+RelationId+"&token=1374743"
+                    res2 = requests.get(url=url1,headers=headers)
+                    print(res2.json())
+                if Status != "OK" and ticks > time.mktime(timeArray):
+                    GoodLink = res2.json()['resultdata'][0]['task']['GoodLink']
+                    notys = "做单账号为：" + str(BrusherAliAccount) + "\n" + "任务金额为:" + str(NeedPayMoney) + "\n" + "店铺名称为:" + str(ShopName) + "\n" + "任务开始时间：" + str(CreateDate)
+                    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/精品平台/{}'.format(notys))
+                    requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/TBURL?url={}'.format(GoodLink))
+    except:
+        task_num =0
+        print("没有任务")
 
 def get_task():
-    url = "http://" + resultdata + "//GetOrder?token=1374743&Aliww=%E6%8E%89%E5%9D%91%E7%94%B7_2013"
+    url0 = "http://" + resultdata + "//GetOrder?token=1374743&Aliww=%E6%8E%89%E5%9D%91%E7%94%B7_2013"
     url1 = "http://" + resultdata + "//GetOrder?token=1374743&Aliww=bluegod233"
-    res = requests.get(url=url,headers=headers)
-    print(res.json())
+    if task_num == 0:
+        res1 = requests.get(url=url1,headers=headers)
+        res2 = requests.get(url=url0, headers=headers)
+        print(res1.json())
+        print(res2.json())
+    elif task_num == 1:
+        for i in range(0,1):
+            if date['resultdata']['list'][i]['BrusherAliAccount'] == AliAccount[1]:
+                res1 = requests.get(url=url1,headers=headers)
+                print(res1.json())
+            else:
+                res2 = requests.get(url=url0, headers=headers)
+                print(res2.json())
+
+
 
 def main():
     IP()
     user()
     task()
-    get_task()
+    if task_num != 2:
+        get_task()
+    else:
+        print("所有账号都接到任务啦")
 
 main()
 
