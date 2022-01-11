@@ -51,6 +51,8 @@ https:\/\/www\.mydigit\.cn\/plugin\.php\?id=k_misign:sign&operation=qiandao url 
 https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/jukan.js
 
 #chavyleung
+# 万达电影
+^https:\/\/user-api-prd-mx\.wandafilm\.com url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wanda/wanda.cookie.js
 # 电信营业厅
 ^https:\/\/wapside.189.cn:9001\/api\/home\/sign url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10000/10000.cookie.js
 # AcFun
