@@ -234,6 +234,8 @@ https:\/\/glados\.rocks\/api\/user\/checkin url script-request-header https://ra
 ^https:\/\/m\.xiaomiyoupin\.com\/api\/auth\/login\/isloggedin url script-request-header https://raw.githubusercontent.com/dompling/Script/master/xiaomiyp/xiaomiyp.cookie.js
 # 洋码头
 ^https:\/\/app\.ymatou\.com\/api\/trading\/scartprodnum url script-request-header https://raw.githubusercontent.com/dompling/Script/master/ymatou/ymatou.cookie.js
+# 京东金融
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/uc\/newna\/m\/userstat url script-request-body https://raw.githubusercontent.com/dompling/Script/master/jd/jd_jr_cookie.js
 
 #iepngs
 # 叮咚买菜
