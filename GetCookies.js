@@ -337,47 +337,6 @@ https:\/\/ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https:
 https:\/\/xw\.mengniu\.cn\/grass\/Api\/TelunsuHandler\.ashx\?method\=GetMyPrize url script-request-header https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/tls.js
 
 
-#age174
-#金钱豹
-#1、进入软件，点击看视频，共五个视频任务，每个任务观看一次视频共获取五个视频body;2、进入转盘红包，转一次，获取转盘抽奖body;3、点击现金福利，点击签到，获取签到body;4、点击看广告，看完一组广告，获取广告body和headers;5、现在可以先跑一次脚本，跑完脚本之后，进入现金福利-每日任务-领取每日任务的奖励-获得每日任务的body;脚本每天运行一次就可以了。
-^http://jqb.iphonezhuan.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/jqb.js
-#芝嫲视频
-^https://api.sxsjyzm.com/api2/loot/index url script-request-body https://raw.githubusercontent.com/age174/-/main/zmsp.js
-#陌嗨短视频
-^https://api.hemayoudao.cn/admin-dotask/app/spirit/v1/finish-task url script-request-header https://raw.githubusercontent.com/age174/-/main/mhdsp.js
-#多看点视频body
-^http://dkd-api.dysdk.com/android_video/getaward url script-request-body https://raw.githubusercontent.com/age174/-/main/dkdbody.js
-#多看点任务
-^http:\/\/dkd-api\.dysdk\.com\/user\/index url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
-#多看点提现
-^http:\/\/dkd-api\.dysdk\.com\/money\/withdraw_do? url script-request-body https://raw.githubusercontent.com/age174/-/main/dkd.js
-#蜗牛吧
-^https://api.snail2020.com/api/hb/hb/ url script-request-body https://raw.githubusercontent.com/age174/-/main/wnb.js
-#baoshi
-https://interface.baoshixingqiu.com/member/user/batch-diggle url script-request-header https://raw.githubusercontent.com/age174/-/main/baosxq.js
-#闪挣
-^https://api-9f9d25.sz365.cn/api/virtual_currency_v2/reward url script-request-header https://raw.githubusercontent.com/age174/-/main/sz.js
-#番茄看看
-^http://m.*./reada/getTask url script-request-header https://raw.githubusercontent.com/age174/-/main/fqkk.js
-#阅友小说body
-http.*://.*.reader.yueyouxs.com/ url script-request-body https://raw.githubusercontent.com/age174/-/main/yyxs.js
-#阅友小说header
-http.*://.*.reader.yueyouxs.com/ url script-request-header https://raw.githubusercontent.com/age174/-/main/yyxs.js
-#蛋咖小说
-http://www.ipadview.com/rpads/score/award? url script-request-body https://raw.githubusercontent.com/age174/-/main/dka.js
-#蛋咖
-http://.*.pceggs.com/IFS/ url script-request-body https://raw.githubusercontent.com/age174/-/main/dka.js
-#云扫码
-^http://.*./yunonline/v1/ url script-request-body https://raw.githubusercontent.com/age174/-/main/ysm.js
-#悦动族获取TOKEN
-#悬赏喵喵
-https://vip.75787.com/app/index.php url script-request-header https://raw.githubusercontent.com/age174/-/main/xsmm.js
-#嘀嗒星球
-https://ddstar.palmmob.com/ddstar_app/activity/ReceiveAdBonus? url script-request-header https://raw.githubusercontent.com/age174/-/main/ddxq.js
-#yggy
-https://sdk.121827.com/index/guoyuan url script-request-body https://raw.githubusercontent.com/age174/-/main/yggy.js
-
-
 #blackmatrix7
 # 什么值得买
 ^https?:\/\/zhiyou\.smzdm\.com\/user$ url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_signin.js
