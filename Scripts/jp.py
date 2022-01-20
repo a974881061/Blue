@@ -20,7 +20,7 @@ day = datetime.datetime.now().day
 AliAccount = ["掉坑男_2013","bluegod233"]
 
 data = str(year) + "%2F" + str(month) + "%2F" + str(day)
-#print(data)
+
 def IP():
     global resultdata
     #获取做单IP
@@ -60,7 +60,10 @@ def task():
                 Status = res.json()['resultdata']['list'][i]['Status']
                 RelationId = res.json()['resultdata']['list'][i]['RelationId']
                 ticks = time.time()
+                #print(ticks)
                 timeArray = time.strptime(CreateDate, "%Y-%m-%d %H:%M:%S")
+                #print(timeArray)
+                #print(time.mktime(timeArray))
                 if Status != "OK":
                     url1 = "http://" + resultdata + "/GetOrder?RelationId="+RelationId+"&token=1374743"
                     res2 = requests.get(url=url1,headers=headers)
@@ -83,13 +86,12 @@ def get_task():
         print(res1.json())
         print(res2.json())
     elif task_num == 1:
-        for i in range(0,1):
-            if date['resultdata']['list'][i]['BrusherAliAccount'] == AliAccount[1]:
-                res1 = requests.get(url=url1,headers=headers)
-                print(res1.json())
-            else:
-                res2 = requests.get(url=url0, headers=headers)
-                print(res2.json())
+        if date['resultdata']['list'][0]['BrusherAliAccount'] == AliAccount[1]:
+            res1 = requests.get(url=url0,headers=headers)
+            print(res1.json())
+        else:
+            res2 = requests.get(url=url1, headers=headers)
+            print(res2.json())
 
 
 
