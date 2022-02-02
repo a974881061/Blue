@@ -20,4 +20,6 @@ for i in range(num):
         notys = str(giftName[i]) + "\n" + "所需积分为：" + str(price[i]) + "\n" + "当前余量为：" + str(count[i])
         requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/太太乐话费/{}'.format(notys))
         time.sleep(1)
+    else:
+        print("全部无货")
 
