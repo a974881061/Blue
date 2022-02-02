@@ -42,6 +42,13 @@ def user():
     print("账号积分为：" + str(JFCount))
     print("账号余额为：" + str(CreditMoney))
 
+def question():
+    global records
+    url = "http://" + resultdata + "/GetUserMessage?IsAll=0&token=1374743&nowPage=1"
+    res = requests.get(url=url,headers=headers)
+    records = res.json()['resultdata']['page']['records']
+
+
 def task():
     global BrusherAliAccount,date,task_num
     #任务信息
@@ -99,10 +106,14 @@ def main():
     IP()
     user()
     task()
-    if task_num != 2:
-        get_task()
+    question()
+    if records !=0:
+        requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/精品平台/有评价任务需要处理')
     else:
-        print("所有账号都接到任务啦")
+        if task_num != 2:
+            get_task()
+        else:
+            print("所有账号都接到任务啦")
 
 main()
 
