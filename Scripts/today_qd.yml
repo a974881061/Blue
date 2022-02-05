@@ -54,7 +54,7 @@ users:
         # 账号
         username: '3196020068'
         # 密码
-        password: 'a58123875'
+        password: ''
         # 定位位置信息
         address: '福建省福州市仓山区荆东路'
         notifyOption: 
