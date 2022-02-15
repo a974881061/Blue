@@ -3,7 +3,7 @@ import datetime
 import time
 
 headers = {
-    'Host': '103.249.111.62:8662',
+    'Host': '45.207.45.45:8662',
     'Connection': 'keep-alive',
     'Accept': 'application/json, text/plain, */*',
     'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Mobile Safari/537.36',
@@ -24,7 +24,7 @@ data = str(year) + "%2F" + str(month) + "%2F" + str(day)
 def IP():
     global resultdata
     #获取做单IP
-    url = "http://103.249.111.62:8662/hapi//GetServerIP"
+    url = "http://45.207.45.45:8662/hapi//GetServerIP"
 
 
     res = requests.get(url=url,headers=headers)
