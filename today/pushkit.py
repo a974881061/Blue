@@ -173,7 +173,7 @@ class pushKit:
     def sendMsgByBark(self, key, title, msg):
         if self.option['BarkOption']['baseUrl'] == '':
             return 'Bark的baseUrl为空,设置baseUrl后才能发送邮件'
-        url = '{}{}/今日校园查寝/{}'.format(
+        url = '{}{}/今日校园信息收集/{}?icon=https://raw.githubusercontent.com/a974881061/Blue/main/icons/today.jpg'.format(
             self.option['BarkOption']['baseUrl'], key,msg)
         res = requests.get(url).json()
         if res['code'] == 200:
