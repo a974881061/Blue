@@ -3,14 +3,14 @@ import datetime
 import time
 
 headers = {
-    'Host': '45.207.45.45:8662',
+    'Host': '217.194.135.8:8662',
     'Connection': 'keep-alive',
     'Accept': 'application/json, text/plain, */*',
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Mobile Safari/537.36',
-    'Origin': 'http://bbgg.bfxlonely.com:9660',
-    'Referer': 'http://bbgg.bfxlonely.com:9660/',
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Mobile Safari/537.36',
+    'Origin': 'http://np.simpleshh.com',
+    'Referer': 'http://np.simpleshh.com/',
     'Accept-Encoding': 'gzip, deflate',
-    'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
+    'Accept-Language': 'zh-CN,zh;q=0.9'
 }
 
 year = datetime.datetime.now().year
@@ -24,11 +24,11 @@ data = str(year) + "%2F" + str(month) + "%2F" + str(day)
 def IP():
     global resultdata
     #获取做单IP
-    url = "http://45.207.45.45:8662/hapi//GetServerIP"
+    url = "http://217.194.135.8:8662/hapi//GetServerIP"
 
 
-    res = requests.get(url=url,headers=headers)
-    #print(res.json())
+    res = requests.get(url=url,headers=headers,timeout=10000)
+    print(res.json())
     resultdata = res.json()['resultdata']
     #print(resultdata)
 
