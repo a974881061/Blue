@@ -61,6 +61,7 @@ class pushKit:
         return "邮箱API%s" % (res['message'])
 
         # smtp本地邮件接口
+
     def sendMsgBySmtp(self, mail, title, msg):
         ret = "SMTP邮件发送成功"
         try:
@@ -107,7 +108,7 @@ class pushKit:
             return 'QMSG的baseUrl为空,设置baseUrl后才能发送邮件'
         if qId['type'] == 1:
             url = self.option['qmsgOption'][
-                'baseUrl'] + "group/" + self.option['qmsgOption']['key']
+                      'baseUrl'] + "group/" + self.option['qmsgOption']['key']
         else:
             url = self.option['qmsgOption']['baseUrl'] + "send/" + self.option[
                 'qmsgOption']['key']
@@ -147,7 +148,7 @@ class pushKit:
                     response = requests.post(url=url, json=params).json()
                     # print(response)
                     return '企业微信推送成功' if response[
-                        'errmsg'] == 'ok' else response
+                                             'errmsg'] == 'ok' else response
                 else:
                     print(access_token)
                     return access_token
@@ -164,21 +165,26 @@ class pushKit:
             self.option['serverChanOption']['baseUrl'], key)
         params = {'title': title, 'desp': msg}
         res = requests.post(url, params=params).json()
-        if res['code'] == 0:
-            return 'Server酱推送成功'
-        else:
-            return 'Server酱推送失败,' + res['message']
-            
+        try:
+            if res['code'] == 0:
+                return 'Server酱推送成功'
+            else:
+                return 'Server酱推送失败,' + res['message']
+
+        except:
+            return 'Server酱次数超限'
+
+
     # Bark推送
     def sendMsgByBark(self, key, title, msg):
         if self.option['BarkOption']['baseUrl'] == '':
             return 'Bark的baseUrl为空,设置baseUrl后才能发送邮件'
-        url = '{}{}/今日校园信息收集/{}?icon=https://raw.githubusercontent.com/a974881061/Blue/main/icons/today.jpg'.format(
-            self.option['BarkOption']['baseUrl'], key,msg)
+        url = '{}{}/今日校园查寝/{}?icon=https://raw.githubusercontent.com/a974881061/Blue/main/icons/today.jpg'.format(
+            self.option['BarkOption']['baseUrl'], key, msg)
         res = requests.get(url).json()
         if res['code'] == 200:
             return 'Bark推送成功'
         else:
             return 'Bark推送失败,' + res['message']
 
-    # 其他通知方式待添加
+# 其他通知方式待添加
