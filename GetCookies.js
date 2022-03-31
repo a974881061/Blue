@@ -24,7 +24,6 @@ https://newvideo.autohome.com.cn/api/video/rcmfeed url script-request-header htt
 luckycat/novel/v1/task/sign_in/.+ url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/fqxs.js
 # 签到
 ajax/rldk_h.jsp.cmd=sign url script-request-header http://script.frp.aiuyo.com:8680/qd.js
-lv/v1/game/receive_credits url script-request-header http://script.frp.aiuyo.com:8680/qd.js
 # 剪映
 lv/v1/game/get_task_list url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
 lv/v1/game/save_progress url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
