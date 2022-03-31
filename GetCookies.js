@@ -25,6 +25,10 @@ luckycat/novel/v1/task/sign_in/.+ url script-request-header https://raw.githubus
 # 签到
 ajax/rldk_h.jsp.cmd=sign url script-request-header http://script.frp.aiuyo.com:8680/qd.js
 lv/v1/game/receive_credits url script-request-header http://script.frp.aiuyo.com:8680/qd.js
+# 剪映
+lv/v1/game/get_task_list url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
+lv/v1/game/save_progress url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
+lv/v1/game/receive_credits url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
  
 #Nobyda
 # 吾爱破解 
