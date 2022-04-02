@@ -41,6 +41,8 @@ def getWXBonusTask():
         for i in range(len(res['data']['commonTask']['taskList'])):
             print(res['data']['commonTask']['taskList'][i]['mainTitle'] + '\t' +res['data']['commonTask']['taskList'][i]['id'])
             TaskId.append(res['data']['commonTask']['taskList'][i]['id'])
+    else:
+        print("H5_token过期请重新抓")
     #print(res)
 # 获取APP任务列表
 def getAPPBonusTask():
@@ -56,7 +58,8 @@ def getAPPBonusTask():
         for i in range(len(res['data']['commonTask']['taskList'])):
             print(res['data']['commonTask']['taskList'][i]['mainTitle'] + '\t' +res['data']['commonTask']['taskList'][i]['id'])
             TaskId.append(res['data']['commonTask']['taskList'][i]['id'])
-
+    else:
+        print("H5_token过期请重新抓")
 # 做任务
 def finishTask():
     for i in range (len(TaskId)):
