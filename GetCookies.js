@@ -48,36 +48,13 @@ https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean url script-reques
 #Sunert
 # 京东到家 
 https:\/\/daojia\.jd\.com\/client\?_jdrandom=\d{13}&functionId=%2Fsignin url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/jddj.js
-# 快手极速版 
-https:\/\/nebula\.kuaishou\.com\/nebula\/task\/earning\? url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/kuaishou.js
-https:\/\/activity\.m\.kuaishou\.com\/rest\/wd\/taskCenter\/\w+\/module\/list url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/kuaishou.js
-# 电视家
-http:\/\/api\.gaoqingdianshi\.com\/api\/v\d\/sign\/signin url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/dianshijia.js
-http:\/\/api\.gaoqingdianshi\.com\/api\/v2\/cash\/withdrawal\? url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/dianshijia.js
-# 微信小程序-来客有礼 (By @Macsuny)
-https:\/\/draw\.jdfcloud\.com\/\/api\/bean\/square\/silverBean\/task\/get\? url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/lkyl.js
 # 中国电信套餐 (By @uchvk & @Macsuny)
 ^https?:\/\/e\.189\.cn\/store\/user\/package_detail\.do url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/telecomInfinity.js
-# 腾讯新闻
-https:\/\/api\.inews\.qq\.com\/event\/v1\/user\/event\/report\? url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/txnews.js
 # 微博签到
 #https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 #https:\/\/api\.weibo\.cn\/2\/logservice\/service url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
-# 中青看点
-https:\/\/kd\.youth\.cn\/WebApi\/NewTaskIos\/getTaskList url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
-https:\/\/ios\.baertt\.com\/v5\/article\/info\/get\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
-https:\/\/ios\.baertt\.com\/v5\/\w+\/withdraw\d?\.json url script-request-body  https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
-https:\/\/ios\.baertt\.com\/v5\/user\/stay\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth.js
-# 中青看点阅读(和签到脚本有冲突，暂时禁用)
-#https:\/\/ios\.baertt\.com\/v5\/article\/info\/get\.json - script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/Youth_Read.js
-#https:\/\/ios\.baertt\.com\/v5\/user\/stay\.json - script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/Youth_Read.js
-# 中青看点看看赚
-https:\/\/ios\.baertt\.com\/v5\/task\/browse_start\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth_gain.js
-https:\/\/ios\.baertt\.com\/v5\/Nameless\/adlickstart\.json url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/youth_gain.js
 # 数码之家
 https:\/\/www\.mydigit\.cn\/plugin\.php\?id=k_misign:sign&operation=qiandao url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/mydigit.js
-# 聚看点
-https:\/\/www\.xiaodouzhuan\.cn\/jkd\/newMobileMenu\/infoMe\.action url script-request-body https://gitee.com/Sunert/Scripts/raw/master/Task/jukan.js
 
 #chavyleung
 # 万达电影
