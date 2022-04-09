@@ -2,28 +2,28 @@ hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,ap
 
 #David
 # 中青看点极速版
-v5/article/info url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/zqkd.js
-Nameless/getTaskBrowse url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/zqkd.js
-NewTaskIos/getTaskList url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/zqkd.js
+v5/article/info url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
+Nameless/getTaskBrowse url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
+NewTaskIos/getTaskList url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
 # 快手
 https://encourage.kuaishou.com/rest/wd/encourage/treasureBox/info url script-request-header http://script.frp.aiuyo.com:8680/ks.js
 # 快看点
-https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/* url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-api.yuncheapp.cn/pearl-incentive/api/v1/drinkWater/start url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/home  url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/homeV2 url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/home url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/account/exchange url script-request-body https://raw.githubusercontent.com/bluesmallpig/scripts/main/kkd_ck.js
+https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/* url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+api.yuncheapp.cn/pearl-incentive/api/v1/drinkWater/start url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/home  url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/homeV2 url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/home url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/account/exchange url script-request-body http://script.frp.aiuyo.com:8680/kkd_ck.js
 # 今日头条
-luckycat/lite/v1/withdraw/withdraw url script-request-body https://raw.githubusercontent.com/bluesmallpig/scripts/main/jrtt.js
-luckycat/lite/v1/activity/done_whole_scene_task url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/jrtt.js
-v1/task.+(open_treasure_box|excitation_ad) url script-request-body https://raw.githubusercontent.com/bluesmallpig/scripts/main/jrtt.js
+luckycat/lite/v1/withdraw/withdraw url script-request-body http://script.frp.aiuyo.com:8680/jrtt.js
+luckycat/lite/v1/activity/done_whole_scene_task url script-request-header http://script.frp.aiuyo.com:8680/jrtt.js
+v1/task.+(open_treasure_box|excitation_ad) url script-request-body http://script.frp.aiuyo.com:8680/jrtt.js
 # 闪辆
-https://newvideo.autohome.com.cn/api/homepage/detail url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/sl.js
-https://newvideo.autohome.com.cn/api/video/rcmfeed url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/sl.js
+https://newvideo.autohome.com.cn/api/homepage/detail url script-request-header http://script.frp.aiuyo.com:8680/sl.js
+https://newvideo.autohome.com.cn/api/video/rcmfeed url script-request-header http://script.frp.aiuyo.com:8680/sl.js
 # 番茄小说
-luckycat/novel/v1/task/sign_in/.+ url script-request-header https://raw.githubusercontent.com/bluesmallpig/scripts/main/fqxs.js
+luckycat/novel/v1/task/sign_in/.+ url script-request-header http://script.frp.aiuyo.com:8680/fqxs.js
 # 签到
 ajax/rldk_h.jsp.cmd=sign url script-request-header http://script.frp.aiuyo.com:8680/qd.js
 # 剪映
