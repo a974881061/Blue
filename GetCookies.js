@@ -56,43 +56,19 @@ https:\/\/daojia\.jd\.com\/client\?_jdrandom=\d{13}&functionId=%2Fsignin url scr
 #https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 #https:\/\/api\.weibo\.cn\/2\/logservice\/service url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 
-#chavyleung
-
 #Peng-YM
 #彩云天气
 https:\/\/((weather-data\.apple)|(api.weather))\.com url script-request-header https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/caiyun.js
 
-#zZPiglet
-
-#lowking
-
-#toulanboy 
-
-#chouchoui 
-
-#evilbutcher
-
 #id77
 # 伊利乳品
 ^https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-body https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.cookie.js
-
-#dompling
 
 #iepngs
 # 叮咚买菜
 https:\/\/maicai\.api\.ddxq\.mobi\/user\/checkLogin url script-request-header https://raw.githubusercontent.com/iepngs/Script/master/dingdong/index.js
 # 步数上传
 ^https:\/\/sports\.lifesense\.com\/sport_service\/sport\/sport\/uploadMobileStepV2 url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/manual.js
-
-#barrym-chen
-
-#iisams
-
-#DD-D1
-
-#passerby-b
-
-#ZhiYi-N
 
 #blackmatrix7
 # 什么值得买
