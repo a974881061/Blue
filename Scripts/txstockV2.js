@@ -22,7 +22,7 @@ V2P，圈X重写：
 #腾讯自选股
 35 11,16 * * * https://raw.githubusercontent.com/leafxcy/JavaScript/main/txstockV2.js, tag=腾讯自选股, enabled=true
 [rewrite_local]
-https://wzq.tenpay.com/cgi-bin/.*user.*.fcgi url script-request-header https://raw.githubusercontent.com/leafxcy/JavaScript/main/txstockV2.js
+https://wzq.tenpay.com/cgi-bin/.*user.*.fcgi url script-request-header https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/txstockV2.js
 [MITM]
 hostname = wzq.tenpay.com
 */
