@@ -16,6 +16,8 @@ headers = {
 year = datetime.datetime.now().year
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
+hour = datetime.datetime.now().hour
+
 
 AliAccount = ["掉坑男_2013","bluegod233"]
 
@@ -33,6 +35,7 @@ def IP():
     #print(resultdata)
 
 def user():
+    global CreditMoney
     # 账户信息
     url = "http://" + resultdata + "/GetBrusherInfoNew?token=1374743"
     res = requests.get(url=url,headers=headers)
@@ -41,6 +44,10 @@ def user():
     CreditMoney = res.json()["resultdata"]["CreditMoney"]
     print("账号积分为：" + str(JFCount))
     print("账号余额为：" + str(CreditMoney))
+
+def remind():
+    if hour == 22 and CreditMoney >0:
+        requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/精品平台/有余额未提现，请尽快提现')
 
 def question():
     global records
@@ -107,6 +114,7 @@ def main():
     user()
     task()
     question()
+    remind()
     if records !=0:
         requests.get(url='https://api.day.app/fC842SsyD8qeqpFw2vp65S/精品平台/有评价任务需要处理')
     else:
