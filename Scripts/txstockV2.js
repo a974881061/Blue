@@ -1,4 +1,6 @@
 /*
+leafxcy大佬已删库，备用
+
 腾讯自选股V2
 
 更新了一下脚本，精简了需要的CK，多账户用换行(\n)或者@或者#隔开，尽量用换行隔开因为我没测试其他
@@ -20,7 +22,7 @@ V2P，圈X重写：
 小程序入口：公众号 腾讯自选股微信版->右下角好福利->福利中心
 [task_local]
 #腾讯自选股
-35 11,16 * * * https://raw.githubusercontent.com/leafxcy/JavaScript/main/txstockV2.js, tag=腾讯自选股, enabled=true
+35 11,16 * * * https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/txstockV2.js, tag=腾讯自选股, enabled=true
 [rewrite_local]
 https://wzq.tenpay.com/cgi-bin/.*user.*.fcgi url script-request-header https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/txstockV2.js
 [MITM]
