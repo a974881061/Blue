@@ -17,7 +17,7 @@ year = datetime.datetime.now().year
 month = datetime.datetime.now().month
 day = datetime.datetime.now().day
 hour = datetime.datetime.now().hour
-
+print('当前运行时间：'+hour)
 
 AliAccount = ["掉坑男_2013","bluegod233"]
 
