@@ -2,32 +2,32 @@ hostname= www.52pojie.cn,c.tieba.baidu.com,passport.biligame.com,api.m.jd.com,ap
 
 #David
 # 中青看点极速版
-v5/article/info url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
-Nameless/getTaskBrowse url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
-NewTaskIos/getTaskList url script-request-header http://script.frp.aiuyo.com:8680/zqkd.js
+v5/article/info url script-request-header http://script.frp.aiuyo.com:8680/scripts/zqkd.js
+Nameless/getTaskBrowse url script-request-header http://script.frp.aiuyo.com:8680/scripts/zqkd.js
+NewTaskIos/getTaskList url script-request-header http://script.frp.aiuyo.com:8680/scripts/zqkd.js
 # 快手
-https://encourage.kuaishou.com/rest/wd/encourage/treasureBox/info url script-request-header http://script.frp.aiuyo.com:8680/ks.js
+https://encourage.kuaishou.com/rest/wd/encourage/treasureBox/info url script-request-header http://script.frp.aiuyo.com:8680/scripts/ks.js
 # 快手极速版
-https://nebula.kuaishou.com/nebula/task/earning url script-request-header http://script.frp.aiuyo.com:8680/ksjsb.js
+https://nebula.kuaishou.com/nebula/task/earning url script-request-header http://script.frp.aiuyo.com:8680/scripts/ksjsb.js
 # 快看点
-https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/* url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-api.yuncheapp.cn/pearl-incentive/api/v1/drinkWater/start url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/home  url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/homeV2 url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/home url script-request-header http://script.frp.aiuyo.com:8680/kkd_ck.js
-https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/account/exchange url script-request-body http://script.frp.aiuyo.com:8680/kkd_ck.js
+https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/* url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+api.yuncheapp.cn/pearl-incentive/api/v1/drinkWater/start url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/home  url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/lotteryTable/homeV2 url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/giftRain/home url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
+https://api.yuncheapp.cn/pearl-incentive/api/v1/bank/account/exchange url script-request-body http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
 # 今日头条
-luckycat/lite/v1/withdraw/withdraw url script-request-body http://script.frp.aiuyo.com:8680/jrtt.js
-luckycat/lite/v1/activity/done_whole_scene_task url script-request-header http://script.frp.aiuyo.com:8680/jrtt.js
-v1/task.+(open_treasure_box|excitation_ad) url script-request-body http://script.frp.aiuyo.com:8680/jrtt.js
+luckycat/lite/v1/withdraw/withdraw url script-request-body http://script.frp.aiuyo.com:8680/scripts/jrtt.js
+luckycat/lite/v1/activity/done_whole_scene_task url script-request-header http://script.frp.aiuyo.com:8680/scripts/jrtt.js
+v1/task.+(open_treasure_box|excitation_ad) url script-request-body http://script.frp.aiuyo.com:8680/scripts/jrtt.js
 # 闪辆
-https://newvideo.autohome.com.cn/api/homepage/detail url script-request-header http://script.frp.aiuyo.com:8680/sl.js
-https://newvideo.autohome.com.cn/api/video/rcmfeed url script-request-header http://script.frp.aiuyo.com:8680/sl.js
+https://newvideo.autohome.com.cn/api/homepage/detail url script-request-header http://script.frp.aiuyo.com:8680/scripts/sl.js
+https://newvideo.autohome.com.cn/api/video/rcmfeed url script-request-header http://script.frp.aiuyo.com:8680/scripts/sl.js
 # 番茄小说
-luckycat/novel/v1/task/sign_in/.+ url script-request-header http://script.frp.aiuyo.com:8680/fqxs.js
+luckycat/novel/v1/task/sign_in/.+ url script-request-header http://script.frp.aiuyo.com:8680/scripts/fqxs.js
 # 签到
-ajax/rldk_h.jsp.cmd=sign url script-request-header http://script.frp.aiuyo.com:8680/qd.js
+ajax/rldk_h.jsp.cmd=sign url script-request-header http://script.frp.aiuyo.com:8680/scripts/qd.js
 # 剪映
 lv/v1/game/get_task_list url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
 lv/v1/game/save_progress url script-request-header http://script.frp.aiuyo.com:8680/jy20220331cdvde/jy.js
