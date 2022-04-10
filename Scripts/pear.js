@@ -1,88 +1,41 @@
 /*
-app下载地址：https://is.gd/atCoeV
-
-#圈Xpear解锁会员
-^https:\/\/ayk\.tmdidi\.com\/api\/(movie\/WatchMovie|account\/IsVip|Account\/CheckVip|account\/IndexDetail|account\/IsSafeUser|PictureSet\/LookPhoto|account\/Milk|video\/watch.*|video\/WatchCount|account\/UserSetting) url script-response-body https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/pear.js
-
-MITM = ayk.tmdidi.com
-
+圈x
+下载地址https://www.pears.live/
+[rewrite_local]
+#雪梨解锁会员
+^https://(bkcd.b-cdn.net|souhu.mett.me|m.pearkin.com|www.baidu.com2.club|cn.baidu-ch.com)\/api(\/account|\/movie|\/video)(\/IndexDetail|\/IsVip|\/WatchMovieNew|\/watch|\/CheckVip)  url script-response-body  https://cdn.jsdelivr.net/gh/byxiaopeng/myscripts@main/vip/xlsp.js
+[mitm]
+hostname= m.pearkin.com,bkcd.b-cdn.net,souhu.mett.me,www.baidu.com2.club,cn.baidu-ch.com
+破解内容：视频无线看
 */
-
 var body = $response.body;
-var url = $request.url;
 var obj = JSON.parse(body);
 
-const vip = '/movie/WatchMovie';
+if ($request.url.indexOf("/api/account/IndexDetail") != -1) {
+  obj.nickName = "️大咪咪";
+  obj.vipEndTime = "2099-09-09";
+  obj.cartoonVip = true;
+  obj.vipLevel = 101;
+  obj.cartoonVipEndTime = "2099-09-09";
+  body = JSON.stringify(obj);
+}
 
-const checkvip = '/account/IsVip';
+if ($request.url.indexOf("/api/account/IsVip") != -1) {
+  obj.value = true;
+  body = JSON.stringify(obj);
+}
+if ($request.url.indexOf("/api/account/CheckVip") != -1) {
+  obj.value = true;
+  body = JSON.stringify(obj);
+}
+if ($request.url.indexOf("/api/movie/WatchMovieNew") != -1) {
+  obj.canWath = true;
+  body = JSON.stringify(obj);
+}
 
-const checkvip2 = '/Account/CheckVip';
-
-const vipinfo = '/account/IndexDetail';
-
-const safe = '/account/IsSafeUser';
-
-const picfree = '/PictureSet/LookPhoto';
-
-const spfree = '/video/watch';
-
-const spcount = '/video/WatchCount';
-
-const milk = '/account/Milk';
-
-const point = '/account/UserSetting';
-
-if (url.indexOf(vip) != -1) {
- obj["canWath"] = true;
- body = JSON.stringify(obj);
- }
-
-if (url.indexOf(checkvip) != -1) {
- obj["data"] = 1;
-   obj["value"] = true;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(checkvip2) != -1) {
- obj["data"] = 1;
-   obj["value"] = true;
- body = JSON.stringify(obj);
- }
-
-if (url.indexOf(vipinfo) != -1) {
- obj["nickName"] = "爱熬夜的好心人";
-   obj["vipLevel"] = 3;
-   obj["vipEndTime"] = "2222-05-21";
-   obj["cartoonVip"] = true;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(safe) != -1) {
- obj["value"] = true;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(picfree) != -1) {
- obj["value"] = true;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(spfree) != -1) {
- obj["value"] = true;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(spcount) != -1) {
- obj["todayCanWatchCount"] = 9999;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(milk) != -1) {
- obj["milkName"] = "肯德鸡";
-    obj["milkLevel"] = 7;
- body = JSON.stringify(obj);
- }
-if (url.indexOf(point) != -1) {
- obj["orderVip"] = true;
-    obj["accountHadSet"] = true;
-   obj["memberPoint"] = 8000;
- body = JSON.stringify(obj);
- }
+if ($request.url.indexOf("/api/video/watch/") != -1) {
+  body = JSON.stringify(obj);
+}
 
 
-$done({body});
-
+$done({ body });
