@@ -55,300 +55,44 @@ https:\/\/daojia\.jd\.com\/client\?_jdrandom=\d{13}&functionId=%2Fsignin url scr
 # 微博签到
 #https:\/\/api\.weibo\.cn\/\d\/users\/show url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
 #https:\/\/api\.weibo\.cn\/2\/logservice\/service url script-request-header https://raw.githubusercontent.com/Sunert/Scripts/master/Task/weibo.js
-# 数码之家
-https:\/\/www\.mydigit\.cn\/plugin\.php\?id=k_misign:sign&operation=qiandao url script-request-header https://gitee.com/Sunert/Scripts/raw/master/Task/mydigit.js
 
 #chavyleung
-# 万达电影
-^https:\/\/user-api-prd-mx\.wandafilm\.com url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wanda/wanda.cookie.js
-# 电信营业厅
-^https:\/\/wapside.189.cn:9001\/api\/home\/sign url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/10000/10000.cookie.js
-# AcFun
-^https:\/\/api\-new\.app\.acfun\.cn\/rest\/app\/user\/personalInfo url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/acfun/acfun.cookie.js
-# APK.TW
-^https:\/\/apk.tw\/member.php(.*?)action=login url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/apktw/apktw.cookie.js
-# bilibili
-^https:\/\/(www|live)\.bilibili\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bilibili/bilibili.cookie.js
-# CSDN
-^https:\/\/passport.csdn.net\/v2\/api\/app\/login\/checkAndRefreshToken url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
-^https:\/\/gw.csdn.net\/mini-app\/v2\/lucky_draw\/login\/sign_in\? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/csdn/csdn.cookie.js
-# 懂球帝
-^https:\/\/api\.dongqiudi\.com\/v2\/user\/is_login url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/dongqiudi/dongqiudi.cookie.js
-# 威锋网
-# ^https:\/\/(www\.)?feng\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/feng/feng.cookie.js
-# 飞客茶馆
-^https:\/\/www\.flyertea\.com\/source\/plugin\/mobile\/mobile\.php\?module=getdata&.* url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/flyertea/flyertea.cookie.js
-# 网易云音乐
-^https:\/\/music.163.com\/weapi\/user\/level url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/quanx/neteasemusic.cookie.js
-# 网易新闻
-^https:\/\/(.*?)c\.m\.163\.com\/uc\/api\/sign\/v3\/commit url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasenews/neteasenews.cookie.js
-# 去哪儿
-^https:\/\/user.qunar.com\/webapi\/member\/signIndexV2.htm url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/qunar/qunar.cookie.js
-# 人人视频
-^https:\/\/api\.rr\.tv\/user\/profile url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/rrtv/rrtv.cookie.js
-# 顺丰速运
-^https:\/\/sf-integral-sign-in.weixinjia.net\/app\/index url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
-^https:\/\/mcs-mimp-web.sf-express.com\/mcs-mimp\/share\/(.*?)Redirect url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.cookie.js
-# 什么值得买
-^https:\/\/www\.smzdm\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/quanx/smzdm.cookie.js
-# 百度签到
-^https?:\/\/tieba\.baidu\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/tieba/tieba.cookie.js
-# V2EX
-^https:\/\/www\.v2ex\.com\/mission\/daily url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/v2ex/quanx/v2ex.cookie.js
-# 腾讯视频
-^https:\/\/access.video.qq.com\/user\/auth_refresh url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/videoqq/videoqq.cookie.js
-# 喜马拉雅
-^https?:\/\/.*\/mobile\-user\/homePage\/.* url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/ximalaya/ximalaya.cookie.js
-# 网易严选
-# ^https:\/\/m\.you\.163\.com\/xhr\/points\/index\.json url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/yanxuan/yanxuan.cookie.js
-# 字幕组
-^https?:\/\/(www\.)?rrys2020\.com\/?.? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.cookie.js
-^http:\/\/ios.zmzapi.com\/index.php.*a=(mobile_)?login url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/zimuzu/zimuzu.cookie.js
-# 加油广东
-^https:\/\/m.gdoil.cn\/webapi\/usersign\/addusersign url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/gdoil/gdoil.cookie.js
-# 芒果TV
-^https:\/\/credits.bz.mgtv.com\/user\/creditsTake url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mgtv/mgtv.cookie.js
-# 米游社
-^https:\/\/api-takumi.mihoyo.com\/apihub\/api\/getGameList url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mihoyo/mihoyo.cookie.js
-# 中国联通
-^https:\/\/act.10010.com\/SigninApp\/signin\/querySigninActivity.htm url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-^https:\/\/act.10010.com\/SigninApp(.*?)\/signin\/daySign url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-^https:\/\/m.client.10010.com\/dailylottery\/static\/(textdl\/userLogin|active\/findActivityInfo) url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10010/10010.cookie.js
-# 中国移动
-^http:\/\/wx.10086.cn\/website\/taskCenter\/index\? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.cookie.js
-^http:\/\/wx.10086.cn\/website\/taskCenter\/sign\? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/10086/10086.cookie.js
-# 猫咪音乐网
-https:\/\/www.maomicd.com\/plugin.php\?id=k_misign:sign&operation=qiandao url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/maomicd/maomicd.cookie.js
-# 美团外卖
-^https:\/\/promotion.waimai.meituan.com\/playcenter\/signIn\/entry url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wmmeituan/wmmeituan.cookie.js
-^https:\/\/promotion.waimai.meituan.com\/playcenter\/signIn\/doaction url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/wmmeituan/wmmeituan.cookie.js
-# 美团
-^https:\/\/i.meituan.com\/evolve\/signin\/signpost\/ url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.cookie.js
-# 时光相册
-^https:\/\/api.everphoto.cn\/users\/self\/checkin\/v2 url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/everphoto/everphoto.cookie.js
-# 百词斩
-^https://group\.baicizhan\.com/group/rewards? url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/bcz/bcz.cookie.js
-# 叮咚买菜
-^https:\/\/maicai.api.ddxq.mobi\/point\/home url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/mcdd/mcdd.cookie.js
-# 分期乐
-^https://pm\.m\.fenqile\.com/route0014/star/sign/sign.json url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fenqile/fenqile.cookie.js
-^https:\/\/pm\.m\.fenqile\.com/route0014\/app\/tab\/privilege\/convertTaskReward.json url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fenqile/fenqile.cookie.js
-# 樊登读书
-^https://api\.dushu\.io/CheckIn url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/fandeng/fandeng.cookie.js
-# 全民K歌
-^https://node\.kg\.qq\.com/webapp/proxy? url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/qmkg/qmkg.cookie.js
-# 蔚来
-^https:\/\/app\.nio\.com\/api\/1\/app\/daily_checkin url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/nio/nio.cookie.js
-# 合创
-^https:\/\/wxprdapplet\.gac-nio\.com\/community\/userSignIn\/simpleAuth\/front\/v3\.1\.3\.5\/signV2$ url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/hycan/hycan.cookie.js
-# 京东到家
-^https:\/\/daojia.jd.com/client(.*?)functionId=signin(.*?)userSigninNew url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/jddj/jddj.cookie.js
-# 网易考拉
-^https:\/\/m-bean\.kaola\.com/m/point/sign\.html url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/wykl/wykl.cookie.js
-# WPS
-^https:\/\/zt.wps.cn\/2018\/docer_check_in\/api\/act_list url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/wps/wps.cookie.js
-# 智行火车
-^https:\/\/m\.ctrip\.com/restapi/soa2/14593/json/attendanceDay? url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/zxhc/zxhc.cookie.js
-# 苏宁易购
-^https:\/\/passport.suning.com\/ids\/login$ url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https:\/\/luckman.suning.com\/luck-web\/sign\/api\/clock_sign.do url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https:\/\/sign.suning.com\/sign-web\/m\/promotion\/sign\/doSign.do url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-^https:\/\/gameapi.suning.com\/sngame-web\/(api\/signin\/private\/customerSignOperation.do|gateway\/api\/queryPrize.do) url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/suning/suning.cookie.js
-# 豆瓣时间
-^https:\/\/fro\.douban\.com\/api\/v2\/niffler\/check_in\/status url script-request-header https://raw.githubusercontent.com/chavyleung/scripts/master/dbsj/dbsj.cookie.js
 
 #Peng-YM
 #彩云天气
 https:\/\/((weather-data\.apple)|(api.weather))\.com url script-request-header https://raw.githubusercontent.com/Peng-YM/QuanX/master/Tasks/caiyun.js
 
 #zZPiglet
-# 海底捞
-^https:\/\/superapp\.kiwa-tech\.com\/app\/coupon\/customerLevelShow url script-request-body https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/haidilao.js
-^https:\/\/activity-1\.m\.duiba\.com\.cn\/signactivity\/getSignInfo url script-request-header https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/haidilao.js
-# 网易云音乐
-^https:\/\/music.163.com\/weapi\/user\/level url script-request-body https://raw.githubusercontent.com/chavyleung/scripts/master/neteasemusic/neteasemusic.cookie.js
-# 欧可林
-^https:\/\/mall\.oclean\.com\/API\/VshopProcess\.ashx$ url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean.js
-# 微信小程序 - 欧可林商城
-^https:\/\/mall\.oclean\.com\/API\/VshopProcess\.ashx\?action=TaskHome&clientType=5&client=5&openId= url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean_mini.js
-# 微博通知
-^https:\/\/m\.weibo\.cn\/feed\/ url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/Weibo/Weibo.js
-# 航旅纵横(Pro)
-^https:\/\/cloud\.umetrip\.com\/gateway\/api\/web\/rest\/polite\/app\/sign\/signpageinitdata url script-request-header https://raw.githubusercontent.com/zZPiglet/Task/master/umetrip/umetrip.js
-# ele
-^https:\/\/h5\.ele\.me\/restapi\/eus\/v\d\/current_user$ url script-request-header https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemGetCookies.js
 
 #lowking
-# QQ萌宠
-https:\/\/qqpet.jwetech.com\/api\/authorizations url script-response-body https://raw.githubusercontent.com/lowking/Scripts/master/QQPet/lkQQPet.js
-# qq会员成长值
-https:\/\/proxy.vac.qq.com\/cgi-bin\/srfentry.fcgi? url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/QQVip/qqVipCheckIn.js
-# 哔哩哔哩番剧监控
-https?:\/\/app.bilibili.com\/x\/v2\/space\/bangumi url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/bilibili/bangumiMonitor.js
-# 哔哩哔哩大会员特权领取
-https:\/\/api.bilibili.com\/x\/vip\/privilege\/receive url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/bilibili/privilegeReceive.js
-# 朴朴
-https:\/\/j1.pupuapi.com\/client\/account\/discount\/count url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/pupu/pupuCheckIn.js
-# 斗鱼鱼吧
-^https:\/\/yuba.douyu.com\/wbapi\/web\/group\/myFollow? url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/douyu/yubaSign.js
-# 微博超话
-https:\/\/weibo\.com\/p\/aj\/general\/button\?ajwvr=6&api=http:\/\/i\.huati\.weibo\.com\/aj\/super\/checkin url script-request-header https://raw.githubusercontent.com/lowking/Scripts/master/weibo/weiboSTCookie.js
 
 #toulanboy 
-# 小木虫论坛
-^https?:\/\/mapi.xmcimg.com\/bbs\/memcp.php\?action url script-request-header https://raw.githubusercontent.com/toulanboy/scripts/master/muchong/muchong.js
-# 微博超话
-^https?:\/\/m?api\.weibo\.c(n|om)\/2\/(cardlist|page\/button) url script-request-header https://raw.githubusercontent.com/toulanboy/scripts/master/weibo/weibotalk.cookie.js
 
 #chouchoui 
-# NGA刮墙
-^https:\/\/ngabbs.com\/nuke.php\?? url script-request-body https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/nga/nga.cookie.js
-# 时代天使小程序
-^https:\/\/exp.angelalign.com\/api\/v1\/mini_program\/get_plan_list url script-request-header https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/angelalign/angelalign.cookie.js
-# 全民K歌
-^https?:\/\/node\.kg\.qq\.com\/webapp\/proxy? url script-request-body https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/qmkg/qmkg.cookie.js
-# 宜家20201028活动签到
-^https:\/\/srv\.app\.ikea\.cn\/activity\/checkIn\/progress\?activityId=20201028 url script-request-header https://raw.githubusercontent.com/chouchoui/QuanX/master/Scripts/ikea/20201028/checkIn.cookie.js
 
 #evilbutcher
-# 酷乐潮玩小程序获取签到Cookie
-https:\/\/wxavip\-tp\.ezrpro\.cn\/Vip\/SignIn\/SignIn url script-request-body https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/klcw/klcw.js
-# 酷乐潮玩App获取Cookie
-https:\/\/app\.klcw\.net\.cn\/omp\_cmanage\/mallgateway url script-request-body https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/klcw/klcw-app.js
-# 九木杂物社获取Cookie
-https:\/\/wxavip\-up\.ezrpro\.cn\/Vip\/SignIn\/SignIn url script-request-body https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/jiumu/jiumu.js
-# funboat获取Cookie
-https:\/\/h5\.youzan\.com\/wscump\/checkin\/checkin url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/funboat/funboat.js
-https:\/\/h5\.youzan\.com\/wscuser\/membercenter\/stats url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/funboat/funboat.js
-# GLaDOS获取Cookie
-https:\/\/glados\.rocks\/api\/user\/checkin url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/glados/glados.js
-# 微博超话获取Cookie
-^https?:\/\/m?api\.weibo\.c(n|om)\/2\/(cardlist|page\/button|page) url script-request-header https://raw.githubusercontent.com/evilbutcher/Quantumult_X/master/check_in/weibo/weibotalk.cookie.js
 
 #id77
-# 太好购
-^https:\/\/cxdng\.cpic\.com\.cn/taieshop/api/CustomerFansInfo/GetFansInfo url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/thg.cookie.js
-# 网易游戏会员
-^https:\/\/huiyuan\.163\.com\/jf\-mall\-api\/api\/sign_up\/(lucky|normal) url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/163GameVip.cookie.js
-# geekhub
-^https:\/\/(www\.)?geekhub\.com\/checkins\/start url script-request-header https://raw.githubusercontent.com/id77/QuantumultX/master/task/geekhub.cookie.js
 # 伊利乳品
 ^https:\/\/club\.yili\.com\/MALLIFChe\/MCSWSIAPI\.asmx\/Call url script-request-body https://raw.githubusercontent.com/id77/QuantumultX/master/task/yiLi.cookie.js
 
 #dompling
-# 必要
-^https:\/\/marketappapi\.biyao\.com\/signIn\/getGeneralPage\.do url script-request-header https://raw.githubusercontent.com/dompling/Script/master/biyao/biyao.cookie.js
-# 小米有品
-^https:\/\/m\.xiaomiyoupin\.com\/api\/auth\/login\/isloggedin url script-request-header https://raw.githubusercontent.com/dompling/Script/master/xiaomiyp/xiaomiyp.cookie.js
-# 洋码头
-^https:\/\/app\.ymatou\.com\/api\/trading\/scartprodnum url script-request-header https://raw.githubusercontent.com/dompling/Script/master/ymatou/ymatou.cookie.js
-# 京东金融
-^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/uc\/newna\/m\/userstat url script-request-body https://raw.githubusercontent.com/dompling/Script/master/jd/jd_jr_cookie.js
 
 #iepngs
 # 叮咚买菜
 https:\/\/maicai\.api\.ddxq\.mobi\/user\/checkLogin url script-request-header https://raw.githubusercontent.com/iepngs/Script/master/dingdong/index.js
 # 步数上传
 ^https:\/\/sports\.lifesense\.com\/sport_service\/sport\/sport\/uploadMobileStepV2 url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxhealth/manual.js
-# go语言中文网
-https:\/\/studygolang\.com\/account\/edit url script-request-header https://raw.githubusercontent.com/iepngs/Script/master/studygolang/index.js
-# 携程旅行
-https:\/\/m\.ctrip\.com\/restapi\/soa2\/14946\/json\/userBaseInfo url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/ctrip/index.js
-# 今日头条
-^https:\/\/is\.snssdk\.com\/score_task\/v1\/task\/(sign_in|get_read_bonus) url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/jrtt/index.js
-^https:\/\/i\.snssdk\.com\/ttgame\/game_farm\/home_info url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/jrtt/index.js
-# 旅行世界购物版
-^https:\/\/ios-fenqu11\.lxsjgo\.com\/dog\/bug\?ts url script-request-body https://raw.githubusercontent.com/iepngs/Script/master/lxsj/index.js
-^https:\/\/ios-fenqu11\.lxsjgo\.com\/dog\/bug\?ts url script-response-body https://raw.githubusercontent.com/iepngs/Script/master/lxsj/index.js
 
 #barrym-chen
-# 携程旅行
-^https:\/\/m\.ctrip\.com\/restapi\/soa2\/14946\/json\/userBaseInfo url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip/ctrip_cookie.js
-# 微信小程序
-https:\/\/socketio\.ctrip\.com/api url reject
-^https:\/\/m\.ctrip\.com\/restapi\/soa2\/16575\/signin url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/ctrip_wx/ct_cookie.js
-# 同程艺龙
-^https:\/\/m\.elong\.com\/my\/rafflemileagejson\/getRaffleMileageTodayCount url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/elong/elong_draw_cookis.js
-# 飞常准
-^https:\/\/activity\.m\.duiba\.com\.cn\/signactivity\/getSignInfo? url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/fcz/fcz_cookie.js
-# 工银e生活
-^https:\/\/icbc1\.wlphp\.com:8444\/js\/api\/index\/signIn url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/icbc/icbc_cookie.js
-# 京东成长分
-^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/bt\/h5\/m\/queryUserSignFlow url script-request-header https://raw.githubusercontent.com/barrym-chen/Script/master/jdczf/jdczf_cookie.js
-# 同程小程序
-^https:\/\/wx\.17u\.cn\/wcsign\/sign\/GetSignInfo url script-request-body https://raw.githubusercontent.com/barrym-chen/Script/master/tongc/tongc_cookie.js
 
 #iisams
-# 梨涡
-https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign url script-request-body https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js
 
 #DD-D1
-# QQ阅读
-^https:\/\/(commontgw6|eventv3)\.reader\.qq\.com\/* url script-request-header https://raw.githubusercontent.com/DD-D1/2020scripts/master/QQReadSign.js
-# 海德汇一城
-^https:\/\/wox2019\.woxshare\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/hdhycSign.js
-# 京东读书
-^https:\/\/jdread-api\.jd\.com\/* url script-request-header https://raw.githubusercontent.com/XidNDD/2020scripts/master/jddsSign.js
-# 民盈国贸城
-^https:\/\/appsmall\.rtmap\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/mygmcSign.js
-# 汽车之家极速版
-^https:\/\/mobile\.app\.autohome\.com\.cn\/fasthome\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/qczjSign.js
-^http:\/\/mobile\.app\.autohome\.com\.cn\/fasthome\/coin\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/qczjSign.js
-# 水滴筹
-^https:\/\/api\.sdbao\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/sdcbxscSign.js
-# 水晶DJ
-^http:\/\/app\.oscaches\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/sjdjSign.js
-# 天天挖矿
-^https:\/\/operation-api\.jimistore\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/ttwbxcxSign.js
-# 微商星球
-^https:\/\/api\.momosyb\.com\/(v6|v1)\/(fans|user)\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/wsxqSign.js
-# 追书畅读版
-^https:\/\/.+zhuishushenqi\.com\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/zscdbSign.js
-# 知音漫客
-^https:\/\/getconfig-globalapi\.zymk\.cn\/app_api\/* url script-request-body https://raw.githubusercontent.com/XidNDD/2020scripts/master/zymkSign.js
 
 #passerby-b
-# 云闪付
-https:\/\/youhui\.95516.com\/newsign\/api\/coin_details url script-request-header https://gitee.com/passerby-b/javascript/raw/master/unipay.js
 
 #ZhiYi-N
-# 今日头条极速版
-#右上角签到即可获取签到cookie
-#进一次农场即可获取农场cookie
-#读文章弹出金币获取读文章cookie
-\/score_task\/v1\/task\/(sign_in|get_read_bonus) url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
-\/ttgame\/game_farm\/home_info url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/jrtt.js
-# 快看点（目前已下架）
-#获取一次时段奖励获得cookie
-^https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/kkd.js
-# 抖音极速版
-#签到获取signheader and signcookie（已签到获取不到应该）
-#走路修改步数，提前之前需要重新获取ck，不然提交失败，进一次任务界面就可
-#看一个视频弹出金币获取readheader and readkey
-/luckycat/aweme/v1/task/sign_in/detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
-/luckycat/aweme/v1/task/done/read? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
-/luckycat/aweme/v1/task/walk/step_submit? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/dyjsb.js
-# 火山小视频极速版
-#签到详情获取signheader and signkey，一定要签到详情界面获取到的
-#看广告获取adheader and adkey
-#看一个视频获取readheader and readkey
-/luckycat/hotsoon/v1/task/done/daily_read_\d+m? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
-/luckycat/hotsoon/v1/task/done/draw_excitation_ad? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
-/luckycat/hotsoon/v1/task/sign_in_detail? url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/hotsoon.js
-# 笑谱
-#看一个视频弹出金币获取videoheader and videobody(存在一定几率获取不到videobody）多试几次 and 金蛋获取 gold body(第六个视频，最后一圈）
-https:\/\/veishop\.iboxpay\.com\/nf_gateway\/nf_customer_activity\/day_cash\/v1\/give_gold_coin_by_video\.json url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/xp.js
-# 抖音火山版
-#看视频获取ck共6个
-/hotsoon/flame/task_done/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
-/hotsoon/item/reaction/_play/? url script-request-body https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/huoshan.js
-# 燃旅视频
-#看视频获取奖励获取ck
-https:\/\/ranlv.lvfacn.com/api.php/Common/pvlog url script-request-header https://raw.githubusercontent.com/ZhiYi-N/Private-Script/master/Scripts/ranlv.js
-#特仑苏获取ck
-https:\/\/xw\.mengniu\.cn\/grass\/Api\/TelunsuHandler\.ashx\?method\=GetMyPrize url script-request-header https://cdn.jsdelivr.net/gh/ziye888/JavaScript@main/Task/tls.js
-# 腾讯自选股
-https://wzq.tenpay.com/cgi-bin/.*user.*.fcgi url script-request-header https://raw.githubusercontent.com/leafxcy/JavaScript/main/txstockV2.js
 
 #blackmatrix7
 # 什么值得买
