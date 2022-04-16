@@ -100,7 +100,7 @@ function read10sck() {
 //        $.msg($.name, "", '10s阅读 获取数据获取成功！'+read10surl)
           if(read10surl)     $.setdata(read10surl[1],"fmcck")
         if ($request.headers.Cookie) $.setdata($request.headers.Cookie, `fmcck`)
-        $.log(read10sck)
+        $.log(fmcck)
         $.msg($.name, "", '碳碳乐园ck 获取数据获取成功！')
     }
 }
