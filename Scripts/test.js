@@ -48,17 +48,15 @@ let ttlyhd = $.getdata('ttlyhd')
                 console.log(`\n\n开始【碳碳乐园${$.index}】`)
 
                 //循环运行
-                for (let c = 0; c < 200; c++) {
-                    $.index = c + 1
 
 
-                    await bankuai()//你要执行的版块  
-                    await $.wait(1000)//你要延迟的时间  1000=1秒
-
+                await bankuai()//你要执行的版块  
+                await $.wait(1000)//你要延迟的时间  1000=1秒
 
 
 
-                }
+
+
             }
         }
     }
