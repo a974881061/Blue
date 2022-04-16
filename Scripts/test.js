@@ -4,13 +4,9 @@ let status;
 
 status = (status = ($.getval("ttlystatus") || "1")) > 1 ? `${status}` : "";
 
-const ttlyhdArr = [], ttlycount = ''
-
 let TaskId = ['GLq3a6EDqPSp9W0SiYE7VIUBsdA2zqwJNY1s9yrlANc=']
 
 let ttlyhd = $.getdata('ttlyhd')
-
-
 
 !(async () => {
     if (typeof $request !== "undefined") {
@@ -18,41 +14,19 @@ let ttlyhd = $.getdata('ttlyhd')
         ttlyck()
 
     } else {
-        ttlyhdArr.push($.getdata('ttlyhd'))
-
-
-        let ttlycount = ($.getval('ttlycount') || '1');
-
-        for (let i = 2; i <= ttlycount; i++) {
-
-            ttlyhdArr.push($.getdata(`ttlyhd${i}`))
-
-
-        }
 
         console.log(
             `\n\n=============================================== 脚本执行 - 北京时间(UTC+8)：${new Date(
                 new Date().getTime() +
                 new Date().getTimezoneOffset() * 60 * 1000 +
                 8 * 60 * 60 * 1000
-            ).toLocaleString()} ===============================================\n`);
+            ).toLocaleString()} ===============================================\n`)
 
-        for (let i = 0; i < ttlyhdArr.length; i++) {
-
-            if (ttlyhdArr[i]) {
-
-                ttlyhd = ttlyhdArr[i];
-
-
-                $.index = i + 1;
-                console.log(`\n\n开始【碳碳乐园${$.index}】`)
+                console.log(`\n\n开始【碳碳乐园】`)
 
                 await bankuai()//你要执行的版块  
                 await $.wait(1000)//你要延迟的时间  1000=1秒
-
             }
-        }
-    }
 })()
 
     .catch((e) => $.logErr(e))
@@ -115,7 +89,7 @@ function bankuai(timeout = 0) {
 
             } finally {
 
-                return
+                resolve()
             }
         }, timeout)
     })
