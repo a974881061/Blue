@@ -47,15 +47,8 @@ let ttlyhd = $.getdata('ttlyhd')
                 $.index = i + 1;
                 console.log(`\n\n开始【碳碳乐园${$.index}】`)
 
-                //循环运行
-
-
                 await bankuai()//你要执行的版块  
                 await $.wait(1000)//你要延迟的时间  1000=1秒
-
-
-
-
 
             }
         }
@@ -103,25 +96,26 @@ function bankuai(timeout = 0) {
             },
         }
 
-        $.get(url, async (err, resp, data) => {
+        $.get(url, async (err, resp, req) => {
             try {
 
-                data = JSON.parse(data)
+                req = JSON.parse(data)
 
-                if (data.code == 0000) {
-                    let bonusLeftNum = data.data.bonusLeftNum
-                    $.log(`总奖励金为:${data.data.bonusTotalNum},当前奖励金为：${bonusLeftNum},已减排${data.data.carbonTotalNum}g,低碳${data.data.carbonDayCount}天`)
+                if (req.code == 0000) {
+                    let bonusLeftNum = req.data.bonusLeftNum
+                    $.log(`总奖励金为:${req.data.bonusTotalNum},当前奖励金为：${bonusLeftNum},已减排${req.data.carbonTotalNum}g,低碳${req.data.carbonDayCount}天`)
                     return bonusLeftNum
 
                 } else {
                     $.log('获取资产失败!!!')
+                    return
 
                 }
             } catch (e) {
 
             } finally {
 
-                resolve()
+                return
             }
         }, timeout)
     })
