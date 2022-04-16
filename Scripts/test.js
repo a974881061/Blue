@@ -75,7 +75,7 @@ function ttlyck() {
             const ttlyhd = JSON.stringify($request.headers.H5_TOKEN)
             if (ttlyhd) $.setdata(ttlyhd, `ttlyhd${status}`)
             $.log(ttlyhd)
-            $.msg($.name, "", `碳碳乐园${status}获取H5_TOKEN成功\n`+ttlyhd)
+            $.msg($.name, "", `碳碳乐园${status}获取H5_TOKEN成功\n`+$request.headers.H5_TOKEN)
         }
     }
 }
