@@ -75,16 +75,6 @@ message = ""
                 }
             }
         }   
-        if (message.length != 0) {
-         $.msg($.name, "", '10s阅读' + message) 
-         }
-        if ($.isNode() && jrpush) {
-            if (message.length != 0) {
-                await notify.sendNotify("10s阅读", `${message}\n\n`);
-            }
-        } else {
-            $.msg($.name, "", '10s阅读' + message)
-        }
         
     })()
     .catch((e) => $.logErr(e))
