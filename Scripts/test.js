@@ -38,7 +38,7 @@ function ttlyck() {
     if ($request.url.indexOf("bass-bonusServer") > -1) {
         if ($request.headers.H5_TOKEN){
             const ttlyhd = JSON.stringify($request.headers.H5_TOKEN)
-            const ttlyh5 = $request.headers
+            const ttlyh5 = JSON.stringify($request.headers)
             $.setdata(ttlyh5,'ttlyh5')
             if (ttlyhd) $.setdata(ttlyhd, `ttlyhd`)
             $.log(ttlyhd)
