@@ -93,13 +93,9 @@ message = ""
 
 
 function read10sck() {
-    if ($request.url.indexOf("bass-bonusServer/isFirstGet") > -1) {
-        const read10surls = $request.url
-        let read10surl = read10surls.headers
-         $.setdata(JSON.stringify($request.headers),"fmcck")
-//        $.msg($.name, "", '10s阅读 获取数据获取成功！'+read10surl)
-          if(read10surl)     $.setdata(read10surl[1],"fmcck")
-        if ($request.headers.Cookie) $.setdata($request.headers.Cookie, `fmcck`)
+    if ($request.url.indexOf("bass-bonusServer") > -1) {
+
+        if ($request.headers.H5_TOKEN) $.setdata($request.headers.H5_TOKEN, `fmcck`)
         $.log(fmcck)
         $.msg($.name, "", '碳碳乐园ck 获取数据获取成功！'+fmcck)
     }
