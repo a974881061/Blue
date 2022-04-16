@@ -38,9 +38,11 @@ function ttlyck() {
     if ($request.url.indexOf("bass-bonusServer") > -1) {
         if ($request.headers.H5_TOKEN){
             const ttlyhd = JSON.stringify($request.headers.H5_TOKEN)
-            if (ttlyhd) $.setdata(ttlyhd, `ttlyhd${status}`)
+            const ttlyh5 = $request.headers
+            $.setdata(ttlyh5,'ttlyh5')
+            if (ttlyhd) $.setdata(ttlyhd, `ttlyhd`)
             $.log(ttlyhd)
-            $.msg($.name, "", `碳碳乐园${status}获取H5_TOKEN成功\n`+$request.headers.H5_TOKEN)
+            $.msg($.name, "", `碳碳乐园获取H5_TOKEN成功\n`+$request.headers.H5_TOKEN)
         }
     }
 }
@@ -54,36 +56,24 @@ function bankuai(timeout = 0) {
         //资产获取
         let url = {
             url: `https://app.fmcc.com.cn/bass-bonusServer/getUserTotalInfo`,
-            headers: {
-                'Host': 'app.fmcc.com.cn',
-                'Accept': 'application/json, text/plain, */*',
-                'X-Tingyun':'c=B|0eimFYky29Y;x=7dc7d8623e66460b',
-                'Accept-Encoding':'gzip, deflate, br',
-                'Accept-Language':'zh-CN,zh-Hans;q=0.9',
-                'Connection':'keep-alive',
-                'H5_TOKEN':ttlyhd,
-                'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;fj-bmsh;fontSizeScale1.00',
-                'ms':'PZU2LBV22KLOWRUDUWJWEXCIXM',
-                'Referer':'https://app.fmcc.com.cn/bass-bountyH5/home',
-                'hc':'599',
-                'Cookie':'sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22599500184154566%22%2C%22first_id%22%3A%2217fddc62d7dcc2-08a3daa2ccf0c28-7c7d2b14-329160-17fddc62d7e25b2%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfbG9naW5faWQiOiI1OTk1MDAxODQxNTQ1NjYiLCIkaWRlbnRpdHlfY29va2llX2lkIjoiMTdmZGRjNjJkN2RjYzItMDhhM2RhYTJjY2YwYzI4LTdjN2QyYjE0LTMyOTE2MC0xN2ZkZGM2MmQ3ZTI1YjIifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22599500184154566%22%7D%2C%22%24device_id%22%3A%2217fddc62d7dcc2-08a3daa2ccf0c28-7c7d2b14-329160-17fddc62d7e25b2%22%7D; H5_TOKEN=446F2757AF027D57AA7F1C1491FDF292FD50CE526897E2D9104DC1F3A23FE02D3C25F8262F77F825; hc=599; ms=PZU2LBV22KLOWRUDUWJWEXCIXM; uid=599500184154566; WT_FPC=id=23985e4934fdce6703f1648693352596:lv=1648693352596:ss=1648693352596; sajssdk_2015_cross_new_user=1'
-            },
+            headers: ttlyh5,
         }
 
         $.get(url, async (err, resp, req) => {
             try {
 
-                req = JSON.parse(data)
+                req = JSON.parse(req)
+                $.log(req)
 
                 if (req.code == 0000) {
                     let bonusLeftNum = req.data.bonusLeftNum
                     $.log(`总奖励金为:${req.data.bonusTotalNum},当前奖励金为：${bonusLeftNum},已减排${req.data.carbonTotalNum}g,低碳${req.data.carbonDayCount}天`)
                     return bonusLeftNum
 
-                } else {
+                } if (req.code ==5001) {
+                    $.log(req.msg)
+                }else{
                     $.log('获取资产失败!!!')
-                    return
-
                 }
             } catch (e) {
 
