@@ -45,6 +45,9 @@ https://ocean.shuqireader.com/api/activity/activity/v1/lottery/info? url script-
 https://ocean.shuqireader.com/api/ad/adserver/v1/api/getAdInfo? url script-request-header http://script.frp.aiuyo.com:8680/scripts/sqxs.js
 https://ocean.shuqireader.com/api/jcollection/collection/iosapi/reading/upload url script-request-body http://script.frp.aiuyo.com:8680/scripts/sqxs.js
 https://ocean.shuqireader.com/api/activity/v1/activity/boxTask? url script-request-header http://script.frp.aiuyo.com:8680/scripts/sqxs.js
+# 抖音极速版
+luckycat/aweme/v1/task/sign_in/detail? url script-request-header http://script.frp.aiuyo.com:8680/scripts/dyjsb.js
+luckycat/aweme/v1/task/done/(read|treasure_task|excitation_ad_treasure_box|excitation_ad)? url script-request-header http://script.frp.aiuyo.com:8680/scripts/dyjsb.js
  
 #Nobyda
 # 吾爱破解 
