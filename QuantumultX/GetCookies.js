@@ -6,9 +6,7 @@ v5/article/info url script-request-header http://script.frp.aiuyo.com:8680/scrip
 Nameless/getTaskBrowse url script-request-header http://script.frp.aiuyo.com:8680/scripts/zqkd.js
 NewTaskIos/getTaskList url script-request-header http://script.frp.aiuyo.com:8680/scripts/zqkd.js
 # 快手
-https://encourage.kuaishou.com/rest/wd/encourage/treasureBox/info url script-request-header http://script.frp.aiuyo.com:8680/scripts/ks.js
-# 快手极速版
-https://nebula.kuaishou.com/nebula/task/earning url script-request-header http://script.frp.aiuyo.com:8680/scripts/ksjsb.js
+https://encourage.kuaishou.com/rest/wd/encourage/treasureBox/info url script-request-header http://script.frp.aiuyo.com:8680/scripts/ksdsp20220504vcto/ks.js
 # 快看点
 https:\/\/api\.yuncheapp\.cn\/pearl-incentive\/api\/v1\/task\/intervalAward\/receive url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
 https://api.yuncheapp.cn/pearl-incentive/api/v1/task/signIn/* url script-request-header http://script.frp.aiuyo.com:8680/scripts/kkd_ck.js
