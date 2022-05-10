@@ -111,4 +111,4 @@ https:\/\/maicai\.api\.ddxq\.mobi\/user\/checkLogin url script-request-header ht
 
 #leaf
 # 咔咔
-https://api.imkaka.com/v1/user/index/ url script-request-header https://raw.githubusercontent.com/leafxcy/JavaScript/main/kaka.js
+https://api.imkaka.com/v1/user/index/ url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/kaka.js 
