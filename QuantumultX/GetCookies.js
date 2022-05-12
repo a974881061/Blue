@@ -48,7 +48,8 @@ luckycat/aweme/v1/task/sign_in/detail? url script-request-header http://script.f
 luckycat/aweme/v1/task/done/(read|treasure_task|excitation_ad_treasure_box|excitation_ad)? url script-request-header http://script.frp.aiuyo.com:8680/scripts/dyjsb.js
 # 九章头条
 https://api.st615.com/v2/user/task url script-request-header  http://script.frp.aiuyo.com:8680/scripts/jztt.js
-
+# 笔趣阁
+/welfare/list url script-request-header http://script.frp.aiuyo.com:8680/scripts/bqg.js
 
 #Nobyda
 # 吾爱破解 
