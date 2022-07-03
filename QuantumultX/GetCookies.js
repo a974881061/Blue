@@ -115,9 +115,8 @@ https:\/\/maicai\.api\.ddxq\.mobi\/user\/checkLogin url script-request-header ht
 #leaf
 # 咔咔
 https://api.imkaka.com/v1/user/index/ url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/kaka.js 
-# 三国系列
-prodenv.toponegames.cn/topone-webapi-sdk/wechat/passAward url script-request-body https://raw.githubusercontent.com/a974881061/Blue/main/Scripts/1024.js
-
+# 饿了么
+https://h5.ele.me/restapi/biz.growth_finetune/v1/finetune/operate? url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/elm.js
 #追书神器
 https://goldcoinnew.zhuishushenqi.com/account/profile url script-request-header https://raw.githubusercontent.com/leafTheFish/DeathNote/main/zssq.js
 
