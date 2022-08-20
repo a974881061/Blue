@@ -12,7 +12,7 @@ obj = {
         "sex" : "男",
         "disclaimers" : "本人承诺填写的信息真实有效，并对本次提交请假申请的信息真实性负责。",
         "lastOut" : null,
-        "totalDays" : "60天7小时",
+        "totalDays" : "6天7小时",
         "mustOut" : 1,
         "isResumptionSelf" : null,
         "leaveType" : "暑假离校学生情况登记",
@@ -59,7 +59,7 @@ obj = {
           }
         ],
         "actEndTime" : "09-02 22:16",
-        "actEndTimeDesc" : "60天7小时",
+        "actEndTimeDesc" : "6天7小时",
         "reportLongitude" : null,
         "leaveCreateTime" : "07-02 15:17",
         "destination" : "福建省/漳州市/平和县/山格镇高楼7号",
