@@ -12,7 +12,7 @@ obj = {
         "sex" : "男",
         "disclaimers" : "本人承诺填写的信息真实有效，并对本次提交请假申请的信息真实性负责。",
         "lastOut" : null,
-        "totalDays" : "6天7小时",
+        "totalDays" : "60天7小时",
         "mustOut" : 1,
         "isResumptionSelf" : null,
         "leaveType" : "暑假离校学生情况登记",
@@ -59,10 +59,10 @@ obj = {
           }
         ],
         "actEndTime" : "09-02 22:16",
-        "actEndTimeDesc" : "6天7小时",
+        "actEndTimeDesc" : "60天7小时",
         "reportLongitude" : null,
         "leaveCreateTime" : "07-02 15:17",
-        "destination" : "福建省/漳州市/平和县/山格镇高楼7号",
+        "destination" : "福建省/福州市/仓山区/福建农林大学",
         "leaveReason" : "去你的心里去你的心里",
         "reportAttach" : [
   
@@ -70,7 +70,7 @@ obj = {
         "startDate" : "2022-07-04 15:16",
         "approverOpinion" : "",
         "startTime" : "07-04 15:16",
-        "userName" : "许宇俊",
+        "userName" : "BLUE",
         "reportStatus" : null,
         "reportLogs" : [
   
@@ -123,7 +123,7 @@ obj = {
             "approver" : {
               "userWid" : "1010664769",
               "userId" : "3196020062",
-              "userName" : "许宇俊"
+              "userName" : "BLUE"
             },
             "level" : null,
             "approveType" : null,
@@ -397,7 +397,7 @@ obj = {
         "userId" : "3196020062",
         "gender" : 1,
         "userWid" : "1010664769",
-        "userName" : "许宇俊",
+        "userName" : "BLUE",
         "major" : "网络工程",
         "grade" : "2019",
         "cls" : "19网工2班",
