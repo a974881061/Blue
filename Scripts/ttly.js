@@ -52,7 +52,6 @@ function ttlyck() {
 //版块
 function bankuai(timeout = 0) {
     return new Promise((resolve) => {
-        $.log(ttlyhd)
         //资产获取
         let url = {
             url: `https://app.fmcc.com.cn/bass-bonusServer/getUserTotalInfo`,
