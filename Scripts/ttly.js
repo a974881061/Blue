@@ -41,7 +41,7 @@ function ttlyck() {
             if (ttlyhd != ttlyh5) {
                 $.setdata(ttlyhd, `ttlyhd`)
                 $.log(ttlyhd)
-                $.msg($.name, "", `碳碳乐园获取新的H5_TOKEN成功\n`+ttlyhd)
+                $.msg($.name, "", `碳碳乐园获取新的H5_TOKEN成功\n`+$request.headers.H5_TOKEN)
             }
         }
     }
