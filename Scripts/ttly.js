@@ -38,9 +38,10 @@ function ttlyck() {
     if ($request.url.indexOf("bass-bonusServer") > -1) {
         if ($request.headers.H5_TOKEN){
             const ttlyhd = JSON.stringify($request.headers.H5_TOKEN)
-            if (ttlyhd != ttlyh5) {$.setdata(ttlyhd, `ttlyhd`)
-            $.log(ttlyhd)
-            $.msg($.name, "", `碳碳乐园获取新的H5_TOKEN成功\n`+$request.headers.H5_TOKEN)
+            if (ttlyhd != ttlyh5) {
+                $.setdata(`ttlyhd`, ttlyhd)
+                $.log(ttlyhd)
+                $.msg($.name, "", `碳碳乐园获取新的H5_TOKEN成功\n`+ttlyhd)
             }
         }
     }
