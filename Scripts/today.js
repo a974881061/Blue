@@ -12,16 +12,16 @@ obj = {
         "sex" : "男",
         "disclaimers" : "本人承诺填写的信息真实有效，并对本次提交请假申请的信息真实性负责。",
         "lastOut" : null,
-        "totalDays" : "60天7小时",
+        "totalDays" : "30天7小时",
         "mustOut" : 1,
         "isResumptionSelf" : null,
-        "leaveType" : "暑假离校学生情况登记",
+        "leaveType" : "事假申请",
         "dstStatus" : "6",
         "isIotReport" : 0,
         "reportLocation" : null,
         "actStatus" : "6",
         "ccInfo" : null,
-        "endDate" : "2022-09-02 22:16",
+        "endDate" : "2022-10-02 22:16",
         "urgencyMobile" : "13123219191",
         "status" : "2",
         "reportComment" : null,
@@ -42,7 +42,7 @@ obj = {
             "extendId" : null,
             "approveOption" : null,
             "nodeType" : null,
-            "createTime" : "2022-07-02 15:17:23",
+            "createTime" : "2022-09-02 15:17:23",
             "delayStatus" : null
           },
           {
@@ -63,7 +63,7 @@ obj = {
         "reportLongitude" : null,
         "leaveCreateTime" : "07-02 15:17",
         "destination" : "福建省/福州市/仓山区/福建农林大学",
-        "leaveReason" : "去你的心里去你的心里",
+        "leaveReason" : "出去实习出去实习",
         "reportAttach" : [
   
         ],
@@ -87,7 +87,7 @@ obj = {
         "applyAttach" : [
   
         ],
-        "leaveName" : "暑假离校学生情况登记",
+        "leaveName" : "事假申请",
         "userWid" : null,
         "createTime" : "07-02 15:17",
         "studentMobile" : "15259607976",
