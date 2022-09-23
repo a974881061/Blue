@@ -65,7 +65,7 @@ https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean url script-reques
 # 快看漫画
 ^https:\/\/api\.kkmh\.com\/v\d\/passport\/user url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/KuaiKan-DailyBonus/KKMH.js
 # 爱奇艺 cookie
-^https:\/\/passport\.iqiyi\.com\/apis\/user\/info\.action url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js
+^https:\/\/passport\.iqiyi\.com\/apis\/user\/ url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js
 
 #Sunert
 # 京东到家 
