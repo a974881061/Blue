@@ -12,7 +12,7 @@ obj = {
         "sex" : "男",
         "disclaimers" : "本人承诺填写的信息真实有效，并对本次提交请假申请的信息真实性负责。",
         "lastOut" : null,
-        "totalDays" : "30天7小时",
+        "totalDays" : "31天7小时",
         "mustOut" : 1,
         "isResumptionSelf" : null,
         "leaveType" : "事假申请",
@@ -21,7 +21,7 @@ obj = {
         "reportLocation" : null,
         "actStatus" : "6",
         "ccInfo" : null,
-        "endDate" : "2022-10-02 22:16",
+        "endDate" : "2022-11-02 22:16",
         "urgencyMobile" : "13123219191",
         "status" : "2",
         "reportComment" : null,
@@ -42,7 +42,7 @@ obj = {
             "extendId" : null,
             "approveOption" : null,
             "nodeType" : null,
-            "createTime" : "2022-09-02 15:17:23",
+            "createTime" : "2022-10-02 15:17:23",
             "delayStatus" : null
           },
           {
@@ -54,22 +54,22 @@ obj = {
             "extendId" : null,
             "approveOption" : null,
             "nodeType" : null,
-            "createTime" : "2022-09-02 15:45:03",
+            "createTime" : "2022-10-02 15:45:03",
             "delayStatus" : null
           }
         ],
-        "actEndTime" : "09-02 22:16",
-        "actEndTimeDesc" : "30天7小时",
+        "actEndTime" : "10-02 22:16",
+        "actEndTimeDesc" : "31天7小时",
         "reportLongitude" : null,
-        "leaveCreateTime" : "09-02 15:17",
+        "leaveCreateTime" : "10-02 15:17",
         "destination" : "福建省/福州市/仓山区/福建农林大学",
         "leaveReason" : "出去实习出去实习",
         "reportAttach" : [
   
         ],
-        "startDate" : "2022-09-02 15:16",
+        "startDate" : "2022-10-02 15:16",
         "approverOpinion" : "",
-        "startTime" : "09-02 15:16",
+        "startTime" : "10-02 15:16",
         "userName" : "BLUE",
         "reportStatus" : null,
         "reportLogs" : [
@@ -81,7 +81,7 @@ obj = {
           "longitude" : "119.24190072574089",
           "address" : "福建省福州市仓山区同安路"
         },
-        "endTime" : "10-02 22:16",
+        "endTime" : "11-02 22:16",
         "gender" : "1",
         "approverId" : "000Q818017",
         "applyAttach" : [
@@ -89,7 +89,7 @@ obj = {
         ],
         "leaveName" : "事假申请",
         "userWid" : null,
-        "createTime" : "09-02 15:17",
+        "createTime" : "10-02 15:17",
         "studentMobile" : "15259607976",
         "leaveHour" : "86820",
         "dormitoryInfo" : "-",
@@ -128,7 +128,7 @@ obj = {
             "level" : null,
             "approveType" : null,
             "approveOption" : null,
-            "createTime" : "09-02 15:17",
+            "createTime" : "10-02 15:17",
             "delayStatus" : null
           },
           {
@@ -348,7 +348,7 @@ obj = {
                 "nextApproverIndex" : null,
                 "nodeWid" : "1003",
                 "nodeName" : "辅导员",
-                "createTime" : "2022-09-02 15:17:23",
+                "createTime" : "2022-10-02 15:17:23",
                 "approvers" : [
   
                 ],
@@ -365,7 +365,7 @@ obj = {
             "level" : "1",
             "approveType" : null,
             "approveOption" : "",
-            "createTime" : "09-02 15:45",
+            "createTime" : "10-02 15:45",
             "delayStatus" : false
           }
         ],
@@ -416,7 +416,7 @@ obj = {
         "operatorName" : "艾赛江·扎衣尔",
         "operatorDate" : "2021-12-15 09:54:37"
       },
-      "nowTime" : "2022-09-20 17:19:53",
+      "nowTime" : "2022-10-20 17:19:53",
       "termination" : {
         "terminationObjectName" : null,
         "terminationDate" : null,
