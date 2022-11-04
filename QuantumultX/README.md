@@ -1,3 +1,15 @@
+# QuantumultX-JS
+
+`Cuttlefish`
+
+https://gitlab.com/ddgksf2013/Cuttlefish/
+
+----------
+
+`blackmatrix7`
+
+https://github.com/blackmatrix7/ios_rule_script
+
 # QuantumultX-Boxjs
 
 `David`
