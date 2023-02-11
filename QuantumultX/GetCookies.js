@@ -2,7 +2,7 @@ hostname = user-api.smzdm.com,c.tieba.baidu.com,tiebac.baidu.com,maicai.api.ddxq
 
 # blackmatrix7
 # 什么值得买每日自动签到
-^https?:\/\/user-api\.smzdm\.com\/checkin$ url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_daily.j
+^https?:\/\/user-api\.smzdm\.com\/checkin$ url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_daily.js
 # 百度贴吧每日自动签到
 ^https?:\/\/(c\.tieba\.baidu\.com|180\.97\.\d+\.\d+)\/c\/s\/login url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/tieba/tieba_signin.js
 ^https?:\/\/c\.tieba\.baidu\.com\/c\/s\/channelIconConfig url script-request-header https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/tieba/tieba_signin.js
