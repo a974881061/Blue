@@ -1,4 +1,8 @@
-# 什么值得买去广告
+#!name=什么值得买
+#!desc=自用
+#!openUrl=https://github.com/a974881061/Blue/tree/main/Loon
+#!author=Blue
+#!icon=https://gitlab.com/lodepuly/iconlibrary/-/raw/master/App_icon/120px/smzdm.png
 
 [URL Rewrite]
 # 什么值得买_好价详情页去广告
