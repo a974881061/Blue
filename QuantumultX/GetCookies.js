@@ -1,4 +1,4 @@
-hostname = user-api.smzdm.com,c.tieba.baidu.com,tiebac.baidu.com,maicai.api.ddxq.mobi,passport.iqiyi.com
+hostname = user-api.smzdm.com,c.tieba.baidu.com,tiebac.baidu.com,maicai.api.ddxq.mobi,passport.iqiyi.com,miniapp.yaduo.com
 
 # blackmatrix7
 # 什么值得买每日自动签到
