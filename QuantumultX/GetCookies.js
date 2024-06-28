@@ -12,3 +12,8 @@ hostname = user-api.smzdm.com,c.tieba.baidu.com,tiebac.baidu.com,maicai.api.ddxq
 
 # 爱奇艺
 ^https:\/\/passport\.iqiyi\.com\/apis\/user\/ url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/iQIYI-DailyBonus/iQIYI.js
+
+#亚朵
+^https:\/\/miniapp\.yaduo\.com\/atourlife\/signIn\/signIn user\/ url script-request-header https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/adjd.js
+
+  
