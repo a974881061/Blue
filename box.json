@@ -1,0 +1,69 @@
+{
+  "id": "xinyao.app.sub",
+  "name": "鑫耀光环签到",
+  "author": "@YOUR_GITHUB_USERNAME",
+  "icon": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/icons/xinyao.png",
+  "repo": "https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME",
+  "apps": [
+    {
+      "id": "xinyao-signin",
+      "name": "鑫耀光环签到",
+      "keys": [
+        "XYHG_Authorization",
+        "XYHG_CronTime",
+        "XYHG_ExpireWarning"
+      ],
+      "settings": [
+        {
+          "id": "XYHG_Authorization",
+          "name": "会员 Token",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "自动抓取的 Bearer Token，包含 vipcode。打开小程序后由 GetToken 脚本自动写入，也可手动粘贴。"
+        },
+        {
+          "id": "XYHG_CronTime",
+          "name": "签到时间（Cron 表达式）",
+          "val": "0 8 * * *",
+          "type": "text",
+          "desc": "默认每天 08:00 签到。格式：分 时 日 月 周，例如 '30 7 * * *' 表示 07:30。"
+        },
+        {
+          "id": "XYHG_ExpireWarning",
+          "name": "Token 过期预警（小时）",
+          "val": 6,
+          "type": "text",
+          "desc": "Token 剩余时间低于此值时推送提醒，默认 6 小时。"
+        }
+      ],
+      "author": "@YOUR_GITHUB_USERNAME",
+      "repo": "https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME",
+      "icons": [
+        "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/icons/xinyao_mini.png",
+        "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/icons/xinyao.png"
+      ],
+      "script": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/Tasks/xinyao_signin.js",
+      "descs_html": [
+        "<h4>使用方法</h4>",
+        "<ol>",
+        "<li>Loon 配置 [Script] 添加 Token 抓取脚本（见下方）</li>",
+        "<li>Loon 配置 [MITM] 添加 hostname = crm.theringlive.com</li>",
+        "<li>打开微信小程序「鑫耀光环」，触发 Token 自动抓取</li>",
+        "<li>Loon 配置 [Script] 添加签到定时脚本</li>",
+        "</ol>",
+        "<h4>[Script] 配置</h4>",
+        "<pre>",
+        "# Token 自动抓取（打开小程序时触发）",
+        "http-request ^https://crm\\.theringlive\\.com:13881/api/paypoint/GetIsBonusStatus script-path=xinyao_gettoken.js, tag=鑫耀光环Token抓取, requires-body=false, timeout=10, enabled=true",
+        "",
+        "# 每日签到（cron 定时）",
+        "cron \"0 8 * * *\" script-path=xinyao_signin.js, tag=鑫耀光环签到, enabled=true, timeout=30",
+        "</pre>",
+        "<h4>[MITM]</h4>",
+        "<pre>hostname = crm.theringlive.com</pre>"
+      ]
+    }
+  ]
+}
