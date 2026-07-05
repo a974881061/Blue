@@ -1,0 +1,15 @@
+#!name=徐汇日月光签到
+#!desc=微信小程序「徐汇日月光」每日自动签到，Token 自动抓取 + 过期提醒
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/rxgyg.jpeg
+
+[Script]
+# Token 自动抓取（打开小程序时触发，拦截 asem.cjtzn.com 请求获取 token header）
+http-request ^https://asemp\.cjtzn\.com/api/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/rxgyg_gettoken.js, tag=日月光Token抓取, requires-body=false, timeout=10, enabled=true
+
+# 每日签到（cron 定时，默认每天 09:00）
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/rxgyg_signin.js, tag=日月光签到, enabled=true, timeout=30
+
+[MITM]
+hostname = asem.cjtzn.com
