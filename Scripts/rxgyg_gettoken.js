@@ -11,7 +11,7 @@
  * hostname = asem.cjtzn.com
  */
 
-var STORE_KEY = "RXGYG_Token";
+var STORE_KEY = "RXGYG_Token_1";
 
 (function () {
   var headers = $request.headers || {};
@@ -40,9 +40,9 @@ var STORE_KEY = "RXGYG_Token";
   // 不同则更新并通知
   var ok = $persistentStore.write(token, STORE_KEY);
   if (ok) {
-    $notification.post("日月光 Token", "已更新", token.substring(0, 20) + "...");
+    $notification.post("日月光 Token", "账号1 已更新", token.substring(0, 20) + "...");
   } else {
-    $notification.post("日月光 Token", "保存失败", "写入 persistentStore 失败");
+    $notification.post("日月光 Token", "账号1 保存失败", "写入 persistentStore 失败");
   }
 
   $done({});
