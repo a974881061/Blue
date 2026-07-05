@@ -39,7 +39,7 @@
       "descs_html": [
         "<h4>一键安装（推荐）</h4>",
         "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
-        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/xinyao_signin.plugin</pre>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/xinyao_signin.plugin</pre>",
         "<h4>激活 Token</h4>",
         "<ol>",
         "<li>安装插件后打开微信小程序「鑫耀光环」，触发 Token 自动抓取</li>",
@@ -49,20 +49,48 @@
     },
     {
       "id": "rxgyg-signin",
-      "name": "徐汇日月光签到",
+      "name": "徐汇日月光签到（多账号）",
       "keys": [
-        "RXGYG_Token",
+        "RXGYG_AccountCount",
+        "RXGYG_Token_1",
+        "RXGYG_Token_2",
+        "RXGYG_Token_3",
         "RXGYG_ExpireWarning"
       ],
       "settings": [
         {
-          "id": "RXGYG_Token",
-          "name": "Token",
+          "id": "RXGYG_AccountCount",
+          "name": "账号数量",
+          "val": 1,
+          "type": "text",
+          "desc": "需要签到的账号数量，默认 1。增加后下方会出现更多 Token 输入框。"
+        },
+        {
+          "id": "RXGYG_Token_1",
+          "name": "账号1 Token（自动抓取）",
           "val": "",
           "type": "textarea",
           "autoGrow": true,
-          "rows": 3,
-          "desc": "自动抓取的 JWT Token。打开小程序后由 GetToken 脚本自动写入，也可手动粘贴。"
+          "rows": 2,
+          "desc": "由 GetToken 脚本自动抓取写入，也可手动粘贴。"
+        },
+        {
+          "id": "RXGYG_Token_2",
+          "name": "账号2 Token（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "手动粘贴账号2的 JWT Token。"
+        },
+        {
+          "id": "RXGYG_Token_3",
+          "name": "账号3 Token（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "手动粘贴账号3的 JWT Token。"
         },
         {
           "id": "RXGYG_ExpireWarning",
@@ -81,11 +109,17 @@
       "descs_html": [
         "<h4>一键安装（推荐）</h4>",
         "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
-        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/rxgyg_signin.plugin</pre>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/rxgyg_signin.plugin</pre>",
+        "<h4>多账号使用说明</h4>",
+        "<ol>",
+        "<li><b>账号1</b>：打开小程序自动抓取 Token，无需手动操作</li>",
+        "<li><b>账号2/3</b>：需手动登录对应微信账号，打开小程序后用抓包工具获取 Token，粘贴到上方输入框</li>",
+        "<li>修改「账号数量」控制参与签到的账号数</li>",
+        "</ol>",
         "<h4>激活 Token</h4>",
         "<ol>",
         "<li>安装插件后打开微信小程序「徐汇日月光」，触发 Token 自动抓取</li>",
-        "<li>收到「日月光 Token 已更新」通知后即可等待每日自动签到</li>",
+        "<li>收到「账号1 已更新」通知后即可等待每日自动签到</li>",
         "</ol>"
       ]
     }
