@@ -1,5 +1,5 @@
 {
-  "id": "xinyao.app.sub",
+  "id": "labao.sub",
   "name": "辣堡的应用订阅",
   "author": "@辣堡",
   "icon": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg",
@@ -54,6 +54,57 @@
         "</pre>",
         "<h4>[MITM]</h4>",
         "<pre>hostname = crm.theringlive.com</pre>"
+      ]
+    },
+    {
+      "id": "rxgyg-signin",
+      "name": "徐汇日月光签到",
+      "keys": [
+        "RXGYG_Token",
+        "RXGYG_ExpireWarning"
+      ],
+      "settings": [
+        {
+          "id": "RXGYG_Token",
+          "name": "Token",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "自动抓取的 JWT Token。打开小程序后由 GetToken 脚本自动写入，也可手动粘贴。"
+        },
+        {
+          "id": "RXGYG_ExpireWarning",
+          "name": "Token 过期预警（小时）",
+          "val": 6,
+          "type": "text",
+          "desc": "Token 剩余时间低于此值时推送提醒，默认 6 小时。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/rxgyg.jpeg"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Tasks/rxgyg_signin.js",
+      "descs_html": [
+        "<h4>使用方法</h4>",
+        "<ol>",
+        "<li>Loon 配置 [Script] 添加 Token 抓取脚本（见下方）</li>",
+        "<li>Loon 配置 [MITM] 添加 hostname = asem.cjtzn.com</li>",
+        "<li>打开微信小程序「徐汇日月光」，触发 Token 自动抓取</li>",
+        "<li>Loon 配置 [Script] 添加签到定时脚本</li>",
+        "</ol>",
+        "<h4>[Script] 配置</h4>",
+        "<pre>",
+        "# Token 自动抓取（打开小程序时触发）",
+        "http-request ^https://asemp\\.cjtzn\\.com/api/ script-path=rxgyg_gettoken.js, tag=日月光Token抓取, requires-body=false, timeout=10, enabled=true",
+        "",
+        "# 每日签到（cron 定时）",
+        "cron \"0 8 * * *\" script-path=rxgyg_signin.js, tag=日月光签到, enabled=true, timeout=30",
+        "</pre>",
+        "<h4>[MITM]</h4>",
+        "<pre>hostname = asem.cjtzn.com</pre>"
       ]
     }
   ]
