@@ -35,25 +35,16 @@
       "icons": [
         "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/xygh.jpeg"
       ],
-      "script": "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/Tasks/xinyao_signin.js",
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/xinyao_signin.js",
       "descs_html": [
-        "<h4>使用方法</h4>",
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/xinyao_signin.plugin</pre>",
+        "<h4>激活 Token</h4>",
         "<ol>",
-        "<li>Loon 配置 [Script] 添加 Token 抓取脚本（见下方）</li>",
-        "<li>Loon 配置 [MITM] 添加 hostname = crm.theringlive.com</li>",
-        "<li>打开微信小程序「鑫耀光环」，触发 Token 自动抓取</li>",
-        "<li>Loon 配置 [Script] 添加签到定时脚本</li>",
-        "</ol>",
-        "<h4>[Script] 配置</h4>",
-        "<pre>",
-        "# Token 自动抓取（打开小程序时触发）",
-        "http-request ^https://crm\\.theringlive\\.com:13881/api/paypoint/GetIsBonusStatus script-path=xinyao_gettoken.js, tag=鑫耀光环Token抓取, requires-body=false, timeout=10, enabled=true",
-        "",
-        "# 每日签到（cron 定时）",
-        "cron \"0 8 * * *\" script-path=xinyao_signin.js, tag=鑫耀光环签到, enabled=true, timeout=30",
-        "</pre>",
-        "<h4>[MITM]</h4>",
-        "<pre>hostname = crm.theringlive.com</pre>"
+        "<li>安装插件后打开微信小程序「鑫耀光环」，触发 Token 自动抓取</li>",
+        "<li>收到「会员 Token 已更新」通知后即可等待每日自动签到</li>",
+        "</ol>"
       ]
     },
     {
@@ -86,25 +77,16 @@
       "icons": [
         "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/rxgyg.jpeg"
       ],
-      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Tasks/rxgyg_signin.js",
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/rxgyg_signin.js",
       "descs_html": [
-        "<h4>使用方法</h4>",
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/rxgyg_signin.plugin</pre>",
+        "<h4>激活 Token</h4>",
         "<ol>",
-        "<li>Loon 配置 [Script] 添加 Token 抓取脚本（见下方）</li>",
-        "<li>Loon 配置 [MITM] 添加 hostname = asem.cjtzn.com</li>",
-        "<li>打开微信小程序「徐汇日月光」，触发 Token 自动抓取</li>",
-        "<li>Loon 配置 [Script] 添加签到定时脚本</li>",
-        "</ol>",
-        "<h4>[Script] 配置</h4>",
-        "<pre>",
-        "# Token 自动抓取（打开小程序时触发）",
-        "http-request ^https://asemp\\.cjtzn\\.com/api/ script-path=rxgyg_gettoken.js, tag=日月光Token抓取, requires-body=false, timeout=10, enabled=true",
-        "",
-        "# 每日签到（cron 定时）",
-        "cron \"0 8 * * *\" script-path=rxgyg_signin.js, tag=日月光签到, enabled=true, timeout=30",
-        "</pre>",
-        "<h4>[MITM]</h4>",
-        "<pre>hostname = asem.cjtzn.com</pre>"
+        "<li>安装插件后打开微信小程序「徐汇日月光」，触发 Token 自动抓取</li>",
+        "<li>收到「日月光 Token 已更新」通知后即可等待每日自动签到</li>",
+        "</ol>"
       ]
     }
   ]
