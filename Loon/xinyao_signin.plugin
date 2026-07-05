@@ -1,0 +1,15 @@
+#!name=鑫耀光环签到
+#!desc=微信小程序「鑫耀光环」每日自动签到，Token 自动抓取 + 过期提醒
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/xygh.jpeg
+
+[Script]
+# Token 自动抓取（打开小程序时触发，拦截 GetIsBonusStatus 请求获取会员 Token）
+http-request ^https://crm\.theringlive\.com:13881/api/paypoint/GetIsBonusStatus script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/xinyao_gettoken.js, tag=鑫耀光环Token抓取, requires-body=false, timeout=10, enabled=true
+
+# 每日签到（cron 定时，默认每天 09:00）
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/xinyao_signin.js, tag=鑫耀光环签到, enabled=true, timeout=30
+
+[MITM]
+hostname = crm.theringlive.com
