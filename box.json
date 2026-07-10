@@ -122,6 +122,74 @@
         "<li>收到「账号1 已更新」通知后即可等待每日自动签到</li>",
         "</ol>"
       ]
+    },
+    {
+      "id": "mlnb-signin",
+      "name": "茉莉奶白签到（多账号）",
+      "keys": [
+        "MLNB_AccountCount",
+        "MLNB_Token_1",
+        "MLNB_Token_2",
+        "MLNB_Token_3"
+      ],
+      "settings": [
+        {
+          "id": "MLNB_AccountCount",
+          "name": "账号数量",
+          "val": 1,
+          "type": "text",
+          "desc": "需要签到的账号数量，默认 1。"
+        },
+        {
+          "id": "MLNB_Token_1",
+          "name": "账号1 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "由 GetToken 脚本自动抓取 Qm-User-Token 写入，也可手动粘贴。"
+        },
+        {
+          "id": "MLNB_Token_2",
+          "name": "账号2 Token（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "手动粘贴账号2的 Qm-User-Token。"
+        },
+        {
+          "id": "MLNB_Token_3",
+          "name": "账号3 Token（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "手动粘贴账号3的 Qm-User-Token。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/mlnb.jpeg"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mlnb_signin.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/mlnb_signin.plugin</pre>",
+        "<h4>多账号使用说明</h4>",
+        "<ol>",
+        "<li><b>账号1</b>：打开小程序自动抓取 Token，无需手动操作</li>",
+        "<li><b>账号2/3</b>：需手动登录对应微信账号，用抓包工具获取 Qm-User-Token，粘贴到上方输入框</li>",
+        "<li>修改「账号数量」控制参与签到的账号数</li>",
+        "</ol>",
+        "<h4>激活 Token</h4>",
+        "<ol>",
+        "<li>安装插件后打开微信小程序「茉莉奶白」，触发 Token 自动抓取</li>",
+        "<li>收到「账号1 已更新」通知后即可等待每日自动签到</li>",
+        "</ol>"
+      ]
     }
   ]
 }
