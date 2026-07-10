@@ -1,0 +1,15 @@
+#!name=茉莉奶白签到
+#!desc=微信小程序「茉莉奶白」每日自动签到，Token 自动抓取，支持多账号
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/mlnb.jpeg
+
+[Script]
+# Token 自动抓取（打开小程序时触发）
+http-request ^https://webapi\.qmai\.cn/web/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mlnb_gettoken.js, tag=茉莉奶白Token抓取, requires-body=false, timeout=10, enabled=true
+
+# 每日签到（cron 定时，默认每天 09:00）
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mlnb_signin.js, tag=茉莉奶白签到, enabled=true, timeout=60
+
+[MITM]
+hostname = webapi.qmai.cn
