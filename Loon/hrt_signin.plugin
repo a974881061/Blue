@@ -1,0 +1,15 @@
+#!name=华润通签到
+#!desc=微信小程序「华润通」每日自动签到，加密凭证自动抓取，支持多账号
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/hrt.jpeg
+
+[Script]
+# 签到凭证自动抓取（打开小程序签到页面时触发）
+http-request ^https://mid\.huaruntong\.cn/api/points/saveQuestionSignin$ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/hrt_gettoken.js, tag=华润通凭证抓取, requires-body=true, timeout=10, enabled=true
+
+# 每日签到（cron 定时，默认每天 09:00）
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/hrt_signin.js, tag=华润通签到, enabled=true, timeout=60
+
+[MITM]
+hostname = mid.huaruntong.cn
