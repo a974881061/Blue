@@ -190,6 +190,69 @@
         "<li>收到「账号1 已更新」通知后即可等待每日自动签到</li>",
         "</ol>"
       ]
+    },
+    {
+      "id": "hrt-signin",
+      "name": "华润通签到（多账号）",
+      "keys": [
+        "HRT_AccountCount",
+        "HRT_Body_1",
+        "HRT_Body_2",
+        "HRT_Body_3"
+      ],
+      "settings": [
+        {
+          "id": "HRT_AccountCount",
+          "name": "账号数量",
+          "val": 1,
+          "type": "text",
+          "desc": "需要签到的账号数量，默认 1。"
+        },
+        {
+          "id": "HRT_Body_1",
+          "name": "账号1 签到凭证（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "由 GetToken 脚本自动抓取加密请求体写入。凭证过期后需重新打开小程序签到页面触发更新。"
+        },
+        {
+          "id": "HRT_Body_2",
+          "name": "账号2 签到凭证（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "手动粘贴账号2的加密请求体。"
+        },
+        {
+          "id": "HRT_Body_3",
+          "name": "账号3 签到凭证（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "手动粘贴账号3的加密请求体。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/hrt.jpeg"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/hrt_signin.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/hrt_signin.plugin</pre>",
+        "<h4>使用说明</h4>",
+        "<ol>",
+        "<li>安装插件后打开微信小程序「华润通」→ 进入签到页面 → 点击签到</li>",
+        "<li>收到「账号1 已更新」通知后凭证即已保存</li>",
+        "<li><b>注意</b>：华润通签到 API 使用加密请求体，凭证有效期有限，过期后需重新打开小程序签到</li>",
+        "</ol>"
+      ]
     }
   ]
 }
