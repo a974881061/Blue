@@ -14,7 +14,6 @@
  * - IBL_Creds_2       账号2 凭证 JSON（手动填写）
  * - IBL_Creds_3       账号3 凭证 JSON（手动填写）
  */
-
 const $env = (function () {
   const isLoon = typeof $loon !== "undefined";
   const isSurge = typeof $httpClient !== "undefined" && !isLoon;
@@ -70,7 +69,7 @@ function signInAccount(index, callback) {
 
   // 执行签到（headers、body 复刻自抓包）
   var url = "https://mh5.bl.com/h5_gateway/signIn/submitSignInv2.htm";
-  var body = "{\"channelId\":1,\"buId\":\"3000\",\"shopId\":\"-1\"}";
+  var body = '{"channelId":1,"buId":"3000","shopId":"-1"}';
   var headers = {
     "content-type": "application/json",
     "channelid": "1",
@@ -84,6 +83,7 @@ function signInAccount(index, callback) {
     "Content-Length": "43",
     "Host": "mh5.bl.com"
   };
+
   if (creds.devicekey) headers["devicekey"] = creds.devicekey;
   if (creds.smDeviceid) headers["sm-deviceid"] = creds.smDeviceid;
 
@@ -124,7 +124,6 @@ function signInAccount(index, callback) {
 
 // === 顺序执行所有账号 ===
 var currentIndex = 1;
-
 function processNext() {
   if (currentIndex > accountCount) {
     var summary = results.join("\n");
@@ -132,11 +131,9 @@ function processNext() {
     finish();
     return;
   }
-
   signInAccount(currentIndex, function () {
     currentIndex++;
     processNext();
   });
 }
-
 processNext();
