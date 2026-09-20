@@ -229,7 +229,7 @@ function getTaskList(creds, callback) {
   // 请求体是 base64 编码的 {}
   var body = b64encode("{}");
   var headers = buildHeaders(creds);
-  headers["content-type"] = "application/x-www-form-urlencoded";
+  // content-type 保持 application/json，请求体是 base64 编码的 JSON 字符串
 
   $httpClient.post({
     url: url,
@@ -263,7 +263,7 @@ function doTask(creds, task, callback) {
   };
   var body = b64encode(JSON.stringify(bodyObj));
   var headers = buildHeaders(creds);
-  headers["content-type"] = "application/x-www-form-urlencoded";
+  // content-type 保持 application/json，请求体是 base64 编码的 JSON 字符串
 
   $httpClient.post({
     url: url,
