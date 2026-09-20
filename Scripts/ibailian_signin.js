@@ -242,8 +242,13 @@ function getTaskList(creds, callback) {
       return;
     }
     var parsed = parseResponse(data);
-    if (!parsed || parsed.resCode !== "00100000") {
-      callback("任务列表解析失败", []);
+    if (!parsed) {
+      callback("获取任务列表失败：响应解析失败", []);
+      return;
+    }
+    if (parsed.resCode !== "00100000") {
+      var errMsg = parsed.msg || parsed.errMsg || ("错误码 " + parsed.resCode);
+      callback("获取任务列表失败：" + errMsg, []);
       return;
     }
     var obj = parsed._obj || {};
