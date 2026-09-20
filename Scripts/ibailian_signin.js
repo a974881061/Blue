@@ -226,10 +226,8 @@ function doSignIn(creds, callback) {
 // === 2. 获取任务列表 ===
 function getTaskList(creds, callback) {
   var url = "https://mh5.bl.com/h5_gateway/signIn/getTaskListv2.htm";
-  // 请求体是 base64 编码的 {}
-  var body = b64encode("{}");
+  var body = "{}";
   var headers = buildHeaders(creds);
-  // content-type 保持 application/json，请求体是 base64 编码的 JSON 字符串
 
   $httpClient.post({
     url: url,
@@ -266,9 +264,8 @@ function doTask(creds, task, callback) {
     taskId: String(task.taskId || "14"),
     memberToken: creds.membertoken
   };
-  var body = b64encode(JSON.stringify(bodyObj));
+  var body = JSON.stringify(bodyObj);
   var headers = buildHeaders(creds);
-  // content-type 保持 application/json，请求体是 base64 编码的 JSON 字符串
 
   $httpClient.post({
     url: url,
