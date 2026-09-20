@@ -1,12 +1,12 @@
 #!name=i百联每日签到
-#!desc=App「i百联」每日自动签到赚积分，Token 自动抓取，支持多账号
+#!desc=App「i百联」每日自动签到 + 积分任务，Token 自动抓取，支持多账号
 #!author=辣堡
 #!homepage=https://github.com/a974881061/Blue
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/ibl.jpeg
 [Script]
 # Token 自动抓取（打开 App 积分页时触发，拦截 h5_gateway 请求获取 membertoken）
 http-request ^https?:\/\/mh5\.bl\.com\/h5_gateway\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/ibailian_gettoken.js, tag=i百联Token抓取, requires-body=false, timeout=10, enabled=true
-# 每日签到（cron 定时，默认每天 09:00）
-cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/ibailian_signin.js, tag=i百联签到, enabled=true, timeout=30
+# 每日签到 + 积分任务（cron 定时，默认每天 09:00）
+cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/ibailian_signin.js, tag=i百联签到, enabled=true, timeout=60
 [MITM]
 hostname = mh5.bl.com
