@@ -1,5 +1,5 @@
 #!name=APP签到合集
-#!desc=聚合 paperclip 维护的 6 个 APP 每日签到（签到全部排在每天 9:00 之后）：微博超话、腾讯视频、小米商城、小米有品、龙湖天街App（签到+抽奖）、QQ音乐（绿钻+金币+红包雨）。打开对应 App 自动抓 Cookie，随后定时自动签到。脚本源：github.com/MaYIHEI/paperclip
+#!desc=聚合 paperclip 维护的 6 个 APP 每日签到（签到全部排在每天 9:00 之后）：微博超话、腾讯视频、小米商城、小米有品、龙湖天街App（签到+抽奖，默认停用）、QQ音乐（绿钻+金币+红包雨）。打开对应 App 自动抓 Cookie，随后定时自动签到。脚本源：github.com/MaYIHEI/paperclip
 #!author=辣堡
 #!homepage=https://github.com/a974881061/Blue
 #!openUrl=https://github.com/MaYIHEI/paperclip
@@ -23,8 +23,8 @@ http-request ^https:\/\/m\.xiaomiyoupin\.com\/mtop\/act\/redPacketSign\/getActIn
 cron "6 7 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/youpin/youpin.js, tag=有品签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/youpin.png, enable=true
 
 # ===== 龙湖天街 App - 每日签到 + 幸运抽奖（L0 通道，与小程序版互斥勿同开；密集 cron 已移到 9-11 点：8-10 点窗口内摇到 9 点前的目标会顺延到 9:00 立即签，脚本按 >= 判断不会漏签） =====
-http-request ^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ tag=龙湖App Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png
-cron "0 7-59/15 9-11 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enable=true
+http-request ^https:\/\/gw2c-hw-open\.longfor\.com\/lmarketing-task-api-mvc-prod\/openapi\/task\/v1\/signature\/clock$ tag=龙湖App Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, requires-body=false, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enable=false
+cron "0 7-59/15 9-11 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/lhtj/lhtj.js, tag=龙湖App签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/lhtj.png, enable=false
 
 # ===== QQ 音乐 - 绿钻成长值 + 金币签到 + 每日任务 + 定时金币 + 红包雨（就这三条 cron，勿添加旧版 "20 9 * * *"；一次抓取后自动续期；红包雨 0:05/8:05 两班是领奖时段，不是签到，保留不动） =====
 http-request ^https:\/\/u6\.y\.qq\.com\/cgi-bin\/musics\.fcg\?.*(EveryDaySignLvzScore|GetSignInSummary) tag=QQ音乐 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/app/qqmusic/qqmusic.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/qqmusic.png
