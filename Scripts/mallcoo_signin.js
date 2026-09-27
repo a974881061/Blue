@@ -12,24 +12,17 @@
  * cron "0 9 * * *" script-path=mallcoo_signin.js, tag=mallcoo签到, enabled=true, timeout=120
  */
 
-var $env = (function () {
-  var isLoon = typeof $loon !== "undefined";
-  var isSurge = typeof $httpClient !== "undefined" && !isLoon;
-  var isQX = typeof $task !== "undefined";
-  return { isLoon: isLoon, isSurge: isSurge, isQX: isQX, isCli: isLoon || isSurge };
-})();
+// 环境检测（Loon 环境优先）
+var isLoon = (typeof $loon !== "undefined");
+var isSurge = (typeof $httpClient !== "undefined") && !isLoon;
 
 function notify(title, sub, body) {
-  if ($env.isQX && typeof $notify === "function") {
-    $notify(title, sub, body);
-  } else if (typeof $notification !== "undefined" && $notification.post) {
+  if (typeof $notification !== "undefined" && $notification.post) {
     $notification.post(title, sub, body);
   } else if (typeof $notify === "function") {
     $notify(title, sub, body);
   }
 }
-
-function finish() { $done(); }
 
 var STORE_PREFIX = "MALLCOO_";
 var MALL_LIST_KEY = "MALLCOO_MallList";
@@ -42,41 +35,69 @@ var DEFAULT_MALLS = [
 
 // 读取商场列表
 function loadMalls() {
-  var listStr = $persistentStore.read(MALL_LIST_KEY);
+  var listStr = "";
+  try {
+    listStr = $persistentStore.read(MALL_LIST_KEY);
+  } catch (e) {
+    console.log("读取商场列表失败: " + e.message);
+  }
+
   if (listStr) {
     try {
       var list = JSON.parse(listStr);
       if (list && list.length > 0) {
-        // 补充域名信息
+        var result = [];
         for (var i = 0; i < list.length; i++) {
-          if (!list[i].domain) {
-            var savedDomain = $persistentStore.read(STORE_PREFIX + "Domain_" + list[i].mallId);
-            if (savedDomain) {
-              list[i].domain = savedDomain;
+          var item = list[i];
+          var mallId = item.mallId;
+          if (!mallId) continue;
+
+          var domain = item.domain;
+          if (!domain) {
+            try {
+              domain = $persistentStore.read(STORE_PREFIX + "Domain_" + mallId);
+            } catch (e) {}
+          }
+
+          var name = item.name;
+          if (!name) {
+            try {
+              name = $persistentStore.read(STORE_PREFIX + "Name_" + mallId);
+            } catch (e) {}
+            if (!name) {
+              name = "商场" + mallId;
             }
           }
-          if (!list[i].name) {
-            var savedName = $persistentStore.read(STORE_PREFIX + "Name_" + list[i].mallId);
-            if (savedName) {
-              list[i].name = savedName;
-            } else {
-              list[i].name = "商场" + list[i].mallId;
-            }
-          }
-          // 读取 Token
-          var token = $persistentStore.read(STORE_PREFIX + "Token_" + list[i].mallId);
-          list[i].token = token || "";
+
+          var token = "";
+          try {
+            token = $persistentStore.read(STORE_PREFIX + "Token_" + mallId) || "";
+          } catch (e) {}
+
+          result.push({
+            mallId: mallId,
+            name: name,
+            domain: domain || "",
+            token: token
+          });
         }
-        return list;
+        if (result.length > 0) {
+          return result;
+        }
       }
-    } catch (e) {}
+    } catch (e) {
+      console.log("解析商场列表失败: " + e.message);
+    }
   }
 
   // 回退到默认列表，检查哪些有 Token
   var result = [];
   for (var j = 0; j < DEFAULT_MALLS.length; j++) {
     var mall = DEFAULT_MALLS[j];
-    var token = $persistentStore.read(STORE_PREFIX + "Token_" + mall.mallId);
+    var token = "";
+    try {
+      token = $persistentStore.read(STORE_PREFIX + "Token_" + mall.mallId) || "";
+    } catch (e) {}
     if (token) {
       result.push({
         mallId: mall.mallId,
@@ -89,7 +110,13 @@ function loadMalls() {
   return result;
 }
 
-var malls = loadMalls();
+var malls = [];
+try {
+  malls = loadMalls();
+} catch (e) {
+  console.log("加载商场列表异常: " + e.message);
+}
+
 var results = [];
 var currentIndex = 0;
 
@@ -134,6 +161,8 @@ function signInMall(index, callback) {
     }
   });
 
+  console.log("开始签到: " + label);
+
   $httpClient.post({
     url: "https://" + domain + "/api/user/User/CheckinV2",
     timeout: 10000,
@@ -141,6 +170,7 @@ function signInMall(index, callback) {
     body: body
   }, function (error, response, data) {
     if (error) {
+      console.log(label + " 请求异常: " + error);
       results.push(label + ": 请求异常 - " + error);
     } else {
       try {
@@ -150,7 +180,6 @@ function signInMall(index, callback) {
         var d = parsed.d || {};
 
         if (code === 1) {
-          // 签到成功
           var reward = "";
           if (d.Msg) {
             reward = d.Msg;
@@ -159,17 +188,20 @@ function signInMall(index, callback) {
           } else {
             reward = "签到成功";
           }
+          console.log(label + " 签到成功: " + reward);
           results.push(label + ": ✅ " + reward);
-        } else if (code === 2054 || msg.indexOf("已经签到") >= 0 || msg.indexOf("已签到") >= 0) {
-          // 已签到
+        } else if (code === 2054 || (msg && (msg.indexOf("已经签到") >= 0 || msg.indexOf("已签到") >= 0))) {
+          console.log(label + " 今日已签到");
           results.push(label + ": ℹ️ 今日已签到");
-        } else if (code === 401 || code === 403 || msg.indexOf("登录") >= 0 || msg.indexOf("token") >= 0 || msg.indexOf("Token") >= 0) {
-          // Token 过期
+        } else if (code === 401 || code === 403 || (msg && (msg.indexOf("登录") >= 0 || msg.indexOf("token") >= 0 || msg.indexOf("Token") >= 0))) {
+          console.log(label + " Token已过期: " + msg);
           results.push(label + ": ⚠️ Token已过期，请重新打开小程序获取");
         } else {
+          console.log(label + " 签到失败: code=" + code + ", msg=" + msg);
           results.push(label + ": ❌ 失败(" + code + ") " + msg);
         }
       } catch (e) {
+        console.log(label + " 解析失败: " + e.message);
         results.push(label + ": 解析失败 - " + e.message);
       }
     }
@@ -180,7 +212,6 @@ function signInMall(index, callback) {
 // === 串行执行所有商场 ===
 function next() {
   if (currentIndex >= malls.length) {
-    // 全部完成，发送汇总通知
     var title = "mallcoo 签到结果";
     var sub = "共 " + malls.length + " 个商场";
     var body = results.join("\n");
@@ -188,17 +219,27 @@ function next() {
       sub = "未配置任何商场";
       body = "请先打开对应小程序的签到页，自动获取Token后再使用";
     }
-    notify(title, sub, body);
-    finish();
+    try {
+      notify(title, sub, body);
+    } catch (e) {
+      console.log("发送通知失败: " + e.message);
+    }
+    $done();
     return;
   }
 
-  signInMall(currentIndex, function () {
+  try {
+    signInMall(currentIndex, function () {
+      currentIndex++;
+      setTimeout(next, 1500);
+    });
+  } catch (e) {
+    console.log("执行任务异常: " + e.message);
+    results.push("执行异常: " + e.message);
     currentIndex++;
-    // 延迟一下再请求下一个
     setTimeout(next, 1500);
-  });
+  }
 }
 
-console.log("mallcoo 签到 - 已配置 " + malls.length + " 个商场");
+console.log("mallcoo 签到脚本启动，已配置 " + malls.length + " 个商场");
 next();
