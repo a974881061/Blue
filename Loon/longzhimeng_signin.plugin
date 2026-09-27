@@ -5,8 +5,8 @@
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/longzhimeng.png
 
 [Script]
-# Token 自动抓取（打开小程序签到页触发）
-http-request ^https:\/\/m\.mallcoo\.cn\/api\/user\/User\/GetCheckinDetail script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mallcoo_gettoken.js, tag=龙之梦Token抓取, requires-body=true, timeout=10, enabled=true
+# Token 自动抓取（打开小程序任意页面触发，匹配 m.mallcoo.cn 所有请求）
+http-request ^https:\/\/m\.mallcoo\.cn\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mallcoo_gettoken.js, tag=龙之梦Token抓取, requires-body=true, timeout=10, enabled=true
 
 # 每日签到（cron 定时，默认每天 09:00，支持所有已配置的 mallcoo 商场）
 cron "0 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/mallcoo_signin.js, tag=mallcoo签到, enabled=true, timeout=120

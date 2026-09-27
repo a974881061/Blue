@@ -1,193 +1,128 @@
 /**
- * mallcoo 猫酷商场系统 - Token 自动抓取（通用版）
+ * mallcoo 猫酷商场系统 - Token 自动抓取（极简调试版）
  *
- * 支持的商场系统域名：
- *   - m.mallcoo.cn (龙之梦等)
- *   - m-crm.joycity.mobi (大悦城等)
- *
- * 功能：拦截签到相关请求，从请求体 JSON 中提取 Header.Token 和 MallID，
- *       自动识别商场名称，持久化到本地存储。
- *       Token 相同时静默跳过，不同时更新并通知。
- *
- * Loon [Script] 配置（龙之梦）：
- * http-request ^https:\/\/m\.mallcoo\.cn\/api\/user\/User\/GetCheckinDetail script-path=mallcoo_gettoken.js, tag=mallcooToken抓取, requires-body=true, timeout=10, enabled=true
- *
- * Loon [Script] 配置（大悦城）：
- * http-request ^https:\/\/m-crm\.joycity\.mobi\/api\/user\/User\/GetCheckinDetail script-path=mallcoo_gettoken.js, tag=大悦城Token抓取, requires-body=true, timeout=10, enabled=true
+ * Loon [Script] 配置：
+ * http-request ^https:\/\/m\.mallcoo\.cn\/ script-path=mallcoo_gettoken.js, tag=mallcooToken抓取, requires-body=true, timeout=10, enabled=true
  *
  * Loon [MITM]：
- * hostname = m.mallcoo.cn, m-crm.joycity.mobi
+ * hostname = m.mallcoo.cn
  */
 
 var STORE_PREFIX = "MALLCOO_";
-var MALL_LIST_KEY = "MALLCOO_MallList";
 
-// 已知商场映射
-var MALL_NAMES = {
-  "12626": "龙之梦城市生活中心",
-  "10024": "静安大悦城"
-};
+console.log("=== mallcoo gettoken 开始执行 ===");
 
-(function () {
+if (typeof $request === "undefined") {
+  console.log("错误: $request 不存在，当前脚本类型不是 http-request");
+  $done({});
+}
+
+console.log("请求URL: " + $request.url);
+console.log("请求方法: " + $request.method);
+
+var body = $request.body;
+console.log("请求体类型: " + typeof body);
+console.log("请求体长度: " + (body ? body.length : 0));
+
+if (!body) {
+  console.log("请求体为空，跳过");
+  $done({});
+}
+
+// 尝试解析 JSON
+var data;
+if (typeof body === "string") {
   try {
-    var body = $request.body || "";
-    var url = $request.url || "";
-
-    console.log("mallcoo gettoken: 拦截到请求: " + url.substring(0, 80));
-
-    if (!body) {
-      console.log("mallcoo gettoken: 请求体为空，跳过");
-      $done({});
-      return;
-    }
-
-    // 解析请求体 JSON
-    var data;
-    try {
-      if (typeof body === "object") {
-        data = body;
-      } else {
-        data = JSON.parse(body);
-      }
-    } catch (e) {
-      console.log("mallcoo gettoken: 解析请求体失败: " + e.message);
-      $done({});
-      return;
-    }
-
-    var token = null;
-    var mallId = null;
-
-    // 从 Header.Token 中提取
-    if (data.Header && data.Header.Token) {
-      token = data.Header.Token;
-    }
-
-    // 提取 MallID（可能是 MallID 或 MallId）
-    if (data.MallID) {
-      mallId = String(data.MallID);
-    } else if (data.MallId) {
-      mallId = String(data.MallId);
-    }
-
-    if (!token || !mallId) {
-      console.log("mallcoo gettoken: 未找到 Token 或 MallID");
-      $done({});
-      return;
-    }
-
-    // 从 URL 提取域名
-    var domain = "";
-    var match = url.match(/^https?:\/\/([^\/]+)/);
-    if (match) {
-      domain = match[1];
-    }
-
-    console.log("mallcoo gettoken: 找到 Token, mallId=" + mallId + ", domain=" + domain);
-
-    // 存储 key
-    var tokenKey = STORE_PREFIX + "Token_" + mallId;
-    var domainKey = STORE_PREFIX + "Domain_" + mallId;
-    var nameKey = STORE_PREFIX + "Name_" + mallId;
-
-    // 相同则不更新不通知
-    var saved = "";
-    try {
-      saved = $persistentStore.read(tokenKey);
-    } catch (e) {}
-
-    if (saved === token) {
-      console.log("mallcoo gettoken: Token 未变化，跳过");
-      $done({});
-      return;
-    }
-
-    // 获取商场名称
-    var mallName = MALL_NAMES[mallId] || ("商场" + mallId);
-
-    // 保存 Token
-    var ok = false;
-    try {
-      ok = $persistentStore.write(token, tokenKey);
-    } catch (e) {
-      console.log("mallcoo gettoken: 保存 Token 失败: " + e.message);
-    }
-
-    if (ok) {
-      // 保存域名和名称
-      if (domain) {
-        try { $persistentStore.write(domain, domainKey); } catch (e) {}
-      }
-      try { $persistentStore.write(mallName, nameKey); } catch (e) {}
-
-      // 更新商场列表
-      try { updateMallList(mallId, mallName, domain); } catch (e) {
-        console.log("mallcoo gettoken: 更新商场列表失败: " + e.message);
-      }
-
-      console.log("mallcoo gettoken: Token 已更新: " + mallName);
-      try {
-        $notification.post(
-          "mallcoo 签到 Token",
-          mallName + " 已更新",
-          "Token: " + token.substring(0, 20) + "..."
-        );
-      } catch (e) {
-        console.log("mallcoo gettoken: 发送通知失败: " + e.message);
-      }
-    } else {
-      try {
-        $notification.post("mallcoo 签到 Token", "保存失败", "写入 persistentStore 失败");
-      } catch (e) {}
-    }
-
-    $done({});
+    data = JSON.parse(body);
+    console.log("JSON 解析成功");
   } catch (e) {
-    console.log("mallcoo gettoken: 脚本异常: " + e.message);
+    console.log("JSON 解析失败: " + e.message);
+    console.log("body 前100字符: " + body.substring(0, 100));
     $done({});
   }
-})();
+} else if (typeof body === "object") {
+  data = body;
+  console.log("body 已经是对象");
+} else {
+  console.log("body 类型不支持: " + typeof body);
+  $done({});
+}
 
-// 更新商场列表
-function updateMallList(mallId, mallName, domain) {
-  var listStr = "";
+// 提取 Token 和 MallID
+var token = "";
+var mallId = "";
+
+if (data.Header && data.Header.Token) {
+  token = data.Header.Token;
+  console.log("找到 Token: " + token.substring(0, 20) + "...");
+} else {
+  console.log("未找到 Header.Token");
+  console.log("data.Header: " + JSON.stringify(data.Header));
+}
+
+if (data.MallID) {
+  mallId = String(data.MallID);
+} else if (data.MallId) {
+  mallId = String(data.MallId);
+}
+console.log("MallID: " + mallId);
+
+if (!token || !mallId) {
+  console.log("Token 或 MallID 为空，跳过");
+  $done({});
+}
+
+// 保存 Token
+var tokenKey = STORE_PREFIX + "Token_" + mallId;
+var oldToken = $persistentStore.read(tokenKey);
+
+if (oldToken === token) {
+  console.log("Token 未变化，跳过");
+  $done({});
+}
+
+var ok = $persistentStore.write(token, tokenKey);
+if (ok) {
+  console.log("Token 保存成功！");
+
+  // 保存域名和商场名
+  var domain = "m.mallcoo.cn";
+  if ($request.url.indexOf("joycity") >= 0) {
+    domain = "m-crm.joycity.mobi";
+  }
+  $persistentStore.write(domain, STORE_PREFIX + "Domain_" + mallId);
+
+  var mallName = "商场" + mallId;
+  if (mallId === "12626") mallName = "龙之梦城市生活中心";
+  if (mallId === "10024") mallName = "静安大悦城";
+  $persistentStore.write(mallName, STORE_PREFIX + "Name_" + mallId);
+
+  // 更新商场列表
+  var listStr = $persistentStore.read("MALLCOO_MallList");
+  var list = [];
   try {
-    listStr = $persistentStore.read(MALL_LIST_KEY);
+    if (listStr) list = JSON.parse(listStr);
   } catch (e) {}
 
-  var list = [];
-  if (listStr) {
-    try {
-      list = JSON.parse(listStr);
-    } catch (e) {
-      list = [];
-    }
-  }
-
-  // 检查是否已存在
   var exists = false;
   for (var i = 0; i < list.length; i++) {
     if (list[i].mallId === mallId) {
       exists = true;
       list[i].name = mallName;
-      if (domain) {
-        list[i].domain = domain;
-      }
+      list[i].domain = domain;
       break;
     }
   }
-
   if (!exists) {
-    list.push({
-      mallId: mallId,
-      name: mallName,
-      domain: domain || ""
-    });
+    list.push({ mallId: mallId, name: mallName, domain: domain });
   }
+  $persistentStore.write(JSON.stringify(list), "MALLCOO_MallList");
 
-  try {
-    $persistentStore.write(JSON.stringify(list), MALL_LIST_KEY);
-  } catch (e) {
-    console.log("mallcoo gettoken: 保存商场列表失败: " + e.message);
-  }
+  $notification.post("mallcoo 签到 Token", mallName + " 已更新", "Token: " + token.substring(0, 20) + "...");
+} else {
+  console.log("Token 保存失败！");
+  $notification.post("mallcoo 签到 Token", "保存失败", "写入 persistentStore 失败");
 }
+
+console.log("=== mallcoo gettoken 执行结束 ===");
+$done({});
