@@ -1,10 +1,15 @@
 /**
- * mallcoo 商场系统 - 每日签到（龙之梦/大悦城等猫酷系统商场通用）
+ * mallcoo 猫酷商场系统 - 每日签到（通用版，支持多商场多域名）
  *
- * 功能：支持多商场签到，Token 由 gettoken 脚本自动抓取。
+ * 支持的商场系统域名：
+ *   - m.mallcoo.cn (龙之梦等)
+ *   - m-crm.joycity.mobi (大悦城等)
+ *
+ * 功能：自动读取已抓取 Token 的商场列表，逐个执行签到。
+ *       Token 由 mallcoo_gettoken.js 自动抓取并维护。
  *
  * Loon [Script] 配置：
- * cron "0 9 * * *" script-path=mallcoo_signin.js, tag=mallcoo签到, enabled=true, timeout=60
+ * cron "0 9 * * *" script-path=mallcoo_signin.js, tag=mallcoo签到, enabled=true, timeout=120
  */
 
 var $env = (function () {
@@ -26,36 +31,83 @@ function notify(title, sub, body) {
 
 function finish() { $done(); }
 
-// === 配置 ===
-// 配置需要签到的商场列表，MallID 需要对应
-// 格式：[{ mallId: "12626", name: "龙之梦" }]
-var malls = [
-  { mallId: "12626", name: "龙之梦城市生活中心", storeKey: "MALLCOO_Token_12626" }
+var STORE_PREFIX = "MALLCOO_";
+var MALL_LIST_KEY = "MALLCOO_MallList";
+
+// 默认商场列表（如果没有动态列表时使用）
+var DEFAULT_MALLS = [
+  { mallId: "12626", name: "龙之梦城市生活中心", domain: "m.mallcoo.cn" },
+  { mallId: "10024", name: "静安大悦城", domain: "m-crm.joycity.mobi" }
 ];
 
-// 如果有大悦城，添加类似配置：
-// { mallId: "XXXXX", name: "静安大悦城", storeKey: "MALLCOO_Token_XXXXX" }
+// 读取商场列表
+function loadMalls() {
+  var listStr = $persistentStore.read(MALL_LIST_KEY);
+  if (listStr) {
+    try {
+      var list = JSON.parse(listStr);
+      if (list && list.length > 0) {
+        // 补充域名信息
+        for (var i = 0; i < list.length; i++) {
+          if (!list[i].domain) {
+            var savedDomain = $persistentStore.read(STORE_PREFIX + "Domain_" + list[i].mallId);
+            if (savedDomain) {
+              list[i].domain = savedDomain;
+            }
+          }
+          if (!list[i].name) {
+            var savedName = $persistentStore.read(STORE_PREFIX + "Name_" + list[i].mallId);
+            if (savedName) {
+              list[i].name = savedName;
+            } else {
+              list[i].name = "商场" + list[i].mallId;
+            }
+          }
+          // 读取 Token
+          var token = $persistentStore.read(STORE_PREFIX + "Token_" + list[i].mallId);
+          list[i].token = token || "";
+        }
+        return list;
+      }
+    } catch (e) {}
+  }
 
-// 也可以从 persistentStore 读取已配置的商场列表
-var customMalls = $persistentStore.read("MALLCOO_MallList");
-if (customMalls) {
-  try {
-    malls = JSON.parse(customMalls);
-  } catch (e) {}
+  // 回退到默认列表，检查哪些有 Token
+  var result = [];
+  for (var j = 0; j < DEFAULT_MALLS.length; j++) {
+    var mall = DEFAULT_MALLS[j];
+    var token = $persistentStore.read(STORE_PREFIX + "Token_" + mall.mallId);
+    if (token) {
+      result.push({
+        mallId: mall.mallId,
+        name: mall.name,
+        domain: mall.domain,
+        token: token
+      });
+    }
+  }
+  return result;
 }
 
-var API_BASE = "https://m.mallcoo.cn";
+var malls = loadMalls();
 var results = [];
 var currentIndex = 0;
 
 // === 单商场签到 ===
 function signInMall(index, callback) {
   var mall = malls[index];
-  var token = $persistentStore.read(mall.storeKey);
+  var token = mall.token;
   var label = mall.name || ("商场" + mall.mallId);
+  var domain = mall.domain;
 
   if (!token) {
     results.push(label + ": 未配置 Token，请打开小程序签到页自动获取");
+    callback();
+    return;
+  }
+
+  if (!domain) {
+    results.push(label + ": 未配置域名");
     callback();
     return;
   }
@@ -83,7 +135,7 @@ function signInMall(index, callback) {
   });
 
   $httpClient.post({
-    url: API_BASE + "/api/user/User/CheckinV2",
+    url: "https://" + domain + "/api/user/User/CheckinV2",
     timeout: 10000,
     headers: headers,
     body: body
@@ -105,7 +157,7 @@ function signInMall(index, callback) {
           } else if (d.Notice) {
             reward = d.Notice;
           } else {
-            reward = "签到成功 +1积分";
+            reward = "签到成功";
           }
           results.push(label + ": ✅ " + reward);
         } else if (code === 2054 || msg.indexOf("已经签到") >= 0 || msg.indexOf("已签到") >= 0) {
@@ -132,6 +184,10 @@ function next() {
     var title = "mallcoo 签到结果";
     var sub = "共 " + malls.length + " 个商场";
     var body = results.join("\n");
+    if (malls.length === 0) {
+      sub = "未配置任何商场";
+      body = "请先打开对应小程序的签到页，自动获取Token后再使用";
+    }
     notify(title, sub, body);
     finish();
     return;
@@ -140,8 +196,9 @@ function next() {
   signInMall(currentIndex, function () {
     currentIndex++;
     // 延迟一下再请求下一个
-    setTimeout(next, 1000);
+    setTimeout(next, 1500);
   });
 }
 
+console.log("mallcoo 签到 - 已配置 " + malls.length + " 个商场");
 next();
