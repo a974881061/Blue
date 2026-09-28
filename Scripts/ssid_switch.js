@@ -10,13 +10,17 @@ const CONFIG = {
   const raw = $config.getConfig();
   const cfg = typeof raw === "string" ? JSON.parse(raw || "{}") : raw || {};
   const ssid = (cfg.ssid || "").trim();
+  if ((cfg.all_policy_groups || []).indexOf(CONFIG.group) < 0) return $done();
   const isCompany = CONFIG.companyWifi.some(
     (n) => n.trim().toLowerCase() === ssid.toLowerCase()
   );
   const target = isCompany ? CONFIG.onCompany : CONFIG.offCompany;
-  const current = (cfg.policy_select || {})[CONFIG.group];
-  if (current !== target) $config.setSelectPolicy(CONFIG.group, target);
-  if (CONFIG.notify && current !== target)
+  const current =
+    $config.getSelectedPolicy(CONFIG.group) ||
+    (cfg.policy_select || {})[CONFIG.group];
+  if (current === target) return $done();
+  $config.setSelectPolicy(CONFIG.group, target);
+  if (CONFIG.notify)
     $notification.post(
       `${CONFIG.group} → ${target}`,
       ssid ? `当前 WiFi：${ssid}` : "当前为蜂窝网络",
