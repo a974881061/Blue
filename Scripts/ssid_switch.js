@@ -3,7 +3,7 @@ const CONFIG = {
   companyWifi: ["Yanfeng-personal-device"],
   onCompany: "香港时延优选",
   offCompany: "DIRECT",
-  notify: true,
+  notify: false,
 };
 
 (() => {
