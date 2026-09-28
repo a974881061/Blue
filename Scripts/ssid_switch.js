@@ -1,6 +1,6 @@
 const CONFIG = {
   group: "赚客8通道",
-  companyWifi: ["Yanfeng-persional-device"],
+  companyWifi: ["Yanfeng-personal-device"],
   onCompany: "香港时延优选",
   offCompany: "DIRECT",
   notify: true,
