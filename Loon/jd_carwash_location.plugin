@@ -1,10 +1,10 @@
 #!name=京东洗车位置伪装
-#!desc=京东到店洗车位置伪装，绕过500米排队限制，支持多门店切换和自定义坐标
+#!desc=京东养车位置伪装，绕过500米排队限制，内置22家上海门店，支持切换和自定义坐标
 #!author=辣堡
 #!homepage=https://github.com/a974881061/Blue
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/jd_carwash.png
 #!argument.storeName.title=门店名称
-#!argument.storeName.desc=从预设门店中选择，输入门店名称即可。当前可选：田林东路店。如需新增门店，在脚本 STORE_LIST 中添加。
+#!argument.storeName.desc=从预设门店中选择，输入门店名称。当前支持：田林东路店、古北路店、老沪闵路店、龙茗路店、罗锦路店、报春路店、黄桦路店、双流路店、春申路大润发店、七莘路店、涞亭南路店、建德花园店、三鲁公路店、九亭大街店、涞坊路店、东方路店、东宝兴路店、瑞虹新城店、周浦小上海步行街店、徐泾明珠路店、泗泾地铁站店、上海财经大学店
 #!argument.storeName.default=田林东路店
 #!argument.latitude.title=自定义纬度
 #!argument.latitude.desc=自定义门店纬度（留空则使用上方门店名称对应的坐标）
