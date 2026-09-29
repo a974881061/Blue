@@ -1,0 +1,20 @@
+#!name=京东洗车位置伪装
+#!desc=京东到店洗车位置伪装，绕过500米排队限制，支持自定义目标坐标
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/jd_carwash.png
+#!argument.latitude.title=目标纬度
+#!argument.latitude.desc=京东洗车门店的纬度坐标，默认田林东路店
+#!argument.latitude.default=31.173500
+#!argument.longitude.title=目标经度
+#!argument.longitude.desc=京东洗车门店的经度坐标，默认田林东路店
+#!argument.longitude.default=121.426000
+#!argument.notify.title=开启通知
+#!argument.notify.desc=位置伪装成功时是否发送通知
+#!argument.notify.type=boolean
+#!argument.notify.default=true
+[Script]
+# 位置伪装：拦截排队预检请求，修改经纬度为目标门店坐标
+http-request ^https?:\/\/api\.m\.jd\.com\/jch_hy_queue_precheck script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/jd_carwash_location.js, tag=京东洗车位置伪装, requires-body=true, timeout=10, enabled=true
+[MITM]
+hostname = api.m.jd.com
