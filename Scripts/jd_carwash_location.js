@@ -9,19 +9,33 @@
  * - 请求体格式: body={"latitude":xxx,"longitude":xxx}&functionId=jch_hy_queue_precheck&appid=M-JDJCH&loginType=2
  *   其中 body 字段的值是 URL 编码的 JSON
  * 
- * BoxJS 配置项:
- * - jd_carwash_latitude  : 目标纬度（默认 31.173500）
- * - jd_carwash_longitude : 目标经度（默认 121.426000）
- * - jd_carwash_notify    : 是否开启通知（true/false，默认 true）
+ * 配置项（Loon 插件参数 / BoxJS）:
+ * - storeName : 门店名称（从预设列表中选择，留空则使用自定义坐标）
+ * - latitude  : 自定义纬度（优先级高于门店名称）
+ * - longitude : 自定义经度（优先级高于门店名称）
+ * - notify    : 是否开启通知（true/false，默认 true）
  */
 
-// ========== 默认配置（BoxJS 未配置时使用） ==========
-const DEFAULT_LATITUDE = 31.173500;    // 田林东路附近 - 默认纬度
-const DEFAULT_LONGITUDE = 121.426000;  // 田林东路附近 - 默认经度
+// ========== 预设门店列表 ==========
+// 格式: "门店名称": [纬度, 经度]
+// 你可以在这里添加更多门店，或者通过自定义坐标使用
+const STORE_LIST = {
+  '田林东路店': [31.173500, 121.426000],      // 上海市徐汇区田林东路
+  // 以下为示例门店，如需使用请确认坐标后启用
+  // '漕宝路店': [31.170000, 121.420000],
+  // '徐家汇店': [31.190000, 121.430000],
+  // '莘庄店': [31.110000, 121.380000],
+};
+
+// ========== 默认配置 ==========
+const DEFAULT_STORE = '田林东路店';    // 默认门店
+const DEFAULT_LATITUDE = 31.173500;    // 默认纬度（田林东路店）
+const DEFAULT_LONGITUDE = 121.426000;  // 默认经度（田林东路店）
 const DEFAULT_NOTIFY = true;            // 默认开启通知
 
-// ========== 读取 BoxJS 配置 ==========
+// ========== 读取配置 ==========
 function getPrefs() {
+  let storeName = DEFAULT_STORE;
   let latitude = DEFAULT_LATITUDE;
   let longitude = DEFAULT_LONGITUDE;
   let notify = DEFAULT_NOTIFY;
@@ -29,10 +43,14 @@ function getPrefs() {
   try {
     // Loon 插件参数方式读取（#!argument 定义的参数）
     if (typeof $prefs !== 'undefined') {
+      const storeVal = $prefs.valueForKey('storeName');
       const latVal = $prefs.valueForKey('latitude');
       const lngVal = $prefs.valueForKey('longitude');
       const notifyVal = $prefs.valueForKey('notify');
       
+      if (storeVal !== undefined && storeVal !== null && storeVal !== '') {
+        storeName = storeVal;
+      }
       if (latVal !== undefined && latVal !== null && latVal !== '') {
         latitude = parseFloat(latVal);
       }
@@ -45,10 +63,12 @@ function getPrefs() {
     }
     // 兼容 $persistentStore 方式（BoxJS 兼容）
     else if (typeof $persistentStore !== 'undefined') {
+      const storeVal = $persistentStore.read('jd_carwash_storeName');
       const latVal = $persistentStore.read('jd_carwash_latitude');
       const lngVal = $persistentStore.read('jd_carwash_longitude');
       const notifyVal = $persistentStore.read('jd_carwash_notify');
       
+      if (storeVal) storeName = storeVal;
       if (latVal) latitude = parseFloat(latVal);
       if (lngVal) longitude = parseFloat(lngVal);
       if (notifyVal) notify = notifyVal === 'true';
@@ -57,20 +77,49 @@ function getPrefs() {
     console.log('JD Carwash: 读取配置失败，使用默认值 - ' + e.message);
   }
   
-  // 校验坐标有效性
-  if (isNaN(latitude) || isNaN(longitude)) {
-    console.log('JD Carwash: 配置坐标无效，使用默认值');
-    latitude = DEFAULT_LATITUDE;
-    longitude = DEFAULT_LONGITUDE;
+  // 优先使用自定义坐标（如果设置了有效的经纬度）
+  const customLatValid = !isNaN(latitude) && latitude !== DEFAULT_LATITUDE;
+  const customLngValid = !isNaN(longitude) && longitude !== DEFAULT_LONGITUDE;
+  
+  let finalLat = latitude;
+  let finalLng = longitude;
+  let finalStore = storeName;
+  
+  // 如果自定义坐标无效或为默认值，尝试从门店列表获取
+  if (!customLatValid && !customLngValid && storeName && STORE_LIST[storeName]) {
+    finalLat = STORE_LIST[storeName][0];
+    finalLng = STORE_LIST[storeName][1];
+    finalStore = storeName;
   }
   
-  return { latitude, longitude, notify };
+  // 校验坐标有效性
+  if (isNaN(finalLat) || isNaN(finalLng)) {
+    console.log('JD Carwash: 配置坐标无效，使用默认值');
+    finalLat = DEFAULT_LATITUDE;
+    finalLng = DEFAULT_LONGITUDE;
+    finalStore = DEFAULT_STORE;
+  }
+  
+  return { 
+    latitude: finalLat, 
+    longitude: finalLng, 
+    storeName: finalStore,
+    notify: notify 
+  };
+}
+
+// ========== 获取门店列表描述（用于通知） ==========
+function getStoreListText() {
+  const stores = Object.keys(STORE_LIST);
+  if (stores.length === 0) return '（无预设门店）';
+  return stores.join('、');
 }
 
 function main() {
   const prefs = getPrefs();
   const TARGET_LATITUDE = prefs.latitude;
   const TARGET_LONGITUDE = prefs.longitude;
+  const STORE_NAME = prefs.storeName;
   const ENABLE_NOTIFY = prefs.notify;
   
   const body = $request.body;
@@ -83,6 +132,7 @@ function main() {
   
   try {
     console.log('JD Carwash: 原始请求体: ' + body.substring(0, 200));
+    console.log('JD Carwash: 当前门店: ' + STORE_NAME);
     console.log('JD Carwash: 目标坐标: ' + TARGET_LATITUDE + ', ' + TARGET_LONGITUDE);
     
     // 解析 form-data
@@ -117,9 +167,10 @@ function main() {
       if (ENABLE_NOTIFY) {
         $notification.post(
           '京东洗车',
-          '位置伪装成功',
+          '位置伪装成功 - ' + STORE_NAME,
           '原始: ' + originalLat.toFixed(5) + ', ' + originalLng.toFixed(5) + 
-          '\n目标: ' + TARGET_LATITUDE + ', ' + TARGET_LONGITUDE
+          '\n目标: ' + TARGET_LATITUDE + ', ' + TARGET_LONGITUDE +
+          '\n\n预设门店: ' + getStoreListText()
         );
       }
       
