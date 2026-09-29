@@ -6,6 +6,91 @@
   "repo": "https://github.com/a974881061",
   "apps": [
     {
+      "id": "jd-carwash-location",
+      "name": "京东洗车位置伪装",
+      "keys": [
+        "jd_carwash_storeName",
+        "jd_carwash_latitude",
+        "jd_carwash_longitude",
+        "jd_carwash_notify"
+      ],
+      "settings": [
+        {
+          "id": "jd_carwash_storeName",
+          "name": "门店选择",
+          "val": "田林东路店",
+          "type": "select",
+          "items": [
+            "田林东路店",
+            "古北路店",
+            "老沪闵路店",
+            "龙茗路店",
+            "罗锦路店",
+            "报春路店",
+            "黄桦路店",
+            "双流路店",
+            "春申路大润发店",
+            "七莘路店",
+            "涞亭南路店",
+            "建德花园店",
+            "三鲁公路店",
+            "九亭大街店",
+            "涞坊路店",
+            "东方路店",
+            "东宝兴路店",
+            "瑞虹新城店",
+            "周浦小上海步行街店",
+            "徐泾明珠路店",
+            "泗泾地铁站店",
+            "上海财经大学店"
+          ],
+          "desc": "选择要伪装的门店位置，选择后自动使用对应坐标。"
+        },
+        {
+          "id": "jd_carwash_latitude",
+          "name": "自定义纬度",
+          "val": "",
+          "type": "text",
+          "desc": "自定义门店纬度（留空则使用上方门店选择对应的坐标）。"
+        },
+        {
+          "id": "jd_carwash_longitude",
+          "name": "自定义经度",
+          "val": "",
+          "type": "text",
+          "desc": "自定义门店经度（留空则使用上方门店选择对应的坐标）。"
+        },
+        {
+          "id": "jd_carwash_notify",
+          "name": "开启通知",
+          "val": "true",
+          "type": "select",
+          "items": ["true", "false"],
+          "desc": "位置伪装成功时是否发送系统通知，默认开启。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/jd_carwash.png"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/jd_carwash_location.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/jd_carwash_location.plugin</pre>",
+        "<h4>使用说明</h4>",
+        "<ol>",
+        "<li>安装插件后，在上方「门店选择」中选择目标门店</li>",
+        "<li>打开京东洗车小程序的取号页面，脚本会自动将位置伪装为所选门店</li>",
+        "<li>收到「位置伪装成功」通知即表示生效</li>",
+        "<li>如需使用不在列表中的门店，填写「自定义纬度」和「自定义经度」即可</li>",
+        "</ol>",
+        "<h4>门店列表（22家上海门店）</h4>",
+        "<p>田林东路店 · 古北路店 · 老沪闵路店 · 龙茗路店 · 罗锦路店 · 报春路店 · 黄桦路店 · 双流路店 · 春申路大润发店 · 七莘路店 · 涞亭南路店 · 建德花园店 · 三鲁公路店 · 九亭大街店 · 涞坊路店 · 东方路店 · 东宝兴路店 · 瑞虹新城店 · 周浦小上海步行街店 · 徐泾明珠路店 · 泗泾地铁站店 · 上海财经大学店</p>"
+      ]
+    },
+    {
       "id": "xinyao-signin",
       "name": "鑫耀光环签到",
       "keys": [
