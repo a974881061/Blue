@@ -1,0 +1,15 @@
+#!name=网易严选签到
+#!desc=网易严选APP每日签到领积分，Cookie自动抓取
+#!author=ddgksf2013 / 辣堡整理
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/68/01/1f6801fa-504c-fbe0-c14e-8f46b8245de2/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/100x100bb.jpg
+
+[Script]
+# Cookie 自动抓取（打开严选APP签到页触发）
+http-request ^https:\/\/act\.you\.163\.com\/act-attendance\/(?:task\/list|att\/v4\/index|att\/v3\/sign) script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yanxuan_daily_sign.js, tag=严选Cookie抓取, requires-body=false, timeout=15, enabled=true
+
+# 每日签到（每天 09:10）
+cron "10 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yanxuan_daily_sign.js, tag=网易严选签到, enabled=true, timeout=60
+
+[MITM]
+hostname = act.you.163.com
