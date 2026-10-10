@@ -46,9 +46,9 @@ cron "44 8 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperc
 http-response ^https:\/\/scrm-b\.zjian\.net\/api\/member\/(minaLogin|find) tag=味多美 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png
 cron "31 14 9 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/wedome/wedome.js, tag=味多美签到, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/wedome.png, enable=true
 
-# ===== 林里 - 每日签到领积分，可选自动兑换鸭币商品（注意：与茉莉奶白同用 webapi.qmai.cn，抓取路径不同不冲突） =====
-http-request ^https:\/\/webapi\.qmai\.cn\/web\/(cmk-center\/sign\/(activityInfo|userSignStatistics|userSignRecordCalendar)|catering\/common\/common-info|mall-apiserver\/integral\/(home\/index|item\/goods(\/detail)?)) tag=林里 Cookie, script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/linli/linli.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linli.png
-cron "53 31 10 * * *" script-path=https://raw.githubusercontent.com/MaYIHEI/paperclip/refs/heads/main/miniprogram/linli/linli.js, tag=林里签到兑换, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linli.png, enable=true
+# ===== 林里 - 每日签到领积分，可选自动兑换鸭币商品（已修复 parseJSON(null) bug，脚本已 fork 到本仓库） =====
+http-request ^https:\/\/webapi\.qmai\.cn\/web\/(cmk-center\/sign\/(activityInfo|userSignStatistics|userSignRecordCalendar)|catering\/common\/common-info|mall-apiserver\/integral\/(home\/index|item\/goods(\/detail)?)) tag=林里 Cookie, script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/linli.js, requires-body=true, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linli.png
+cron "53 31 10 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/linli.js, tag=林里签到兑换, img-url=https://raw.githubusercontent.com/MaYIHEI/pin/refs/heads/main/app/linli.png, enable=true
 
 [MITM]
 hostname = popvip.paquapp.com,api.tuhu.cn,superapp-public.kiwa-tech.com,member-center.miniso.com,media.meituan.com,a.china-smartech.com,gw2c-hw-open.longfor.com,xapi.weimob.com,scrm-b.zjian.net,webapi.qmai.cn
