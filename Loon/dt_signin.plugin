@@ -1,0 +1,15 @@
+#!name=DT生活签到
+#!desc=DT生活微信小程序每日自动签到，每次+10积分，Token自动抓取。打开小程序任意页面即可获取Token。
+#!author=辣堡
+#!homepage=https://github.com/a974881061/Blue
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg
+
+[Script]
+# Token 自动抓取（打开 DT生活小程序任意页面触发，绝大多数接口都带 token）
+http-request ^https:\/\/ebeikeapi\.ebeck\.cn\/api\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_gettoken.js, tag=DT生活Token抓取, requires-body=true, timeout=10, enabled=true
+
+# 每日签到（每天 09:30）
+cron "30 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_signin.js, tag=DT生活签到, enabled=true, timeout=60
+
+[MITM]
+hostname = ebeikeapi.ebeck.cn
