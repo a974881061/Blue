@@ -15,31 +15,40 @@ var TOKEN_KEY = "DT_LIFE_TOKEN";
 
 var body = $request.body || "";
 var url = $request.url || "";
+var headers = $request.headers || {};
 
 console.log("[DT生活] 拦截请求: " + url.substring(0, 80));
 
-if (!body) {
-  console.log("[DT生活] 请求体为空，跳过");
-  $done({});
-}
-
 // 解析请求体 JSON
-var data;
-if (typeof body === "string") {
-  try {
-    data = JSON.parse(body);
-  } catch (e) {
-    console.log("[DT生活] JSON 解析失败: " + e.message);
-    $done({});
+var data = {};
+if (body) {
+  if (typeof body === "string") {
+    try {
+      data = JSON.parse(body);
+    } catch (e) {
+      console.log("[DT生活] JSON 解析失败: " + e.message);
+      data = {};
+    }
+  } else if (typeof body === "object") {
+    data = body;
   }
-} else if (typeof body === "object") {
-  data = body;
-} else {
-  console.log("[DT生活] body 类型不支持: " + typeof body);
-  $done({});
 }
 
+// 优先从请求体取 token，没有则从 Authorization: Bearer 头取
 var token = data.token || "";
+if (!token) {
+  for (var hk in headers) {
+    if (hk.toLowerCase() === "authorization") {
+      var hv = headers[hk] || "";
+      if (hv.indexOf("Bearer ") === 0) {
+        token = hv.substring(7);
+      } else {
+        token = hv;
+      }
+      break;
+    }
+  }
+}
 
 if (!token) {
   // 该接口未携带 token（如 getUserInfo），正常跳过

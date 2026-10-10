@@ -11,5 +11,9 @@ http-request ^https:\/\/ebeikeapi\.ebeck\.cn\/api\/ script-path=https://raw.gith
 # 每日签到（每天 09:30）
 cron "30 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_signin.js, tag=DT生活签到, enabled=true, timeout=60
 
+# 强制直连：保证签到请求与小程序登录同一网络出口，避免 IP 校验导致登录失败
+[Rule]
+DOMAIN,ebeikeapi.ebeck.cn,DIRECT
+
 [MITM]
 hostname = ebeikeapi.ebeck.cn
