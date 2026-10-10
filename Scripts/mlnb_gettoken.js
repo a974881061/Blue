@@ -12,7 +12,8 @@
  * hostname = webapi.qmai.cn
  */
 var STORE_KEY = "MLNB_Token_1";
-var MLNB_APPID = "wx17102e91e70c9b9b"; // 茉莉奶白小程序 appid，用于区分同后端的其他小程序（如林里）
+var MLNB_APPID = "wx17102e91e70c9b9b"; // 茉莉奶白小程序 appid
+var MLNB_STORE_ID = "217777"; // 茉莉奶白门店 store-id（header: store-id）
 (function () {
   var headers = $request.headers || {};
   var token = null;
@@ -27,18 +28,29 @@ var MLNB_APPID = "wx17102e91e70c9b9b"; // 茉莉奶白小程序 appid，用于�
     $done({});
     return;
   }
-  // 通过 appid 过滤：只保留茉莉奶白自身的请求，
-  // 避免把林里（wx26c7aaacfa017719）等同后端小程序的 Token 误存进来。
+  // 通过 appid + store-id 过滤：只保留茉莉奶白自身的请求，
+  // 避免把林里等同后端小程序的 Token 误存进来。
   var appid = null;
-  // 1) 从请求体 JSON 中取 appid
+  var storeId = null;
+  // 1) 从请求头取 store-id
+  for (var hk in headers) {
+    if (hk.toLowerCase() === "store-id") {
+      storeId = String(headers[hk]);
+      break;
+    }
+  }
+  // 2) 从请求体 JSON 中取 appid / storeId
   var body = $request.body || "";
   if (body) {
     try {
       var parsed = JSON.parse(body);
-      if (parsed && parsed.appid) appid = String(parsed.appid);
+      if (parsed) {
+        if (parsed.appid) appid = String(parsed.appid);
+        if (!storeId && parsed.storeId) storeId = String(parsed.storeId);
+      }
     } catch (e) {}
   }
-  // 2) 若 body 中没有，尝试从 URL query 取 appid
+  // 3) 若 body 中没有，尝试从 URL query 取 appid
   if (!appid && $request.url) {
     var qIndex = $request.url.indexOf("?");
     if (qIndex >= 0) {
@@ -53,8 +65,13 @@ var MLNB_APPID = "wx17102e91e70c9b9b"; // 茉莉奶白小程序 appid，用于�
       }
     }
   }
-  // 若能识别出 appid 且不是茉莉奶白，则跳过（林里等其他小程序的请求）
+  // 若能识别出 appid 且不是茉莉奶白，则跳过
   if (appid && appid !== MLNB_APPID) {
+    $done({});
+    return;
+  }
+  // 若能识别出 store-id 且不是茉莉奶白，则跳过（林里等其他门店的请求）
+  if (storeId && storeId !== MLNB_STORE_ID) {
     $done({});
     return;
   }
