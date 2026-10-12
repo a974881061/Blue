@@ -78,6 +78,10 @@ function captureCookie() {
         const lower = lowerKeys(headers);
         const token = lower["qm-user-token"] || "";
         const body = parseJSON($request.body, {});
+        // 只抓取林里自身的请求，避免误抓茉莉奶白等同后端小程序的 Token
+        if (body.appid && String(body.appid) !== "wx26c7aaacfa017719") {
+            return;
+        }
         const old = parseJSON($.getdata(CK_KEY), {});
         const activityId = body.activityId || old.activityId || "";
         const appid = body.appid || old.appid || "wx26c7aaacfa017719";
