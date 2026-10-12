@@ -65,13 +65,17 @@ var MLNB_STORE_ID = "217777"; // 茉莉奶白门店 store-id（header: store-id�
       }
     }
   }
-  // 若能识别出 appid 且不是茉莉奶白，则跳过
-  if (appid && appid !== MLNB_APPID) {
-    $done({});
-    return;
+  // 只有能确认是茉莉奶白自身的请求才存储 Token。
+  // 若 appid 存在：必须等于茉莉奶白 appid；否则跳过（林里等其他小程序）。
+  // 若 appid 不存在但 store-id 存在：必须等于茉莉奶白 store-id；否则跳过。
+  // 若两者都不存在：无法确认来源，跳过，避免误存林里的 Token。
+  var isMlnb = false;
+  if (appid) {
+    isMlnb = (appid === MLNB_APPID);
+  } else if (storeId) {
+    isMlnb = (storeId === MLNB_STORE_ID);
   }
-  // 若能识别出 store-id 且不是茉莉奶白，则跳过（林里等其他门店的请求）
-  if (storeId && storeId !== MLNB_STORE_ID) {
+  if (!isMlnb) {
     $done({});
     return;
   }
