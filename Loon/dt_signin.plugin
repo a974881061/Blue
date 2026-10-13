@@ -11,9 +11,12 @@ http-request ^https:\/\/ebeikeapi\.ebeck\.cn\/api\/v2\/user\/getUserInfo$ script
 # 每日签到（每天 09:30）
 cron "30 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_signin.js, tag=DT生活签到, enabled=true, timeout=60
 
+# 【临时】接口探测器：发现商品/价格接口用，浏览一遍小程序首页、商城、商品列表、商品详情后即可禁用本行
+http-response ^https?:\/\/[^/]*ebeck\.cn\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_api_explorer.js, tag=DT接口探测, requires-body=true, timeout=15, enabled=true
+
 # 强制直连：保证签到请求与小程序登录同一网络出口，避免 IP 校验导致登录失败
 [Rule]
 DOMAIN,ebeikeapi.ebeck.cn,DIRECT
 
 [MITM]
-hostname = ebeikeapi.ebeck.cn
+hostname = ebeikeapi.ebeck.cn, *.ebeck.cn
