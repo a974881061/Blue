@@ -5,8 +5,11 @@
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg
 
 [Script]
-# Token 无感抓取：仅匹配 getUserInfo（启动必调、带 Bearer 头），不缓冲请求体，毫秒级放行
+# Token 无感抓取：仅拦截 getUserInfo（启动必调、带 Bearer 头），不缓冲请求体，毫秒级放行
 http-request ^https:\/\/ebeikeapi\.ebeck\.cn\/api\/v2\/user\/getUserInfo$ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_gettoken.js, tag=DT生活Token抓取, requires-body=false, timeout=10, enabled=true
+
+# Token 导出：手机 Safari 访问 http://dt.local/token ，网页一键复制 token（供青龙环境变量 dtsh_token 使用）
+http-request ^https?:\/\/dt\.local\/token script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_export_token.js, tag=DT Token导出, requires-body=false, timeout=10, enabled=true
 
 # 每日签到（每天 09:30）
 cron "30 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/dt_signin.js, tag=DT生活签到, enabled=true, timeout=60
