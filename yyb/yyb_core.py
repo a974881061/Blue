@@ -23,6 +23,7 @@ yyb 微信小程序签到通用引擎（青龙，标准库实现，零依赖）
 import hashlib
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
@@ -156,10 +157,16 @@ class Engine:
                 local = json.load(f) or {}
         except FileNotFoundError:
             pass
-        self.yyb_server = (os.environ.get("YYB_SERVER")
-                           or local.get("yyb_server")
-                           or cfg_all.get("yyb_server")
-                           or "http://yyb-go:8000").rstrip("/")
+        # 青龙常预置 YYB_SERVER=yyb-go:8000（协议脚本约定不带 http://），且多账号时值形如
+        # "yyb-go:8000@2"（青龙 @序号 后缀）；统一补协议头并剥掉 @N
+        raw_server = (os.environ.get("YYB_SERVER")
+                      or local.get("yyb_server")
+                      or cfg_all.get("yyb_server")
+                      or "http://yyb-go:8000")
+        server = raw_server.strip().splitlines()[0].strip().rstrip("/")
+        if not server.startswith(("http://", "https://")):
+            server = "http://" + server
+        self.yyb_server = re.sub(r"@\d+(?=[/#?]|$)", "", server)
         self.token_secret = (os.environ.get("YYB_INTEGRATION_TOKEN")
                              or local.get("integration_token") or "").strip()
         self.sleep_between = float(cfg_all.get("sleep_between_accounts", 3))
