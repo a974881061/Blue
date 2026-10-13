@@ -1,0 +1,9 @@
+{
+  "_说明": "运行时自动生成的 token 仓库（真实文件名为 yyb_tokens.json，已被 .gitignore 忽略）。结构：应用key -> yyb账号id -> token记录。expire_at 为 null 表示不按本地时间判失效，被服务端拒绝时会自动经 yyb 重登。",
+  "dt": {
+    "1": { "token": "运行时自动写入", "expire_at": 1799999999, "updated_at": "2026-10-13 08:08:00" }
+  },
+  "ttt": {
+    "1": { "token": "运行时自动写入", "expire_at": null, "updated_at": "2026-10-13 08:12:00" }
+  }
+}

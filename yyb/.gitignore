@@ -1,0 +1,6 @@
+# 敏感/运行时文件，禁止提交
+yyb.local.json
+yyb_tokens.json
+yyb_tokens.json.tmp
+__pycache__/
+*.pyc

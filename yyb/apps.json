@@ -1,0 +1,87 @@
+{
+  "_说明": "应用定义文件（可公开，不含个人敏感信息）。integration token 走青龙环境变量 YYB_INTEGRATION_TOKEN 或 yyb.local.json；业务 token 运行时存 yyb_tokens.json，两者均已 gitignore。",
+  "yyb_server": "http://yyb-go:8000",
+  "sleep_between_accounts": 3,
+  "apps": {
+    "dt": {
+      "name": "DT生活",
+      "enabled": true,
+      "appid": "wx51a2021dd921f747",
+      "flow": "wxmp_json",
+      "base_url": "https://ebeikeapi.ebeck.cn/api/v2",
+      "login_path": "/user/userLogin",
+      "login_body": {
+        "code": "{code}",
+        "appId": "{appid}",
+        "client": "wxmp",
+        "version": "251",
+        "pid": "",
+        "channeltype": ""
+      },
+      "token_path": "data.token",
+      "expires_in_path": "data.expires_in",
+      "default_expires_in": 172800,
+      "sign_path": "/user/userSign",
+      "sign_body": {
+        "version": "251",
+        "client": "wxmp",
+        "token": "{token}"
+      },
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.50(0x18003231) NetType/WIFI Language=zh_CN",
+        "Referer": "https://servicewechat.com/{appid}/297/page-frame.html"
+      },
+      "success": { "path": "status", "equals": "ok" },
+      "success_show": [
+        ["本次积分", "data.points"],
+        ["连续签到", "data.sign_num"],
+        ["记录ID", "data.id"],
+        ["时间", "data.create_time"]
+      ],
+      "already": [
+        { "path": "code", "equals": "sign_401" },
+        { "path": "data", "contains": "已经签到" }
+      ],
+      "skip": [
+        { "path": "data", "contains": "无法签到" }
+      ],
+      "expired": [
+        { "path": "code", "equals": 9999 },
+        { "path": "msg", "contains": "登录失败" },
+        { "path": "msg", "contains": "请重新登录" }
+      ]
+    },
+    "ttt": {
+      "name": "探探糖TTT",
+      "enabled": true,
+      "appid": "wx454addfc6819a2ac",
+      "flow": "form_rqtoken",
+      "base_url": "https://ttt.bjlxkjyxgs.cn",
+      "login_path": "/api/user/thirds",
+      "sign_path": "/api/user/add_sign_new",
+      "sign_params": {
+        "type": "0",
+        "date": "{date}",
+        "score": "10"
+      },
+      "salt": "~~JSTtT*(lvlv!#^&%~~",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090c33)XWEB/11581",
+        "Referer": "https://servicewechat.com/{appid}/124/page-frame.html"
+      },
+      "success": { "path": "code", "equals": 1 },
+      "success_show": [
+        ["本次糖果", "data.score"]
+      ],
+      "already": [
+        { "path": "code", "equals": 0, "also": [["msg", "签"]] }
+      ],
+      "skip": [],
+      "expired": [
+        { "path": "code", "equals": 401 },
+        { "path": "code", "equals": 403 },
+        { "path": "msg", "contains": "登录" }
+      ]
+    }
+  }
+}
