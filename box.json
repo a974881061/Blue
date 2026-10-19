@@ -338,6 +338,74 @@
         "<li><b>注意</b>：华润通签到 API 使用加密请求体，凭证有效期有限，过期后需重新打开小程序签到</li>",
         "</ol>"
       ]
+    },
+    {
+      "id": "ibailian-signin",
+      "name": "i百联签到（多账号）",
+      "keys": [
+        "IBL_AccountCount",
+        "IBL_Creds_1",
+        "IBL_Creds_2",
+        "IBL_Creds_3"
+      ],
+      "settings": [
+        {
+          "id": "IBL_AccountCount",
+          "name": "账号数量",
+          "val": 1,
+          "type": "text",
+          "desc": "需要签到的账号数量，默认 1。增加后下方会出现更多凭证输入框。"
+        },
+        {
+          "id": "IBL_Creds_1",
+          "name": "账号1 凭证（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "由 Token 抓取脚本自动写入的凭证 JSON（含 membertoken/devicekey/smDeviceid），无需手动填写。"
+        },
+        {
+          "id": "IBL_Creds_2",
+          "name": "账号2 凭证（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "手动粘贴账号2的凭证 JSON。"
+        },
+        {
+          "id": "IBL_Creds_3",
+          "name": "账号3 凭证（手动填写）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 3,
+          "desc": "手动粘贴账号3的凭证 JSON。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/ibl.png"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/ibailian_signin.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/ibailian_signin.plugin</pre>",
+        "<h4>多账号使用说明</h4>",
+        "<ol>",
+        "<li><b>账号1</b>：打开 i百联 App 积分页自动抓取凭证，无需手动操作</li>",
+        "<li><b>账号2/3</b>：需手动抓包 mh5.bl.com 的 h5_gateway 请求获取凭证 JSON，粘贴到上方输入框</li>",
+        "<li>修改「账号数量」控制参与签到的账号数</li>",
+        "</ol>",
+        "<h4>激活凭证</h4>",
+        "<ol>",
+        "<li>安装插件后打开 App「i百联」→ 进入积分/签到页，触发凭证自动抓取</li>",
+        "<li>收到「账号1 已更新」通知后即可等待每日 9:00 自动签到</li>",
+        "</ol>"
+      ]
     }
   ]
 }
