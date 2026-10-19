@@ -37,7 +37,7 @@ var PRIZE_MAP = {
 
 function headers(jsessionid) {
   return {
-    Cookie: "JSESSIONID=" + jsessionid + "; Path=/scrm-rz-minip-yi/; HttpOnly",
+    Cookie: "JSESSIONID=" + jsessionid,
     "Content-Type": "application/json",
     "x-requested-with": "application/json",
     "User-Agent": UA,
