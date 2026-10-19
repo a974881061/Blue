@@ -1585,17 +1585,8 @@ function redactSensitive(text) {
 
 async function sendMsg(message) {
     if (!message) return;
+    // [静音版] 定时金币结果只写日志，任何环境（Loon/Surge/QX/Node）都不弹通知
     $.log(`[静音版] 定时金币结果(不通知):\n${message}`);
-    if (false && $.isNode()) {
-        try {
-            const notify = require("./sendNotify");
-            await notify.sendNotify($.name, message);
-        } catch (e) {
-            $.log(`\n${$.name}\n${message}`);
-        }
-    } else {
-        $.msg($.name, "", message);
-    }
 }
 
 // ============ 入口 ============
