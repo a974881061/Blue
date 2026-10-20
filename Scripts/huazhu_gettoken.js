@@ -4,8 +4,8 @@
  * 设计：
  *   - 多账号用「槽位选择器」：打开华住会前先访问 http://huazhu.local/select1 或 /select2（支持 select1~select10）
  *     选择要写入的账号槽，避免账号互相覆盖。
- *   - 拦截任意 *.huazhu.com 请求，从 Cookie 提取 userToken。
- *   - 抓到新 userToken 后，调用 sign_header 验证是否为有效登录态；
+ *   - 拦截任意 *.huazhu.com 请求，从 Cookie 或 User-Token 请求头提取 userToken。
+ *   - 抓到新 userToken 后，用 User-Token 头调用 sign_header 验证是否为有效登录态；
  *     只有验证通过（code=200 且有积分信息）才写入持久化，避免无效 token 覆盖有效 token。
  *   - token 与已存值一致 → 静默，不弹通知。
  *   - 访问 http://huazhu.local/status 查看当前槽位、各账号 token 状态与最近签到结果。
@@ -34,19 +34,34 @@ function mask(t) {
   return t.length <= 10 ? t : t.substring(0, 8) + "****" + t.substring(t.length - 4);
 }
 
-function extractUserToken(cookieHeader) {
-  if (!cookieHeader) return "";
-  var m = /(?:^|;\s*)userToken=([^;]+)/i.exec(cookieHeader);
-  return m ? m[1].trim() : "";
+function extractUserToken(headers) {
+  // 优先从 Cookie 提取，其次从 User-Token / userToken 请求头提取
+  var cookie = "";
+  for (var k in headers) {
+    if (k.toLowerCase() === "cookie") { cookie = headers[k]; break; }
+  }
+  if (cookie) {
+    var m = /(?:^|;\s*)userToken=([^;]+)/i.exec(cookie);
+    if (m) return m[1].trim();
+  }
+  for (var k2 in headers) {
+    var lk = k2.toLowerCase();
+    if (lk === "user-token" || lk === "usertoken") {
+      var v = headers[k2];
+      if (Object.prototype.toString.call(v) === "[object Array]") v = v[0];
+      return String(v).trim();
+    }
+  }
+  return "";
 }
 
-// 验证 userToken 是否为有效登录态
+// 验证 userToken 是否为有效登录态（用 User-Token 请求头）
 function validateToken(token, cb) {
   $httpClient.get(
     {
       url: VALIDATE_API,
       headers: {
-        Cookie: "userToken=" + token,
+        "User-Token": token,
         "User-Agent": UA,
         Referer: REFERER,
         Origin: ORIGIN,
@@ -117,16 +132,13 @@ function main() {
   }
 
   var headers = $request.headers || {};
-  var cookie = "";
-  for (var k in headers) {
-    if (k.toLowerCase() === "cookie") { cookie = headers[k]; break; }
-  }
-  var token = extractUserToken(cookie);
+  var token = extractUserToken(headers);
   if (!token) { $done({}); return; }
 
   var slot = getSlot();
   var old = getToken(slot);
 
+  // 与已存 token 完全一致 → 静默
   if (old === token) {
     $done({});
     return;
