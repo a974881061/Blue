@@ -1,14 +1,13 @@
 /**
- * 华住会签到 - userToken 抓取 + 账号槽位选择（多账号）
+ * 华住会 - userToken 抓取（多账号）
  *
  * 设计：
- *   - 多账号用「槽位选择器」：打开华住会前先访问 http://huazhu.local/select1 或 /select2（支持 select1~select10）
- *     选择要写入的账号槽，避免账号互相覆盖。
- *   - 拦截任意 *.huazhu.com 请求，从 Cookie 或 User-Token 请求头提取 userToken。
+ *   - 多账号通过 BoxJS 的「抓取槽位（账号）」设置选择（key: HZ_CAPTURE_SLOT，值 1/2/3），
+ *     避免账号互相覆盖。
+ *   - 拦截任意 *.huazhu.com 请求（排除 appgw），从 Cookie 或 User-Token 请求头提取 userToken。
  *   - 抓到新 userToken 后，用 User-Token 头调用 sign_header 验证是否为有效登录态；
- *     只有验证通过（code=200 且有积分信息）才写入持久化，避免无效 token 覆盖有效 token。
+ *     只有验证通过才写入持久化，避免无效 token 覆盖有效 token。
  *   - token 与已存值一致 → 静默，不弹通知。
- *   - 访问 http://huazhu.local/status 查看当前槽位、各账号 token 状态与最近签到结果。
  */
 
 var SLOT_KEY = "HZ_CAPTURE_SLOT";
@@ -85,54 +84,10 @@ function validateToken(token, cb) {
   );
 }
 
-function handlePseudoUrl(url) {
-  var sm = /\/select(\d+)/.exec(url);
-  if (sm) {
-    var n = parseInt(sm[1], 10);
-    $persistentStore.write(String(n), SLOT_KEY);
-    return html("已切换到 账号" + n, "接下来打开华住会 App/小程序，userToken 将写入 HZ_TOKEN_" + n + "。");
-  }
-  if (url.indexOf("/status") >= 0) {
-    var slot = getSlot();
-    var lines = ["<b>当前抓取槽位：账号" + slot + "</b>"];
-    for (var i = 1; i <= 10; i++) {
-      var t = getToken(i);
-      if (!t && i > 2) continue;
-      var r = $persistentStore.read(RESULT_PREFIX + i) || "暂无";
-      lines.push("账号" + i + " token：" + mask(t) + "<br>账号" + i + " 最近签到：" + r + "<br>");
-    }
-    return html("华住会 状态", lines.join("<br>"));
-  }
-  return html("未知操作", "支持 /select1 ~ /select10、/status");
-}
-
-function html(title, body) {
-  return {
-    response: {
-      status: 200,
-      headers: { "Content-Type": "text/html; charset=utf-8" },
-      body:
-        '<!doctype html><html><head><meta charset="utf-8">' +
-        '<meta name="viewport" content="width=device-width,initial-scale=1">' +
-        "<title>" + title + "</title>" +
-        "<style>body{font-family:-apple-system,sans-serif;padding:24px;background:#f5f6f8;color:#222}" +
-        ".card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 10px rgba(0,0,0,.06);line-height:1.8}</style>" +
-        "</head><body><div class=card><h2 style='margin:0 0 12px'>" + title + "</h2>" + body +
-        "</div></body></html>",
-    },
-  };
-}
-
 function main() {
-  var url = $request.url || "";
-
-  if (/huazhu\.local\//i.test(url)) {
-    $done(handlePseudoUrl(url));
-    return;
-  }
-
   var headers = $request.headers || {};
   var token = extractUserToken(headers);
+  console.log("[华住抓取] url=" + ($request.url || "") + " 提取到token=" + mask(token));
   if (!token) { $done({}); return; }
 
   var slot = getSlot();
