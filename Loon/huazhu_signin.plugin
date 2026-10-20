@@ -5,8 +5,8 @@
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/hzh.jpeg
 
 [Script]
-# 抓取 userToken：拦截华住会请求并从 Cookie 提取，先验证有效性再存储
-http-request ^https?:\/\/.*\.huazhu\.com\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_gettoken.js, tag=华住Token抓取, requires-body=false, timeout=10, enabled=true
+# 抓取 userToken：拦截华住会请求并从 Cookie/Header 提取（排除 appgw，避免自拦截与 TLS pinning 卡死）
+http-request ^https?:\/\/(?!appgw\.)[^\/]+\.huazhu\.com\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_gettoken.js, tag=华住Token抓取, requires-body=false, timeout=10, enabled=true
 
 # 伪 URL：槽位选择（select1~select10）与状态查看：手机 Safari 访问 http://huazhu.local/select1、/select2、/status
 http-request ^https?:\/\/huazhu\.local\/(select\d+|status) script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_gettoken.js, tag=华住槽位选择, requires-body=false, timeout=10, enabled=true
@@ -18,4 +18,4 @@ cron "5 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/r
 DOMAIN-SUFFIX,huazhu.com,DIRECT
 
 [MITM]
-hostname = *.huazhu.com
+hostname = *.huazhu.com, -appgw.huazhu.com
