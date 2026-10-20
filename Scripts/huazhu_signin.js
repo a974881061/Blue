@@ -1,18 +1,24 @@
 /**
- * 华住会签到 - 每日签到脚本（Loon cron） v2
+ * 华住会签到 - 每日签到脚本（Loon cron） v3
  *
  * 原理（抓包实证）：
- *   鉴权 = 请求头 `User-Token: <token>`（华住会已改用 header 鉴权，不再接受 Cookie）。
+ *   鉴权 = 请求携带 userToken（原项目用 Cookie，部分环境用 User-Token 头；这里两者都带，兼容性最好）
  *   签到   GET https://appgw.huazhu.com/game/sign_in?date=<unix秒>
  *   状态   GET https://appgw.huazhu.com/game/sign_header
- *   返回 code: 200=签到成功, 5001=未到签到日期(今日已签), 5004=今日已签, 其它=失败。
+ *   返回 code: 200=签到成功, 5001/5004=今日已签, 其它=失败（常见为 token 过期）
+ *
+ * v3 修复：
+ *   - 去掉 $httpClient 的显式 timeout（Loon 该参数单位为毫秒，之前 timeout:20=20ms 导致请求被立即中断，
+ *     日志显示"请求失败"，而手动重放用默认超时却成功 —— 这正是"失败但重放 OK"的根因）。
+ *   - 从 $persistentStore 读出的 token 做清洗（去引号/空白/换行），避免 header 值异常。
+ *   - 同时携带 Cookie 与 User-Token 头，兼容原项目抓包方式。
  */
 
 var TOKEN_PREFIX = "HZ_TOKEN_";
 var RESULT_PREFIX = "HZ_LAST_RESULT_";
 var API = "https://appgw.huazhu.com";
 var MAX_SLOTS = 10;
-var RETRY = 2;
+var RETRY = 3;
 
 var UA =
   "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 " +
@@ -20,7 +26,18 @@ var UA =
 var REFERER = "https://cdn.huazhu.com/hzapp-signinfe/";
 var ORIGIN = "https://cdn.huazhu.com";
 
-function getToken(slot) { return $persistentStore.read(TOKEN_PREFIX + slot) || ""; }
+// 清洗 token：去首尾引号/空白/换行及不可见字符
+function cleanToken(t) {
+  if (!t) return "";
+  return String(t)
+    .replace(/^[\s"'`]+/, "")
+    .replace(/[\s"'`]+$/, "")
+    .replace(/[^\x21-\x7e]/g, "");
+}
+
+function getToken(slot) {
+  return cleanToken($persistentStore.read(TOKEN_PREFIX + slot));
+}
 
 function getAllAccounts() {
   var list = [];
@@ -34,17 +51,10 @@ function getAllAccounts() {
 function headers(token) {
   return {
     "User-Token": token,
+    Cookie: "userToken=" + token,
     "User-Agent": UA,
     Referer: REFERER,
     Origin: ORIGIN,
-    Accept: "application/json, text/plain, */*",
-  };
-}
-
-function headersMinimal(token) {
-  return {
-    "User-Token": token,
-    "User-Agent": UA,
     Accept: "application/json, text/plain, */*",
   };
 }
@@ -54,31 +64,23 @@ function getRefreshedToken(resp) {
   var v = h["userToken"] || h["User-Token"] || h["usertoken"];
   if (!v) return null;
   if (Object.prototype.toString.call(v) === "[object Array]") v = v[0];
-  v = String(v).trim();
+  v = cleanToken(v);
   return v || null;
 }
 
+// 注意：不设置 timeout，使用 Loon 默认值（游玩端默认约 10s），与手动重放行为一致
 function apiGet(path, token, attempts, cb) {
-  // 先用完整 header；若失败则用精简 header 再试一次
-  var useMinimal = false;
-  function doRequest(hdrs) {
-    $httpClient.get({ url: API + path, headers: hdrs, timeout: 20 }, function (err, resp, data) {
-      if (err) {
-        if (!useMinimal) {
-          useMinimal = true;
-          return doRequest(headersMinimal(token));
-        }
-        if (attempts > 0) { return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 3000); }
-        return cb({ err: String(err) });
-      }
-      var code = resp.status;
-      if ((code === 429 || code >= 500) && attempts > 0) {
-        return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 5000);
-      }
-      cb({ status: code, body: data, resp: resp });
-    });
-  }
-  doRequest(headers(token));
+  $httpClient.get({ url: API + path, headers: headers(token) }, function (err, resp, data) {
+    if (err) {
+      if (attempts > 0) return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 3000);
+      return cb({ err: String(err) });
+    }
+    var st = resp.status;
+    if ((st === 429 || st >= 500) && attempts > 0) {
+      return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 5000);
+    }
+    cb({ status: st, body: data, resp: resp });
+  });
 }
 
 function fetchStatus(token, cb) {
@@ -96,8 +98,14 @@ function fetchStatus(token, cb) {
 function signOne(slot, token, cb) {
   var tag = "账号" + slot;
   var date = Math.floor(Date.now() / 1000);
+  var url = API + "/game/sign_in?date=" + date;
+  console.log("[华住]" + tag + " GET " + url);
   apiGet("/game/sign_in?date=" + date, token, RETRY, function (r) {
-    if (r.err) { return cb(false, tag + " 网络异常: " + r.err + "（请检查 appgw.huazhu.com 是否可达/是否被代理）", null); }
+    if (r.err) {
+      console.log("[华住]" + tag + " 网络异常: " + r.err);
+      return cb(false, tag + " 网络异常: " + r.err + "（请检查 appgw.huazhu.com 是否可达/是否被代理）", null);
+    }
+    console.log("[华住]" + tag + " HTTP " + r.status + " body=" + String(r.body).substring(0, 200));
     if (r.status !== 200) {
       var hint = "";
       if (r.status === 429) hint = "（限流/服务器繁忙，通常次日自动恢复）";
