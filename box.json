@@ -411,10 +411,19 @@
       "id": "yayi-signin",
       "name": "亚一金店签到（多账号）",
       "keys": [
+        "YAYI_CAPTURE_SLOT",
         "YAYI_TOKEN_1",
         "YAYI_TOKEN_2"
       ],
       "settings": [
+        {
+          "id": "YAYI_CAPTURE_SLOT",
+          "name": "抓取槽位（账号）",
+          "val": "1",
+          "type": "select",
+          "items": ["1", "2"],
+          "desc": "选择把即将抓取的 Token 写入哪个账号槽位。抓取账号2前先在这里切到 2，再打开亚一金店小程序。"
+        },
         {
           "id": "YAYI_TOKEN_1",
           "name": "账号1 Token（自动抓取）",
@@ -431,7 +440,7 @@
           "type": "textarea",
           "autoGrow": true,
           "rows": 2,
-          "desc": "访问 http://yayi.local/select2 切换槽位后，打开亚一金店小程序自动抓取写入。"
+          "desc": "先把上方「抓取槽位」切到 2，再打开亚一金店小程序自动抓取写入。"
         }
       ],
       "author": "@辣堡",
@@ -447,8 +456,8 @@
         "<h4>多账号使用说明</h4>",
         "<ol>",
         "<li><b>账号1</b>：默认槽位，打开亚一金店小程序自动抓取 Token</li>",
-        "<li><b>账号2</b>：手机访问 <code>http://yayi.local/select2</code> 切换槽位，再打开小程序自动抓取</li>",
-        "<li>手机访问 <code>http://yayi.local/status</code> 可查看当前槽位与各账号签到状态</li>",
+        "<li><b>账号2</b>：先在本页把「抓取槽位」切到 2，再打开小程序自动抓取</li>",
+        "<li>切换回账号1只需把「抓取槽位」改回 1</li>",
         "</ol>",
         "<h4>激活 Token</h4>",
         "<ol>",
@@ -461,11 +470,20 @@
       "id": "huazhu-signin",
       "name": "华住会签到（多账号）",
       "keys": [
+        "HZ_CAPTURE_SLOT",
         "HZ_TOKEN_1",
         "HZ_TOKEN_2",
         "HZ_TOKEN_3"
       ],
       "settings": [
+        {
+          "id": "HZ_CAPTURE_SLOT",
+          "name": "抓取槽位（账号）",
+          "val": "1",
+          "type": "select",
+          "items": ["1", "2", "3"],
+          "desc": "选择把即将抓取的 Token 写入哪个账号槽位。抓取账号2/3前先在这里切换，再打开华住会 App/小程序。"
+        },
         {
           "id": "HZ_TOKEN_1",
           "name": "账号1 Token（自动抓取）",
@@ -482,7 +500,7 @@
           "type": "textarea",
           "autoGrow": true,
           "rows": 2,
-          "desc": "访问 http://huazhu.local/select2 切换槽位后，打开华住会自动抓取写入。"
+          "desc": "先把上方「抓取槽位」切到 2，再打开华住会 App/小程序自动抓取写入。"
         },
         {
           "id": "HZ_TOKEN_3",
@@ -491,7 +509,7 @@
           "type": "textarea",
           "autoGrow": true,
           "rows": 2,
-          "desc": "访问 http://huazhu.local/select3 切换槽位后，打开华住会自动抓取写入。"
+          "desc": "先把上方「抓取槽位」切到 3，再打开华住会 App/小程序自动抓取写入。"
         }
       ],
       "author": "@辣堡",
@@ -507,8 +525,8 @@
         "<h4>多账号使用说明</h4>",
         "<ol>",
         "<li><b>账号1</b>：默认槽位，打开华住会 App/小程序自动抓取 Token</li>",
-        "<li><b>账号2/3</b>：手机访问 <code>http://huazhu.local/select2</code>（或 select3）切换槽位，再打开华住会自动抓取</li>",
-        "<li>手机访问 <code>http://huazhu.local/status</code> 可查看当前槽位与各账号签到状态</li>",
+        "<li><b>账号2/3</b>：先在本页把「抓取槽位」切到对应账号，再打开华住会自动抓取</li>",
+        "<li>切换回账号1只需把「抓取槽位」改回 1</li>",
         "</ol>",
         "<h4>激活 Token</h4>",
         "<ol>",
