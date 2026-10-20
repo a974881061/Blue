@@ -2,16 +2,20 @@
 #!desc=华住会每日签到，自动抓取 userToken，支持多账号与滑动续期
 #!author=Dimlitter / 转换
 #!homepage=https://github.com/Dimlitter/huazhu-auto-checkin
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg
 
 [Script]
 # 抓取 userToken：拦截华住会请求并从 Cookie 提取，先验证有效性再存储
-http-request ^https?://.*\.huazhu\.com/ script-path=Scripts/huazhu_gettoken.js, requires-body=false
+http-request ^https?:\/\/.*\.huazhu\.com\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_gettoken.js, tag=华住Token抓取, requires-body=false, timeout=10, enabled=true
 
-# 伪 URL：槽位选择（select1~select10）与状态查看
-http-request ^https?://huazhu\.local/(select\d+|status) script-path=Scripts/huazhu_gettoken.js
+# 伪 URL：槽位选择（select1~select10）与状态查看：手机 Safari 访问 http://huazhu.local/select1、/select2、/status
+http-request ^https?:\/\/huazhu\.local\/(select\d+|status) script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_gettoken.js, tag=华住槽位选择, requires-body=false, timeout=10, enabled=true
 
 # 每日 09:05 签到
-cron "5 9 * * *" script-path=Scripts/huazhu_signin.js, tag=华住会签到
+cron "5 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_signin.js, tag=华住会签到, enabled=true, timeout=60
+
+[Rule]
+DOMAIN-SUFFIX,huazhu.com,DIRECT
 
 [MITM]
 hostname = *.huazhu.com
