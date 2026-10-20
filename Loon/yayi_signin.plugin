@@ -1,15 +1,12 @@
 #!name=亚一金店签到
-#!desc=亚一金店微信小程序「签到有礼」每日签到抽奖领积分。多账号（账号1/账号2），通过槽位选择器抓取 token，互不覆盖。
+#!desc=亚一金店微信小程序「签到有礼」每日签到抽奖领积分。多账号（账号1/账号2），在 BoxJS 里切换抓取槽位，互不覆盖。
 #!author=辣堡
 #!homepage=https://github.com/a974881061/Blue
 #!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg
 
 [Script]
-# Token 抓取：拦截 popcentury.cn 任意业务请求，从 Cookie 提取 JSESSIONID 写入当前选中槽位
+# Token 抓取：拦截 popcentury.cn 任意业务请求，从 Cookie 提取 JSESSIONID 写入 BoxJS「抓取槽位」选定的账号
 http-request ^https?:\/\/www\.popcentury\.cn\/scrm-rz-minip-yi\/ script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yayi_gettoken.js, tag=亚一Token抓取, requires-body=false, timeout=10, enabled=true
-
-# 账号槽位选择 / 状态查看：手机 Safari 访问 http://yayi.local/select1、/select2、/status
-http-request ^https?:\/\/yayi\.local\/(select1|select2|status) script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yayi_gettoken.js, tag=亚一槽位选择, requires-body=false, timeout=10, enabled=true
 
 # 每日签到抽奖（每天 09:10）
 cron "10 9 * * *" script-path=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yayi_signin.js, tag=亚一金店签到, enabled=true, timeout=60
