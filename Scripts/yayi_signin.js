@@ -13,6 +13,8 @@ var REFERER = "https://servicewechat.com/wxee243f756ec9879d/12/page-frame.html";
 
 function headers(jsessionid) {
   return {
+    // 内部标记头：让抓取脚本跳过本脚本自身发出的请求，避免误抓/误写槽位
+    "X-Yayi-Internal": "1",
     Cookie: "JSESSIONID=" + jsessionid,
     "Content-Type": "application/json",
     "x-requested-with": "application/json",
