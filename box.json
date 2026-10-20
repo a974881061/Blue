@@ -406,6 +406,117 @@
         "<li>收到「账号1 已更新」通知后即可等待每日 9:00 自动签到</li>",
         "</ol>"
       ]
+    },
+    {
+      "id": "yayi-signin",
+      "name": "亚一金店签到（多账号）",
+      "keys": [
+        "YAYI_TOKEN_1",
+        "YAYI_TOKEN_2"
+      ],
+      "settings": [
+        {
+          "id": "YAYI_TOKEN_1",
+          "name": "账号1 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "由 GetToken 脚本自动抓取的 JSESSIONID。打开亚一金店小程序后自动写入，无需手动填写。"
+        },
+        {
+          "id": "YAYI_TOKEN_2",
+          "name": "账号2 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "访问 http://yayi.local/select2 切换槽位后，打开亚一金店小程序自动抓取写入。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/gold.png"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/yayi_signin.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/yayi_signin.plugin</pre>",
+        "<h4>多账号使用说明</h4>",
+        "<ol>",
+        "<li><b>账号1</b>：默认槽位，打开亚一金店小程序自动抓取 Token</li>",
+        "<li><b>账号2</b>：手机访问 <code>http://yayi.local/select2</code> 切换槽位，再打开小程序自动抓取</li>",
+        "<li>手机访问 <code>http://yayi.local/status</code> 可查看当前槽位与各账号签到状态</li>",
+        "</ol>",
+        "<h4>激活 Token</h4>",
+        "<ol>",
+        "<li>安装插件后打开微信小程序「亚一金店」，进入签到页面触发 Token 抓取</li>",
+        "<li>收到「账号1 Token 已更新」通知后即可等待每日 9:10 自动签到抽奖</li>",
+        "</ol>"
+      ]
+    },
+    {
+      "id": "huazhu-signin",
+      "name": "华住会签到（多账号）",
+      "keys": [
+        "HZ_TOKEN_1",
+        "HZ_TOKEN_2",
+        "HZ_TOKEN_3"
+      ],
+      "settings": [
+        {
+          "id": "HZ_TOKEN_1",
+          "name": "账号1 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "由 GetToken 脚本自动抓取的 userToken。打开华住会 App/小程序后自动写入，无需手动填写。"
+        },
+        {
+          "id": "HZ_TOKEN_2",
+          "name": "账号2 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "访问 http://huazhu.local/select2 切换槽位后，打开华住会自动抓取写入。"
+        },
+        {
+          "id": "HZ_TOKEN_3",
+          "name": "账号3 Token（自动抓取）",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "访问 http://huazhu.local/select3 切换槽位后，打开华住会自动抓取写入。"
+        }
+      ],
+      "author": "@辣堡",
+      "repo": "https://github.com/a974881061",
+      "icons": [
+        "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/hzh.png"
+      ],
+      "script": "https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Scripts/huazhu_signin.js",
+      "descs_html": [
+        "<h4>一键安装（推荐）</h4>",
+        "<p>Loon 插件页签 → 点击右上角 + → 粘贴以下链接：</p>",
+        "<pre>https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/Loon/huazhu_signin.plugin</pre>",
+        "<h4>多账号使用说明</h4>",
+        "<ol>",
+        "<li><b>账号1</b>：默认槽位，打开华住会 App/小程序自动抓取 Token</li>",
+        "<li><b>账号2/3</b>：手机访问 <code>http://huazhu.local/select2</code>（或 select3）切换槽位，再打开华住会自动抓取</li>",
+        "<li>手机访问 <code>http://huazhu.local/status</code> 可查看当前槽位与各账号签到状态</li>",
+        "</ol>",
+        "<h4>激活 Token</h4>",
+        "<ol>",
+        "<li>安装插件后打开华住会 App 或微信小程序，进入签到页面触发 Token 抓取</li>",
+        "<li>收到「账号1 Token 已更新」通知后即可等待每日 9:05 自动签到</li>",
+        "<li>userToken 通常数周到数月有效，过期后重新打开 App 抓一次即可</li>",
+        "</ol>"
+      ]
     }
   ]
 }
