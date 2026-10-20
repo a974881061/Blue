@@ -9,6 +9,11 @@
  *     只有验证通过（code=200 且有会员信息）才写入持久化，避免过期/访客 session 覆盖有效 token。
  *   - token 与已存值一致 → 静默，不弹通知。
  *   - 访问 http://yayi.local/status 查看当前槽位、各账号 token 状态与最近签到结果。
+ *
+ * v2 修复（自拦截递归）：
+ *   验证请求本身命中同一条抓取规则，会再次触发本脚本、再次验证，形成无限递归，
+ *   导致 token 永远无法写入（表现为"抓不到 cookie"）。现给验证请求加内部标记头
+ *   `X-Yayi-Internal: 1`，脚本检测到该头直接 $done({}) 放行，杜绝递归。
  */
 
 var SLOT_KEY = "YAYI_CAPTURE_SLOT";
@@ -33,6 +38,14 @@ function mask(t) {
   return t.length <= 8 ? t : t.substring(0, 6) + "****" + t.substring(t.length - 4);
 }
 
+function getHeader(headers, name) {
+  var target = name.toLowerCase();
+  for (var k in headers) {
+    if (k.toLowerCase() === target) return headers[k];
+  }
+  return "";
+}
+
 function extractJsessid(cookieHeader) {
   if (!cookieHeader) return "";
   var m = /(?:^|;\s*)JSESSIONID=([^;]+)/i.exec(cookieHeader);
@@ -40,11 +53,13 @@ function extractJsessid(cookieHeader) {
 }
 
 // 验证 JSESSIONID 是否为已登录的有效会话
+// 注意：带 X-Yayi-Internal 内部标记头，避免被本脚本自身的抓取规则再次拦截导致递归
 function validateToken(jsessionid, cb) {
   $httpClient.post(
     {
       url: VALIDATE_API,
       headers: {
+        "X-Yayi-Internal": "1",
         Cookie: "JSESSIONID=" + jsessionid,
         "Content-Type": "application/json",
         "x-requested-with": "application/json",
@@ -120,11 +135,16 @@ function main() {
   }
 
   var headers = $request.headers || {};
-  var cookie = "";
-  for (var k in headers) {
-    if (k.toLowerCase() === "cookie") { cookie = headers[k]; break; }
+
+  // 【防递归】本脚本自身发出的验证请求带内部标记头，直接放行，不再二次处理
+  if (getHeader(headers, "X-Yayi-Internal")) {
+    $done({});
+    return;
   }
+
+  var cookie = getHeader(headers, "cookie");
   var token = extractJsessid(cookie);
+  console.log("[亚一抓取] url=" + url + " 有Cookie=" + (cookie ? "是" : "否") + " 提取到token=" + mask(token));
   if (!token) { $done({}); return; }
 
   var slot = getSlot();
