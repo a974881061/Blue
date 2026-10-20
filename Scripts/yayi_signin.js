@@ -1,93 +1,134 @@
 /**
- * 亚一金店 - 每日签到（诊断版）
- * 把每一步的 HTTP status 与响应原文打到通知，用于定位问题。
+ * 亚一金店 - 每日签到抽奖（正式版）
+ *
+ * 依据 HAR 抓包实证：
+ *   init    POST .../minipPointsController/initInstanceMemberAwards?sceneGameInstanceCode=7Bv2hOwXiWHz
+ *           headers: x-requested-with: application/json, content-type: application/json, Cookie, UA, Referer; body 空
+ *           resp: {"code":"200","data":{"useChance":1,"chance":0}} → useChance>0 才可抽奖
+ *   extract POST .../minipPointsController/extractInstanceMemberAwards?sceneGameInstanceCode=7Bv2hOwXiWHz
+ *           headers: x-requested-with: application/json, content-type: application/x-www-form-urlencoded;charset=utf-8, Cookie, UA, Referer; body 空
+ *           resp: {"code":"200","data":{"awardId":1341,"prizeTypeId":4}}
+ *   查询   POST .../memberController/showMemberInfo.do
+ *   code 599 = 会话失效（需重新抓 token）
+ *
+ * 说明：抽奖前 init.useChance=1，抽奖后 init.useChance=0、chance=1 → 每天 1 次。
  */
+
 var TOKEN_KEY_PREFIX = "YAYI_TOKEN_";
 var RESULT_KEY_PREFIX = "YAYI_LAST_RESULT_";
 var BASE = "https://www.popcentury.cn/scrm-rz-minip-yi";
 var SCENE_CODE = "7Bv2hOwXiWHz";
+
 var UA =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 27_0_1 like Mac OS X) AppleWebKit/605.1.15 " +
   "(KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.76(0x18004c3a) NetType/WIFI Language/zh_CN";
 var REFERER = "https://servicewechat.com/wxee243f756ec9879d/12/page-frame.html";
 
-function headers(jsessionid) {
+// 奖项映射（awardId → 奖品）
+var PRIZE = {
+  "1336": "谢谢参与",
+  "1337": "888积分",
+  "1338": "666积分",
+  "1339": "100积分",
+  "1340": "50积分",
+  "1341": "2积分",
+  "1342": "5积分",
+  "1343": "1积分",
+};
+
+function baseHeaders(jsessionid) {
+  // X-Yayi-Internal：让抓取脚本跳过本脚本自身发出的请求，避免误抓/误写槽位
   return {
-    // 内部标记头：让抓取脚本跳过本脚本自身发出的请求，避免误抓/误写槽位
     "X-Yayi-Internal": "1",
     Cookie: "JSESSIONID=" + jsessionid,
-    "Content-Type": "application/json",
-    "x-requested-with": "application/json",
     "User-Agent": UA,
     Referer: REFERER,
     Accept: "*/*",
   };
 }
-function post(jsessionid, path) {
+function jsonHeaders(jsessionid) {
+  var h = baseHeaders(jsessionid);
+  h["x-requested-with"] = "application/json";
+  h["content-type"] = "application/json";
+  return h;
+}
+function formHeaders(jsessionid) {
+  var h = baseHeaders(jsessionid);
+  h["x-requested-with"] = "application/json";
+  h["content-type"] = "application/x-www-form-urlencoded;charset=utf-8";
+  return h;
+}
+
+function post(jsessionid, path, headers) {
   return new Promise(function (resolve) {
     $httpClient.post(
-      { url: BASE + path, headers: headers(jsessionid), body: "{}", timeout: 15000 },
+      { url: BASE + path, headers: headers, body: "" },
       function (err, resp, data) {
-        if (err) { resolve({ ok: false, status: -1, body: "", msg: "网络错误: " + err }); return; }
-        var st = (resp && resp.status) || 0;
+        if (err) { resolve({ ok: false, status: -1, body: "", msg: String(err) }); return; }
         var raw = (data || "").toString();
         var obj = null;
         try { obj = JSON.parse(raw); } catch (e) {}
-        resolve({ ok: true, status: st, body: raw, json: obj });
+        resolve({ ok: true, status: (resp && resp.status) || 0, body: raw, json: obj });
       }
     );
   });
 }
-function short(s, n) { s = String(s || ""); return s.length > n ? s.slice(0, n) + "..." : s; }
+
+// 取积分做摘要
+function withInfo(jsessionid, out) {
+  return post(jsessionid, "/memberController/showMemberInfo.do", jsonHeaders(jsessionid))
+    .then(function (r) {
+      if (r.ok && r.json && r.json.code === "200" && r.json.data) {
+        if (r.json.data.pointsBalance != null) out.points = r.json.data.pointsBalance;
+      }
+      return out;
+    })
+    .catch(function () { return out; });
+}
 
 function signIn(slot) {
   var jsessionid = $persistentStore.read(TOKEN_KEY_PREFIX + slot) || "";
-  var debug = ["【账号" + slot + "】"];
-  if (!jsessionid) {
-    debug.push("未配置 token");
-    return Promise.resolve({ slot: slot, ok: false, debug: debug.join("\n") });
-  }
-  return post(jsessionid, "/minipPointsController/initInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE)
+  var out = { slot: slot, ok: false, summary: "" };
+  if (!jsessionid) { out.summary = "未配置 token"; return Promise.resolve(out); }
+
+  return post(jsessionid, "/minipPointsController/initInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE, jsonHeaders(jsessionid))
     .then(function (r) {
-      debug.push("[init] status=" + r.status + " body=" + short(r.body, 400));
-      if (!r.ok) return { slot: slot, ok: false, debug: debug.join("\n") };
+      if (!r.ok) { out.summary = "网络错误: " + r.msg; return out; }
+      if (r.status !== 200) { out.summary = "init HTTP " + r.status; return out; }
       var j = r.json;
       if (!j || j.code !== "200") {
-        debug.push("→ 判定为失败/过期: code=" + (j && j.code) + " msg=" + (j && j.message));
-        return { slot: slot, ok: false, expired: (j && j.code === "599"), debug: debug.join("\n") };
+        out.expired = (j && j.code === "599");
+        out.summary = "会话失效(code=" + (j && j.code) + "): " + ((j && j.message) || "") + (out.expired ? "，请重新抓取 token" : "");
+        return out;
       }
-      var data = j.data || {};
-      debug.push("→ data 字段: " + short(JSON.stringify(data), 300));
-      // 尝试多种可能的字段名
-      var useChance = Number(data.useChance != null ? data.useChance : (data.useChanceCount != null ? data.useChanceCount : data.canDrawCount));
-      debug.push("→ useChance(取到)=" + useChance);
-      if (useChance <= 0) {
-        return { slot: slot, ok: true, already: true, debug: debug.join("\n") };
+
+      var useChance = Number((j.data || {}).useChance);
+      if (!(useChance > 0)) {
+        out.ok = true;
+        out.drawn = false;
+        out.summary = "今日已抽过（剩余次数 " + (isNaN(useChance) ? "?" : useChance) + "）";
+        return withInfo(jsessionid, out);
       }
-      return post(jsessionid, "/minipPointsController/extractInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE).then(function (r2) {
-        debug.push("[extract] status=" + r2.status + " body=" + short(r2.body, 400));
-        if (!r2.ok) return { slot: slot, ok: false, debug: debug.join("\n") };
-        var j2 = r2.json;
-        if (!j2 || j2.code !== "200") {
-          debug.push("→ 抽奖失败: code=" + (j2 && j2.code) + " msg=" + (j2 && j2.message));
-          return { slot: slot, ok: false, debug: debug.join("\n") };
-        }
-        var d2 = j2.data || {};
-        debug.push("→ extract data: " + short(JSON.stringify(d2), 200));
-        return { slot: slot, ok: true, already: false, awardId: d2.awardId, debug: debug.join("\n") };
-      });
+
+      // 有次数 → 抽奖
+      return post(jsessionid, "/minipPointsController/extractInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE, formHeaders(jsessionid))
+        .then(function (r2) {
+          if (!r2.ok) { out.summary = "抽奖网络错误: " + r2.msg; return out; }
+          var j2 = r2.json;
+          if (!j2 || j2.code !== "200") {
+            out.summary = "抽奖失败(code=" + (j2 && j2.code) + "): " + ((j2 && j2.message) || "");
+            return out;
+          }
+          var aid = String((j2.data || {}).awardId);
+          out.ok = true;
+          out.drawn = true;
+          out.summary = "抽奖成功：" + (PRIZE[aid] || ("奖项" + aid));
+          return withInfo(jsessionid, out);
+        });
     })
-    .then(function (res) {
-      return post(jsessionid, "/memberController/showMemberInfo.do").then(function (r3) {
-        debug.push("[info] status=" + r3.status + " body=" + short(r3.body, 200));
-        if (r3.ok && r3.json && r3.json.code === "200" && r3.json.data) {
-          res.points = r3.json.data.pointsBalance;
-        }
-        res.debug = debug.join("\n");
-        return res;
-      }).catch(function () { res.debug = debug.join("\n"); return res; });
-    });
+    .catch(function (e) { out.summary = "异常: " + e; return out; });
 }
+
 function run() {
   var slots = [];
   for (var s = 1; s <= 2; s++) {
@@ -98,17 +139,25 @@ function run() {
     $done();
     return;
   }
-  Promise.all(slots.map(signIn)).then(function (results) {
-    var all = [];
-    results.forEach(function (r) {
-      all.push(r.debug);
-      $persistentStore.write(r.debug, RESULT_KEY_PREFIX + r.slot);
+
+  var lines = [];
+  var idx = 0;
+  function next() {
+    if (idx >= slots.length) {
+      $notification.post("亚一金店签到", "完成", lines.join("\n"));
+      $done();
+      return;
+    }
+    var slot = slots[idx++];
+    signIn(slot).then(function (r) {
+      var line = "账号" + r.slot + " " + r.summary;
+      if (r.points != null) line += "，积分" + r.points;
+      lines.push(line);
+      $persistentStore.write(line, RESULT_KEY_PREFIX + r.slot);
+      setTimeout(next, 1500);
     });
-    $notification.post("亚一金店签到（诊断）", all.join("\n\n"));
-    $done();
-  }).catch(function (e) {
-    $notification.post("亚一金店签到（诊断异常）", String(e));
-    $done();
-  });
+  }
+  next();
 }
+
 run();
