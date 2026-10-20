@@ -1,21 +1,18 @@
 /**
- * 华住会签到 - 每日签到脚本（Loon cron）
+ * 华住会签到 - 每日签到脚本（Loon cron） v2
  *
  * 原理（抓包实证）：
  *   鉴权 = 请求头 `User-Token: <token>`（华住会已改用 header 鉴权，不再接受 Cookie）。
  *   签到   GET https://appgw.huazhu.com/game/sign_in?date=<unix秒>
  *   状态   GET https://appgw.huazhu.com/game/sign_header
  *   返回 code: 200=签到成功, 5001=未到签到日期(今日已签), 5004=今日已签, 其它=失败。
- *
- * 多账号：从 HZ_TOKEN_1、HZ_TOKEN_2 ... 顺序读取。
- * 滑动续期：若响应头下发新的 userToken 且当前为单账号，自动保存。
  */
 
 var TOKEN_PREFIX = "HZ_TOKEN_";
 var RESULT_PREFIX = "HZ_LAST_RESULT_";
 var API = "https://appgw.huazhu.com";
 var MAX_SLOTS = 10;
-var RETRY = 2; // 429/5xx 额外重试次数
+var RETRY = 2;
 
 var UA =
   "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 " +
@@ -44,7 +41,14 @@ function headers(token) {
   };
 }
 
-// 从响应头提取续发的 userToken
+function headersMinimal(token) {
+  return {
+    "User-Token": token,
+    "User-Agent": UA,
+    Accept: "application/json, text/plain, */*",
+  };
+}
+
 function getRefreshedToken(resp) {
   var h = (resp && resp.headers) || {};
   var v = h["userToken"] || h["User-Token"] || h["usertoken"];
@@ -54,19 +58,27 @@ function getRefreshedToken(resp) {
   return v || null;
 }
 
-// GET，遇 429/5xx/网络异常重试
 function apiGet(path, token, attempts, cb) {
-  $httpClient.get({ url: API + path, headers: headers(token), timeout: 25 }, function (err, resp, data) {
-    if (err) {
-      if (attempts > 0) { return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 5000); }
-      return cb({ err: err });
-    }
-    var code = resp.status;
-    if ((code === 429 || code >= 500) && attempts > 0) {
-      return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 8000);
-    }
-    cb({ status: code, body: data, resp: resp });
-  });
+  // 先用完整 header；若失败则用精简 header 再试一次
+  var useMinimal = false;
+  function doRequest(hdrs) {
+    $httpClient.get({ url: API + path, headers: hdrs, timeout: 20 }, function (err, resp, data) {
+      if (err) {
+        if (!useMinimal) {
+          useMinimal = true;
+          return doRequest(headersMinimal(token));
+        }
+        if (attempts > 0) { return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 3000); }
+        return cb({ err: String(err) });
+      }
+      var code = resp.status;
+      if ((code === 429 || code >= 500) && attempts > 0) {
+        return setTimeout(function () { apiGet(path, token, attempts - 1, cb); }, 5000);
+      }
+      cb({ status: code, body: data, resp: resp });
+    });
+  }
+  doRequest(headers(token));
 }
 
 function fetchStatus(token, cb) {
@@ -85,7 +97,7 @@ function signOne(slot, token, cb) {
   var tag = "账号" + slot;
   var date = Math.floor(Date.now() / 1000);
   apiGet("/game/sign_in?date=" + date, token, RETRY, function (r) {
-    if (r.err) { return cb(false, tag + " 网络异常: " + r.err, null); }
+    if (r.err) { return cb(false, tag + " 网络异常: " + r.err + "（请检查 appgw.huazhu.com 是否可达/是否被代理）", null); }
     if (r.status !== 200) {
       var hint = "";
       if (r.status === 429) hint = "（限流/服务器繁忙，通常次日自动恢复）";
@@ -139,12 +151,11 @@ function run() {
       } else {
         allOk = false;
       }
-      // 滑动续期：单账号且服务端下发了新 token 时自动保存
       if (fresh && fresh !== acc.token && accounts.length === 1) {
         $persistentStore.write(fresh, TOKEN_PREFIX + acc.slot);
         results.push("账号" + acc.slot + " 检测到服务端下发新 token，已自动续期保存");
       }
-      setTimeout(next, 1500);
+      setTimeout(next, 1000);
     });
   }
 
