@@ -1,14 +1,14 @@
 /**
  * 华住会签到 - 每日签到脚本（Loon cron）
  *
- * 原理（来自原项目抓包实证）：
- *   鉴权 = Cookie `userToken`（Domain=.huazhu.com），无签名、无设备绑定。
+ * 原理（抓包实证）：
+ *   鉴权 = 请求头 `User-Token: <token>`（华住会已改用 header 鉴权，不再接受 Cookie）。
  *   签到   GET https://appgw.huazhu.com/game/sign_in?date=<unix秒>
  *   状态   GET https://appgw.huazhu.com/game/sign_header
- *   返回 code: 200=签到成功, 5004=今日已签, 其它=失败（常见为 token 过期）。
+ *   返回 code: 200=签到成功, 5001=未到签到日期(今日已签), 5004=今日已签, 其它=失败。
  *
- * 多账号：从 HZ_TOKEN_1、HZ_TOKEN_2 ... 顺序读取（抓到哪个槽就存哪个槽）。
- * 滑动续期：若响应 Set-Cookie 下发新的 userToken 且当前为单账号，自动保存。
+ * 多账号：从 HZ_TOKEN_1、HZ_TOKEN_2 ... 顺序读取。
+ * 滑动续期：若响应头下发新的 userToken 且当前为单账号，自动保存。
  */
 
 var TOKEN_PREFIX = "HZ_TOKEN_";
@@ -36,7 +36,7 @@ function getAllAccounts() {
 
 function headers(token) {
   return {
-    Cookie: "userToken=" + token,
+    "User-Token": token,
     "User-Agent": UA,
     Referer: REFERER,
     Origin: ORIGIN,
@@ -44,13 +44,14 @@ function headers(token) {
   };
 }
 
-function getSetCookieUserToken(resp) {
+// 从响应头提取续发的 userToken
+function getRefreshedToken(resp) {
   var h = (resp && resp.headers) || {};
-  var sc = h["Set-Cookie"] || h["set-cookie"];
-  if (!sc) return null;
-  if (Object.prototype.toString.call(sc) === "[object Array]") sc = sc.join("; ");
-  var m = /userToken=([^;]+)/.exec(sc);
-  return m ? m[1].trim() : null;
+  var v = h["userToken"] || h["User-Token"] || h["usertoken"];
+  if (!v) return null;
+  if (Object.prototype.toString.call(v) === "[object Array]") v = v[0];
+  v = String(v).trim();
+  return v || null;
 }
 
 // GET，遇 429/5xx/网络异常重试
@@ -95,11 +96,14 @@ function signOne(slot, token, cb) {
       var d = JSON.parse(r.body);
       var code = d.code;
       var msg = d.message || "";
-      var fresh = getSetCookieUserToken(r.resp);
-      if (code === 200 || code === 5004) {
+      var fresh = getRefreshedToken(r.resp);
+      if (code === 200) {
         fetchStatus(token, function (stat) {
-          var m = (code === 200 ? "签到成功" : "今日已签到") + stat;
-          cb(true, tag + " " + m, fresh);
+          cb(true, tag + " 签到成功" + stat, fresh);
+        });
+      } else if (code === 5001 || code === 5004) {
+        fetchStatus(token, function (stat) {
+          cb(true, tag + " 今日已签到" + stat, fresh);
         });
       } else {
         cb(false, tag + " 签到失败(code=" + code + "): " + (msg || "可能 token 已过期，请重新抓取"), fresh);
