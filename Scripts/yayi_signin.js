@@ -1,21 +1,17 @@
 /**
- * 亚一金店 - 每日签到抽奖（正式版 v3）
+ * 亚一金店 - 每日签到抽奖（v4）
  *
  * 依据 HAR 抓包实证：
  *   init    POST .../minipPointsController/initInstanceMemberAwards?sceneGameInstanceCode=7Bv2hOwXiWHz
- *           headers: x-requested-with: application/json, content-type: application/json, Cookie, UA, Referer; body 空
- *           resp: {"code":"200","data":{"useChance":1,"chance":0}} → 抽奖前
- *                 {"code":"200","data":{"useChance":0,"chance":1}} → 抽奖后
  *   extract POST .../minipPointsController/extractInstanceMemberAwards?sceneGameInstanceCode=7Bv2hOwXiWHz
- *           headers: x-requested-with: application/json, content-type: application/x-www-form-urlencoded;charset=utf-8
- *           resp: {"code":"200","data":{"awardId":1341,"prizeTypeId":4}}
  *   查询   POST .../memberController/showMemberInfo.do
  *   code 599 = 会话失效（需重新抓 token）
  *
- * 抽奖判定（v3）：
- *   useChance 是"剩余可用抽奖次数"、chance 是"已抽次数"。
- *   为避免字段语义误判导致不抽奖：只要不能明确判定"已抽过"，就尝试抽一次。
- *   服务端在没有次数时会直接拒绝，不会造成异常，因此"不确定就试"最稳妥。
+ * v4 关键变更：
+ *   实测发现 init 返回 useChance=0 / chance=1 时，用户并未抽过奖，
+ *   说明这两个字段的语义与最初假设相反（或不稳定），不能用来"跳过抽奖"。
+ *   因此改为【无条件尝试抽奖】：最终是否成功由 extract 的返回码决定，
+ *   服务端在无次数时会明确拒绝，不会造成副作用。init 仅用于记录状态、便于排查。
  */
 
 var TOKEN_KEY_PREFIX = "YAYI_TOKEN_";
@@ -87,7 +83,6 @@ function post(jsessionid, path, headers, retry) {
   });
 }
 
-// 取积分做摘要
 function withInfo(jsessionid, out) {
   return post(jsessionid, "/memberController/showMemberInfo.do", jsonHeaders(jsessionid), 0)
     .then(function (r) {
@@ -104,54 +99,40 @@ function signIn(slot) {
   var out = { slot: slot, ok: false, summary: "" };
   if (!jsessionid) { out.summary = "未配置 token"; return Promise.resolve(out); }
 
+  // 1) init：仅取状态做记录，不用于决定是否抽奖
   return post(jsessionid, "/minipPointsController/initInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE, jsonHeaders(jsessionid), 1)
     .then(function (r) {
-      if (!r.ok) { out.summary = "网络错误: " + r.msg; return out; }
-      if (r.status !== 200) { out.summary = "init HTTP " + r.status; return out; }
+      if (!r.ok) { out.summary = "init 网络错误: " + r.msg; return out; }
       var j = r.json;
-      if (!j) { out.summary = "init 响应解析失败: " + String(r.body).substring(0, 100); return out; }
-      if (j.code !== "200") {
-        out.expired = (j.code === "599");
-        out.summary = out.expired
-          ? "会话已失效(code=599)，请打开小程序重新抓取 token"
-          : ("init 失败(code=" + j.code + "): " + (j.message || ""));
+      if (j && j.code === "599") {
+        out.summary = "会话已失效(code=599)，请打开小程序重新抓取 token";
         return out;
       }
-
-      var d = j.data || {};
-      var useChance = (d.useChance != null) ? Number(d.useChance) : null;
-      var chance = (d.chance != null) ? Number(d.chance) : null;
-
-      // 不能明确判定"已抽过"就尝试抽
-      var canDraw;
-      if (useChance != null && useChance > 0) canDraw = true;
-      else if (useChance != null && chance != null && chance > 0) canDraw = false;
-      else canDraw = true;
-
-      out.initInfo = "init{useChance=" + (useChance == null ? "?" : useChance) +
-        ",chance=" + (chance == null ? "?" : chance) + "}";
-
-      if (!canDraw) {
-        out.ok = true;
-        out.summary = "今日已抽过（剩余 " + useChance + " 次）";
-        return withInfo(jsessionid, out);
+      if (j && j.code === "200") {
+        var d = j.data || {};
+        out.initInfo = "init{useChance=" + d.useChance + ",chance=" + d.chance + "}";
+      } else {
+        out.initInfo = "init{code=" + (j ? j.code : "?") + "}";
       }
 
-      // 抽奖
+      // 2) extract：无条件尝试抽奖，以返回码为准
       return post(jsessionid, "/minipPointsController/extractInstanceMemberAwards?sceneGameInstanceCode=" + SCENE_CODE, formHeaders(jsessionid), 1)
         .then(function (r2) {
           if (!r2.ok) { out.summary = "抽奖网络错误: " + r2.msg; return out; }
+          if (r2.status !== 200) { out.summary = "抽奖 HTTP " + r2.status; return out; }
           var j2 = r2.json;
-          if (!j2) { out.summary = "抽奖响应解析失败: " + String(r2.body).substring(0, 100); return out; }
-          if (j2.code !== "200") {
-            out.summary = "抽奖未成功(code=" + j2.code + "): " + (j2.message || "");
-            return out;
+          if (!j2) { out.summary = "抽奖响应解析失败: " + String(r2.body).substring(0, 120); return out; }
+
+          if (j2.code === "200" && j2.data) {
+            var aid = String(j2.data.awardId);
+            out.ok = true;
+            out.drawn = true;
+            out.summary = "抽奖成功：" + (PRIZE[aid] || ("奖项" + aid));
+            return withInfo(jsessionid, out);
           }
-          var aid = String((j2.data || {}).awardId);
-          out.ok = true;
-          out.drawn = true;
-          out.summary = "抽奖成功：" + (PRIZE[aid] || ("奖项" + aid));
-          return withInfo(jsessionid, out);
+          // 非 200：明确记录服务端原始反馈
+          out.summary = "抽奖未成功(code=" + j2.code + "): " + (j2.message || "无返回信息");
+          return out;
         });
     })
     .catch(function (e) { out.summary = "异常: " + e; return out; });
