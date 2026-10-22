@@ -2,7 +2,7 @@
 #!desc=亚一金店微信小程序「签到有礼」每日签到抽奖领积分。多账号（账号1/账号2），在 BoxJS 里切换抓取槽位，互不覆盖。
 #!author=辣堡
 #!homepage=https://github.com/a974881061/Blue
-#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/lb.jpg
+#!icon=https://raw.githubusercontent.com/a974881061/Blue/refs/heads/main/icons/yayi.png
 
 [Script]
 # Token 抓取：拦截 popcentury.cn 任意业务请求，从 Cookie 提取 JSESSIONID 写入 BoxJS「抓取槽位」选定的账号
